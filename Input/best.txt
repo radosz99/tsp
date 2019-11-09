@@ -1,0 +1,24 @@
+data17  br17:      39
+data34  ftv33:   1286
+data36  ftv35:   1473
+data39  ftv38:   1530
+data43  p43:     5620
+data45  ftv44:   1613
+data48  ry48p:  14422
+data53  ft53:    6905
+data56  ftv55:   1608
+data65  ftv64:   1839
+data70  ft70:   38673
+data71  ftv70:   1950
+data100 kro124: 36230
+data171 ftv170:  2755
+data323 rbg323:  1326
+data358 rbg358:  1163
+data403 rbg403:  2465
+data443 rbg443:  2720
+
+
+
+
+
+
