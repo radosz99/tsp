@@ -15,7 +15,7 @@
 
 using namespace std;
 
-void getFirstValue(int *bestTab, int size, int &helpMin, int **macierz,int **mainMacierz,int *visitedTab, int &tempMin, int *routeTab, int &savedBestCol, int &nodesAmount,vector<Node>& graph,int &deleteNodesAmount) {
+int getFirstValue(int *bestTab, int size, int &helpMin, int **macierz,int **mainMacierz,int *visitedTab, int &tempMin, int *routeTab, int &savedBestCol, int &nodesAmount,vector<Node>& graph,int &deleteNodesAmount) {
 	int bestMin, counter = 0;
 
 
@@ -85,10 +85,11 @@ void getFirstValue(int *bestTab, int size, int &helpMin, int **macierz,int **mai
 	for (int i = 0; i < size; i++)
 		bestTab[i] = routeTab[i];
 
+	return helpMin;
 }
 
 int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int min, int &index){
-	int helpMin;
+	int helpMin = min;
 	int betterNodeId;
 	//----------------------------------------------------------------------
 	//Uporzadkowanie atrybutow index, by zgadzaly sie z rzeczywista kolejnoscia
@@ -101,7 +102,6 @@ int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int
 	//sprawdzamy w poziomie o jeden wyzszym, jesli jest znajdowany wierzcholek o lower bound mniejszym niz upper bound
 	//to w zakresie poziomu sprawdzamy czy ktorys z wierzcholkow ma jeszcze mniejszy lower bound
 	//to jego bedziemy sprawdzac
-
 	//----------------------------------------------------------------------
 	//WERSJA DEPTH FIRST
 	//----------------------------------------------------------------------
@@ -115,17 +115,16 @@ int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int
 			}
 			break;
 		}*/
+	//---------------------------------------------------------------------
+	//WERSJA BEST FIRST
 	//----------------------------------------------------------------------
-	//wERSJA BEST FIRST
-	//----------------------------------------------------------------------
-	helpMin = min;
 	for (unsigned int i = 0; i < graph.size(); i++)
 		if (graph[i].getValue() < helpMin) {
 			betterNodeId = i;
 			helpMin=graph[i].getValue();
 			tempLevel = graph[i].getLvl();
 		}
-
+	
 	//----------------------------------------------------------------------
 	//Usuniecie wierzcholkow o lower bound wiekszym lub rownym obecnemu upper bound
 	//----------------------------------------------------------------------

@@ -154,8 +154,9 @@ int main()
 			helpMin = reduceMatrix(macierz, matrixSize);
 			czas.czasStart();
 
-			getFirstValue(bestTab, matrixSize, helpMin, macierz, mainMacierz, visitedTab, tempMin, routeTab, savedBestCol, nodesAmount, graph, deleteNodesAmount);
+			min = getFirstValue(bestTab, matrixSize, helpMin, macierz, mainMacierz, visitedTab, tempMin, routeTab, savedBestCol, nodesAmount, graph, deleteNodesAmount);
 			betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index);
+
 			//----------------------------------------------------------------------
 			//				ZAPETLENIE-DO CALKOWITEGO USUNIECIA GRAFU
 			//----------------------------------------------------------------------
