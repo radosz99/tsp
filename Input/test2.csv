@@ -1,0 +1,13 @@
+Instancja;Metoda;Czas;Minimum
+data10;BruteForce-swap;0.0897094;212
+data10;BruteForce-swap;0.0954369;212
+data10;BruteForce-swap;0.0872906;212
+data10;BruteForce-swap;0.0875135;212
+data10;BruteForce-swap;0.0861681;212
+data10;BruteForce-swap;0.0875568;212
+data10;BruteForce-swap;0.0876227;212
+data10;BruteForce-swap;0.0884356;212
+data10;BruteForce-swap;0.0869617;212
+data10;BruteForce-swap;0.0885424;212
+banan10;BruteForce-nextpermu;0.0618347;10
+banan10;BruteForce-drzewo;0.264619;10

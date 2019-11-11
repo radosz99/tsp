@@ -80,6 +80,9 @@ int *Node::getVisited() {
 	return visited;
 }
 
+string Node::getInstanceName() {
+	return instanceName;
+}
 
 int Node::getSize() {
 	return size;
@@ -105,8 +108,7 @@ void Node::loadInfo() {
 		{
 			cout << "\nUzyskano dostep do pliku!" << std::endl;
 			ifOpen = true;
-			string zmienna;
-			plik >> zmienna;
+			plik >> instanceName;
 			plik >> startMatrixSize;
 
 			startMatrix = new int *[startMatrixSize];

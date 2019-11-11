@@ -33,6 +33,7 @@ public:
 
 	//Accessor Function
 	int getSize();
+	string getInstanceName();
 	int **getMatrix();
 	int getIndex();
 	int getId();
@@ -63,5 +64,6 @@ private:
 	int **matrix;
 	int startMatrixSize;
 	int **startMatrix;
+	string instanceName;
 };
 #endif

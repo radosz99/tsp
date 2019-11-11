@@ -269,3 +269,20 @@ void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMat
 
 	}
 }
+
+void saveToFile(string a, string b, double c, int d) {
+	ofstream plik;
+	plik.open("C:/Users/Radek/source/repos/PEA/Input/test2.csv", std::ios_base::app);
+	plik << a << ";" << b << ";" << c << ";" << d << endl;
+	plik.close();
+}
+
+double getTime(Czas czas) {
+	double czasSek;
+
+	czasSek = czas.czasWykonaniaNano();
+	czasSek = czasSek / 1000000000;
+	printf("\nCzas wykonania algorytmu: %.9gs", czasSek);
+		
+	return czasSek;
+}

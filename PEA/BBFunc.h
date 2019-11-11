@@ -20,7 +20,7 @@ int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int
 void prepareNextIteration(int &helpMin, vector<Node>& graph, int size, int *visitedTab, int *routeTab, int index, int **macierz, int **mainMacierz, int &tempLevel, int&counter, int &deleteNodesAmount);
 void developingGraph(int min, int tempLevel, int size, bool &ifBetter, int &bestMin, int *visitedTab, int **macierz, int **mainMacierz, int *routeTab, int savedBestCol, int &tempMin, int &helpMin, int counter, vector<Node>& graph, int &nodesAmount, int &deleteNodesAmount);
 void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min);
-
+int BBMain(Node start, string instanceName, int *bestTab);
 #endif#pragma once
 #pragma once
 #pragma once

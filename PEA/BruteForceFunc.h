@@ -22,5 +22,8 @@ void showMatrix(int **matrix, int size);
 void suitableRowColToInf(int **matrix, int row, int col, int size);
 int reduceMatrix(int **matrix, int size);
 void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMatrix);
+void saveToFile(string a, string b, double c, int d);
+double getTime(Czas czas);
+
 #endif#pragma once
 #pragma once
