@@ -12,7 +12,8 @@ int showMenu() {
 	cout << "5. Oblicz optymalna sciezke (brute force - drzewo)" << endl;
 	cout << "6. Oblicz optymalna sciezke (branch&bound)" << endl;
 	cout << "7. Wyswietl macierz" << endl;
-	cout << "8. EXIT" << endl;
+	cout << "8. Oblicz optymalna sciezke (dynamiczne programowanie)" << endl;
+	cout << "9. EXIT" << endl;
 	cin >> ans;
 
 	return ans;

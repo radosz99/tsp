@@ -59,6 +59,9 @@ void Node::setId(int a) {
 	id = a;
 }
 
+int Node:: getStartSize() {
+	return startMatrixSize;
+}
 
 int Node::getValue() {
 	return value;
@@ -67,7 +70,7 @@ int Node::getValue() {
 int Node::getLvl() {
 	return lvl;
 }
-
+	
 int *Node::getRoute() {
 	return route;
 }
@@ -90,6 +93,12 @@ int Node::getSize() {
 
 int **Node::getMatrix() {
 	return matrix;
+}
+
+void Node::copyMatrix(int **macierz) {
+	for (int i = 0; i < startMatrixSize; i++)
+		for (int j = 0; j < startMatrixSize; j++)
+			macierz[i][j] = startMatrix[i][j];
 }
 
 void Node::loadInfo() {

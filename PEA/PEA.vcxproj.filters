@@ -33,6 +33,9 @@
     <ClCompile Include="BBFunc.cpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClCompile>
+    <ClCompile Include="DPFunc.cpp">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h">
@@ -48,6 +51,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
     <ClInclude Include="BBFunc.h">
+      <Filter>Pliki źródłowe</Filter>
+    </ClInclude>
+    <ClInclude Include="DPFunc.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
   </ItemGroup>

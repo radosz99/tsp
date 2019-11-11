@@ -12,6 +12,7 @@
 #include <vector>
 #include "BruteForceFunc.h"
 #include "BBFunc.h"
+#include "DPFunc.h"
 using namespace std;
 
 
@@ -164,9 +165,41 @@ int main()
 			break;
 		
 		case 8:
+		{
+			double time;
+			int min=INT_MAX;
+			vector<vector<int>> g;
+			vector<vector<int>> nxt;
+			int N;
+
+
+			g = vector<vector<int>>(sizeMatrix);
+			nxt = vector<vector<int>>(sizeMatrix);
+
+			for (int i = 0; i < sizeMatrix; i++) {
+				g[i] = vector<int>(pow(2, sizeMatrix));
+				nxt[i] = vector<int>(pow(2, sizeMatrix));
+			}
+
+			cout << "Podaj ile razy ma zostac wykonany algorytm: ";
+			cin >> N;
+
+			for (int j = 0; j < N; j++) {
+				czas.czasStart();
+				initDP(min, TSPMatrix, sizeMatrix, g, nxt);
+				czas.czasStop();
+
+				time = getTime(czas);
+				cout << endl;
+				saveToFile(instanceName, "Dynamiczne", time, min);
+			}
+		}
+		break;
+
+		case 9:
 			system("pause");
 		}
-	} while (answer != 8);
+	} while (answer != 9);
 
 	return 0;
 }

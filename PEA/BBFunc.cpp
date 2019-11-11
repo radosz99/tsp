@@ -246,7 +246,6 @@ void developingGraph(int min, int tempLevel, int size, bool &ifBetter, int &best
 
 
 int BBMain(Node start, string instanceName, int *bestTab) {
-	Czas czas;
 	vector<Node> graph;
 	int nodesAmount = 0, deleteNodesAmount = 0;
 	int betterNodeId;//zmienna przechowujaca id wierzcholka ktory powinien byc rozwijany
@@ -271,7 +270,6 @@ int BBMain(Node start, string instanceName, int *bestTab) {
 	start.copyMatrix(macierz); //zapisanie do zmiennej macierz macierzy wczytanej z pliku
 	routeTab[0] = 0; //routeTab to sciezka, pierwszy w sciezce bedzie wierzcholek nr 0
 	helpMin = reduceMatrix(macierz, matrixSize);
-	czas.czasStart();
 
 	min = getFirstValue(bestTab, matrixSize, helpMin, macierz, mainMacierz, visitedTab, tempMin, routeTab, savedBestCol, nodesAmount, graph, deleteNodesAmount);
 	betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index);

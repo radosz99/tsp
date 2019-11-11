@@ -7,20 +7,6 @@ using namespace std;
 
 class Node {
 public:
-
-public:
-
-	void copyMatrix(int **macierz) {
-		for (int i = 0; i < startMatrixSize; i++)
-			for (int j = 0; j < startMatrixSize; j++)
-				macierz[i][j] = startMatrix[i][j];
-	}
-
-	int getStartSize() {
-		return startMatrixSize;
-	}
-	void loadInfo();
-
 	//Default constructor
 	Node();
 
@@ -32,6 +18,9 @@ public:
 	~Node();
 
 	//Accessor Function
+	void copyMatrix(int**);
+	void loadInfo();
+	int getStartSize();
 	int getSize();
 	string getInstanceName();
 	int **getMatrix();
