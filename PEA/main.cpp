@@ -161,40 +161,50 @@ int main()
 		}
 
 		case 7:
-			showMatrix(TSPMatrix, sizeMatrix);
-			break;
-		
-		case 8:
 		{
 			double time;
 			int min=INT_MAX;
-			vector<vector<int>> g;
-			vector<vector<int>> nxt;
-			int N;
+			vector<vector<int>> tabNodeValues;
+			vector<vector<int>> possibleRouteTab;
+			int amount;
+			int *bestTab = new int[sizeMatrix];
 
-
-			g = vector<vector<int>>(sizeMatrix);
-			nxt = vector<vector<int>>(sizeMatrix);
+			tabNodeValues = vector<vector<int>>(sizeMatrix);
+			possibleRouteTab = vector<vector<int>>(sizeMatrix);
 
 			for (int i = 0; i < sizeMatrix; i++) {
-				g[i] = vector<int>(pow(2, sizeMatrix));
-				nxt[i] = vector<int>(pow(2, sizeMatrix));
+				tabNodeValues[i] = vector<int>(pow(2, sizeMatrix));
+				possibleRouteTab[i] = vector<int>(pow(2, sizeMatrix));
 			}
 
 			cout << "Podaj ile razy ma zostac wykonany algorytm: ";
-			cin >> N;
+			cin >> amount;
 
-			for (int j = 0; j < N; j++) {
+			for (int j = 0; j < amount; j++) {
+
 				czas.czasStart();
-				initDP(min, TSPMatrix, sizeMatrix, g, nxt);
+				startDynamic(min, TSPMatrix, sizeMatrix, tabNodeValues, possibleRouteTab,bestTab);
 				czas.czasStop();
 
 				time = getTime(czas);
+
+				cout << "\nMinimalna funkcja celu = " << min;
+				cout << "\nNajlepsza droga: ";
+				for (int i = 0; i < sizeMatrix; i++)
+					cout << bestTab[i] << " ";
 				cout << endl;
+
 				saveToFile(instanceName, "Dynamiczne", time, min);
 			}
 		}
 		break;
+
+
+		case 8:
+			showMatrix(TSPMatrix, sizeMatrix);
+			break;
+
+
 
 		case 9:
 			system("pause");

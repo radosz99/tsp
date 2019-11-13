@@ -15,7 +15,83 @@
 
 using namespace std;
 
-int getFirstValue(int *bestTab, int size, int &helpMin, int **macierz,int **mainMacierz,int *visitedTab, int &tempMin, int *routeTab, int &savedBestCol, int &nodesAmount,vector<Node>& graph,int &deleteNodesAmount) {
+int reduceMatrix(int **matrix, int size) {
+
+	int *row, *col;
+	int min = INT_MAX;
+	bool done = false;
+	row = new int[size];
+	col = new int[size];
+
+	for (int i = 0; i < size; i++) {
+		row[i] = min;
+		done = false;
+		for (int j = 0; j < size; j++) {
+			if (matrix[i][j] != -1 && matrix[i][j] < row[i]) {
+				row[i] = matrix[i][j];
+				done = true;
+			}
+			if ((j == (size - 1)) && !done) {
+				row[i] = 0;
+			}
+		}
+		//cout << "najmniejsza wartosc do zredukowania w wierszu " << i << "to "<<row[i] << endl;
+		//min = 999999;
+	}
+	//odjecie zredukowanych wierszy
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (matrix[i][j] != -1) {
+				matrix[i][j] = matrix[i][j] - row[i];
+			}
+		}
+	}
+	//cout << endl << "Otow po zredukowaniu wierszy:" << endl;
+	//printMatrix(matrix);
+	//redukcja kolumn
+	for (int i = 0; i < size; i++) {
+		col[i] = min;
+		done = false;
+		for (int j = 0; j < size; j++) {
+			if (matrix[j][i] != -1 && matrix[j][i] < col[i]) {
+				col[i] = matrix[j][i];
+				done = true;
+			}
+			if ((j == (size - 1)) && !done) {
+				col[i] = 0;
+			}
+		}
+		//cout << "najmniejsza wartosc do zredukowania w kolumnie " << i << "to " << col[i] << endl;
+		//min = 999999;
+	}
+	//odjecie zredukowanych kolumn
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (matrix[j][i] != -1) {
+				matrix[j][i] = matrix[j][i] - col[i];
+			}
+		}
+	}
+	min = 0;
+	//cout << endl << "Otow po zredukowaniu kolumn:" << endl;
+	//printMatrix(matrix);
+	for (int i = 0; i < size; i++) {
+		min = min + row[i] + col[i];
+	}
+	delete[] row;
+	delete[] col;
+	return min;
+}
+
+void suitableRowColToInf(int **matrix, int row, int col, int size) {
+	for (int i = 0; i < size; i++) {
+		matrix[row][i] = -1;
+		matrix[i][col] = -1;
+	}
+	matrix[col][0] = -1;
+}
+
+int getFirstUpperBound(int *bestTab, int size, int &helpMin, int **macierz,int **mainMacierz,int *visitedTab, int &tempMin, int *routeTab, int &savedBestCol, int &nodesAmount,vector<Node>& graph,int &deleteNodesAmount) {
 	int bestMin, counter = 0;
 
 
@@ -271,17 +347,17 @@ int BBMain(Node start, string instanceName, int *bestTab) {
 	routeTab[0] = 0; //routeTab to sciezka, pierwszy w sciezce bedzie wierzcholek nr 0
 	helpMin = reduceMatrix(macierz, matrixSize);
 
-	min = getFirstValue(bestTab, matrixSize, helpMin, macierz, mainMacierz, visitedTab, tempMin, routeTab, savedBestCol, nodesAmount, graph, deleteNodesAmount);
+	min = getFirstUpperBound(bestTab, matrixSize, helpMin, macierz, mainMacierz, visitedTab, tempMin, routeTab, savedBestCol, nodesAmount, graph, deleteNodesAmount);
 	betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index);
 
 	//----------------------------------------------------------------------
 	//				ZAPETLENIE-DO CALKOWITEGO USUNIECIA GRAFU
 	//----------------------------------------------------------------------
 
-	while (graph.size() != 0) {
+	while (!graph.empty()) {
 		counterek++;
 		if (counterek % 100 == 0) {
-			cout << "Current min = " << min << ", iteration #" << counterek << ", " << nodesAmount << " nodes checked and " << nodesAmount - deleteNodesAmount << " still exist." << endl;
+			//cout << "Current min = " << min << ", iteration #" << counterek << ", " << nodesAmount << " nodes checked and " << nodesAmount - deleteNodesAmount << " still exist." << endl;
 		}
 
 		prepareNextIteration(helpMin, graph, matrixSize, visitedTab, routeTab, index, macierz, mainMacierz, tempLevel, counter, deleteNodesAmount);

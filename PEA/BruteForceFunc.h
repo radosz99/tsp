@@ -19,8 +19,6 @@ int calculate(int* permut, int size, int **matrix);
 int getBestPermu(int size, int **matrix, int *bestPermut);
 void printVector(vector<Node>& newGraph, int a);
 void showMatrix(int **matrix, int size);
-void suitableRowColToInf(int **matrix, int row, int col, int size);
-int reduceMatrix(int **matrix, int size);
 void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMatrix);
 void saveToFile(string a, string b, double c, int d);
 double getTime(Czas czas);

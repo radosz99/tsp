@@ -9,48 +9,64 @@
 #include "Czas.h"
 #include "BruteForceFunc.h"
 #include "BBFunc.h"
-
-
 using namespace std;
 
 
-int dynamicProgramming(int startV, int set, int N, int **array, vector<vector<int>>&g, vector<vector<int>>&nxt) {
-		int min = INT_MAX, newSubset, bitMask, tempMin;
+int getMinimum(int firstNode, int set, int size, int **matrix, vector<vector<int>>&tabNodeValues, vector<vector<int>>&possibleRouteTab, int &c, int &bitMask, int &newSubset) {
+		int min = INT_MAX, tempMin;
+		c++;
+		if (tabNodeValues[firstNode][set] != -1)
+			return tabNodeValues[firstNode][set];
 
-		if (g[startV][set] != -1) {	// zabezpieczenie przed kolejnym obliczaniem juz wyliczonej wartosci dla podproblemu
-			return g[startV][set];
-		}
 		else {
-			for (int i = 0; i < N; i++) {
-				bitMask = (int)pow(2, N) - 1 - (int)pow(2, i);	// maska pozwalajaca na 'odklejanie' kolejnych elementow z aktualnego podzbioru i tworzenie mniejszych
-				newSubset = set & bitMask;	// tworzenie maski bitowej: 0 - juz wykorzystane, 1 - odpowiadajace wierzcholki wchodza w sklad podzbioru
+			for (int i = 0; i < size; i++) {
+				bitMask = pow(2, size) - 1 - pow(2, i);
+				newSubset = set & bitMask;
 				if (newSubset != set) {
-					tempMin = array[startV][i] + dynamicProgramming(i, newSubset, N, array, g, nxt);	// c(start,x) + g(x,S-{x}) = Cij + G(j, S-{j})
-					if (tempMin < min) {	// funkcja minimalizujaca - przyrownanie z dotychczasowa najmniejsza wartoscia
+					tempMin = matrix[firstNode][i] + getMinimum(i, newSubset, size, matrix, tabNodeValues, possibleRouteTab,c,bitMask,newSubset);	// c(start,x) + g(x,S-{x}) = Cij + G(j, S-{j})
+					if (tempMin < min) { //minimalizacja w zakresie podwywolania
 						min = tempMin;
-						nxt[startV][set] = i;
+						possibleRouteTab[firstNode][set] = i;
 					}
 				}
-			}
+			}	
 		}
 
-		g[startV][set] = min;
+		tabNodeValues[firstNode][set] = min;
 		return min;
 	}
 
-void initDP(int &min, int **array, int N, vector<vector<int>>&g, vector<vector<int>>&nxt) {
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < pow(2, N); j++) {
-				g[i][j] = -1;
-				nxt[i][j] = 1;
-			}
-		}
-
-		for (int i = 0; i < N; i++) {
-			g[i][0] = array[i][0];
-		}
-
-		min = dynamicProgramming(0, pow(2, N) - 2, N, array,g,nxt);
-
-		cout << "\nMinimalna funkcja celu = " << min;
+void getRoute(int start, int set, int size, vector<vector<int>>&possibleRouteTab,int*bestTab, int &c, int &bitMask, int &newSubset) {
+	if (possibleRouteTab[start][set] == -1) {
+		return;
 	}
+
+	int i = possibleRouteTab[start][set];
+	bestTab[c] = i;
+	c++;
+
+	bitMask = pow(2, size) - 1 - pow(2, i);
+	newSubset = set & bitMask;
+
+	getRoute(i, newSubset, size, possibleRouteTab,bestTab,c,bitMask,newSubset);
+}
+
+void startDynamic(int &min, int **matrix, int size, vector<vector<int>>&tabNodeValues, vector<vector<int>>&possibleRouteTab, int *bestTab) {
+		for (int i = 0; i < size; i++)
+			for (int j = 0; j < pow(2, size); j++) {
+				tabNodeValues[i][j] = -1;
+				possibleRouteTab[i][j] = -1;
+			}
+
+		for (int i = 0; i < size; i++) {
+			tabNodeValues[i][0] = matrix[i][0];
+		}
+
+		int bitMask = 0, newSubset = 0, counter = 0;
+		bestTab[0] = 0;
+
+		min = getMinimum(0, pow(2, size) - 2, size, matrix, tabNodeValues, possibleRouteTab,counter,bitMask,newSubset);
+		counter = 1;
+		getRoute(0, pow(2, size) - 2, size, possibleRouteTab,bestTab,counter,bitMask,newSubset);
+	}
+

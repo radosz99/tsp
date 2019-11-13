@@ -15,8 +15,9 @@
 #define DP_H
 
 
-int dynamicProgramming(int startV, int set, int N, int **array, vector<vector<int>>&g, vector<vector<int>>&nxt);
-void initDP(int &min, int **array, int N, vector<vector<int>>&g, vector<vector<int>>&nxt);
+int getMinimum(int startV, int set, int size, int **array, vector<vector<int>>&tabNodeValues, vector<vector<int>>&possibleRouteTab, int &c, int &bitMask, int &newSubset);
+void startDynamic(int &min, int **array, int size, vector<vector<int>>&tabNodeValues, vector<vector<int>>&possibleRouteTab, int *bestTab);
+void getRoute(int start, int set, int size, vector<vector<int>>&possibleRouteTab,int*bestTab, int &c, int &bitMask, int &newSubset);
 
 #endif#pragma once
 #pragma once
