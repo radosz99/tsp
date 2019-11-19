@@ -19,23 +19,25 @@ void permute(int *a, int *b, int l, int r, int &min, int size, int **matrix)
 	int value;
 	if (l == r) {
 		value = calculate(a,size,matrix);
-		//for (int i = 0; i < size; i++)
-			//cout << a[i] << "-";
-		//cout << endl;
+
 		if (value < min) {
 			for (int i = 0; i <= r; i++)
 				b[i] = a[i];
 			min = value;
 		}
-
 	}
 	else
 	{
 		for (int i = l; i <= r; i++)
 		{
 			swap(a[l], a[i]);
+			//cout << "Swapuje " << l << " z " << i << endl;
 			permute(a, b, l + 1, r, min, size,matrix);
 			swap(a[l], a[i]);
+			cout << "Powrot: ";
+			for (int i = 0; i < size; i++)
+				cout << a[i] << "-";
+			cout << endl;
 		}
 	}
 }
@@ -96,11 +98,22 @@ void printVector(vector<Node>& newGraph, int a) {
 		//for(unsigned int i=0; i<newMyClass.size(); i++){ IF WE WANNA MODIFY CONTENT OF VECTOR
 		cout << "Node index: " << newGraph[i].getIndex() << endl;
 		cout << "Node id: " << newGraph[i].getId() << endl;
-		cout << "Node value: " << newGraph[i].getValue() << endl;
+		//cout << "Node value: " << newGraph[i].getValue() << endl;
 		cout << "Node lvl: " << newGraph[i].getLvl() << endl;
 
 		sciezka = newGraph[i].getRoute();
+	
 		cout << "Node route: ";
+		for (int i = 0; i < matrixSize; i++)
+			cout << sciezka[i] << "-";
+		cout << endl;
+		sciezka = newGraph[i].getVisited();
+		cout << "Visited ";
+		for (int i = 0; i < matrixSize; i++)
+			cout << sciezka[i] << "-";
+		cout << endl;
+		sciezka = newGraph[i].getBeforeVisited();
+		cout << "Before visited: ";
 		for (int i = 0; i < matrixSize; i++)
 			cout << sciezka[i] << "-";
 		cout << endl << endl;
@@ -159,14 +172,15 @@ void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMat
 
 		while (tempLvl != matrixSize) {
 			tempLvl++;
-			for (int i = 0; i < matrixSize; i++) {
+			
+			for (int i = 1; i < matrixSize; i++) {
 				graphSize = graph.size();
 				wskVisited = graph[graphSize - 1].getVisited();
-				wskRoute = graph[graphSize - 1].getRoute();
-				wskBeforeVisited = graph[graphSize - 1].getBeforeVisited();
-				visitedNodesAmount = graph[graphSize - 1].getId();
-
 				if (wskVisited[i] == 0) {
+					wskRoute = graph[graphSize - 1].getRoute();
+					wskBeforeVisited = graph[graphSize - 1].getBeforeVisited();
+					visitedNodesAmount = graph[graphSize - 1].getId();
+
 					for (int k = 0; k < matrixSize; k++) {
 						route[k] = wskRoute[k];
 						beforeVisited[k] = wskBeforeVisited[k];
@@ -175,7 +189,7 @@ void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMat
 					wskVisited[i] = 1;
 					beforeVisited[i] = 1;
 					visitedNodesAmount++;
-					Node newNode(route, beforeVisited, tempLvl, matrixSize, graph[graphSize - 1].getLvl() + 2, beforeVisited);
+					Node newNode(route, beforeVisited, tempLvl, matrixSize, visitedNodesAmount, beforeVisited);
 					nodesAmount++;
 					graph.push_back(newNode);
 					graph[graphSize - 1].setId(visitedNodesAmount);
@@ -183,17 +197,14 @@ void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMat
 				}
 			}
 		}
+
 		result = calculate(route, matrixSize, TSPMatrix);
+
 		if (result < min) {
 			min = result;
 			for (int i = 0; i < matrixSize; i++)
 				bestTab[i] = route[i];
 		}
-		graphSize = graph.size();
-		graph.erase(graph.begin() + graphSize - 1);
-		graphSize = graph.size();
-		graph.erase(graph.begin() + graphSize - 1);
-
 	}
 }
 

@@ -96,7 +96,7 @@ int main()
 			for (int i = 0; i < amount; i++) {
 
 				czas.czasStart();
-				permute(tab, bestTab, 1, start.getStartSize() - 1, min, sizeMatrix, TSPMatrix);
+				permute(tab, bestTab, 1, sizeMatrix - 1, min, sizeMatrix, TSPMatrix);
 				czas.czasStop();
 
 				time = getTime(czas,2);
