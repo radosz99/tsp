@@ -41,6 +41,7 @@ void getRoute(int start, int set, int size, vector<vector<int>>&possibleRouteTab
 		return;
 	}
 
+
 	int i = possibleRouteTab[start][set];
 	bestTab[c] = i;
 	c++;

@@ -1,42 +1,105 @@
 Instancja;Metoda;Czas;Minimum
-data10;Dynamiczne;0.0017;212
-data10;Dynamiczne;0.0018584;212
-data10;Dynamiczne;0.0015932;212
-data10;Dynamiczne;0.0017208;212
-data10;Dynamiczne;0.0016098;212
-data10;Dynamiczne;0.0015797;212
-data10;Dynamiczne;0.0017447;212
-data10;Dynamiczne;0.0014207;212
-data10;Dynamiczne;0.0017713;212
-data10;Dynamiczne;0.0014917;212
-data10;Branch&Bound;0.0006251;212
-data10;Branch&Bound;0.0006202;212
-data10;Branch&Bound;0.0006249;212
-data10;Branch&Bound;0.0006007;212
-data10;Branch&Bound;0.0005898;212
-data10;Branch&Bound;0.0005821;212
-data10;Branch&Bound;0.0006462;212
-data10;Branch&Bound;0.000553;212
-data10;Branch&Bound;0.0005637;212
-data10;Branch&Bound;0.0005862;212
-data4;Dynamiczne;0.0015141;21
-data4;Dynamiczne;0.0136393;21
-data4;Dynamiczne;0.0157149;21
-data4;Dynamiczne;0.0191277;21
-data4;Dynamiczne;0.018384;21
-data4;Dynamiczne;0.0284474;21
-data18;Dynamiczne;1.3814;187
-data17;Dynamiczne;0.592473;2085
-data16;Dynamiczne;0.258475;156
-data10;Dynamiczne;0.002104;212
-data10;Dynamiczne;0.0018032;212
-data12;Dynamiczne;0.0092048;264
-data4;Dynamiczne;0.0005363;21
-data4;Dynamiczne;1.03e-05;21
-data10;Dynamiczne;0.0016352;212
-data10;BruteForce-nextpermu;0.0690646;212
-data10;Dynamiczne;0.0016386;212
-data10;Dynamiczne;0.0025595;212
-data10;Dynamiczne;0.001531;212
-data18;Branch&Bound;0.020334;187
-data10;Dynamiczne;0.0018226;212
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+;;;
+gr17.tsp;Branch&Bound DF ;14.089;2085
+data18;Branch&Bound DF ;0.061;187
+data18;Branch&Bound BF;0.022;187
+gr21.tsp;Branch&Bound BF;0.368;2758
+gr21.tsp;Branch&Bound DF ;1.45;2707
+data10;BruteForce-nextpermu;0.066107;212
+data10;BruteForce-swap;0.08927;212
+data10;BruteForce-drzewo;0.261631;212
+data10;BruteForce-drzewo;0.261605;212
+data10;BruteForce-nextpermu;0.06365;212
+data10;BruteForce-drzewo;0.265022;212
+data10;BruteForce-nextpermu;0.070006;212
+data10;BruteForce-drzewo;0.264733;212
+data10;BruteForce-swap;0.091986;212
+ftv33.atsp;Branch&Bound BF;31.376;1365
+data18;Branch&Bound DF ;0.064;187
+data18;Branch&Bound BF;0.023;187
+data18;Branch&Bound DF ;0.065;187
+data18;Branch&Bound BF;0.023;187
+data18;Branch&Bound DF ;0.066;187
+gr17.tsp;Branch&Bound BF;0.386;2085
+gr17.tsp;Branch&Bound BF;0.392;2085
+gr17.tsp;Branch&Bound DF ;15.21;2085
+gr21.tsp;Branch&Bound DF ;1.46;2707
+gr17.tsp;Branch&Bound DF ;14.477;2085
+data18;Branch&Bound DF ;0.061079;187
+gr17.tsp;Branch&Bound DF ;14.3859;2085
+gr17.tsp;Branch&Bound DF ;14.22;2085
+data13;BruteForce-swap;171.6;269
+data18;Dynamiczne;1.161;187
+data18;Branch&Bound DF ;0.06;187
+data18;Branch&Bound BF;0.022;187
+gr17.tsp;Dynamiczne;0.481;2085
+gr17.tsp;Branch&Bound BF;0.376;2085
+gr17.tsp;Dynamiczne;0.482;2085
+data10;Branch&Bound DF ;0;212
+data10;BruteForce-drzewo;0.259042;212
+data10;BruteForce-nextpermu;0.061857;212
+data10;BruteForce-swap;0.091525;212
+data11;BruteForce-drzewo;2.81947;202
+data11;BruteForce-nextpermu;0.75381;202
+data11;BruteForce-swap;1.02048;202
+data6;BruteForce-swap;0.554855;158
+data6;BruteForce-swap;0.08716;158
+data11;BruteForce-swap;0.092438;202
+data11;BruteForce-nextpermu;0.748557;202
+data12;BruteForce-swap;1.02671;264
+data12;BruteForce-swap;1.02135;264
+data13;BruteForce-swap;13.6656;269

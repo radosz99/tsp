@@ -71,7 +71,7 @@ int main()
 			min=getBestPermu(sizeMatrix, TSPMatrix, bestPermut);
 			czas.czasStop();
 
-			time = getTime(czas);
+			time = getTime(czas,2);
 			cout << "\nMinimalna funkcja celu = " << min << endl;
 			cout << "Najlepsza droga: ";
 			for (int i = 0; i < sizeMatrix; i++)
@@ -96,10 +96,10 @@ int main()
 			for (int i = 0; i < amount; i++) {
 
 				czas.czasStart();
-				permute(tab, bestTab, 0, start.getStartSize() - 1, min, sizeMatrix, TSPMatrix);
+				permute(tab, bestTab, 1, start.getStartSize() - 1, min, sizeMatrix, TSPMatrix);
 				czas.czasStop();
 
-				time = getTime(czas);
+				time = getTime(czas,2);
 				cout << "\nMinimalna funkcja celu = " << calculate(bestTab, sizeMatrix, TSPMatrix) << endl;
 				cout << "\Najlepsza droga: ";
 				for (int i = 0; i < start.getStartSize(); i++)
@@ -123,7 +123,7 @@ int main()
 			tree(nodesAmount, matrixSize, bestTab, min, TSPMatrix);
 			czas.czasStop();
 
-			time = getTime(czas);
+			time = getTime(czas,2);
 			cout << "\nMinimalna funkcja celu = " << min << endl;
 			cout << "Najlepsza droga: ";
 			for (int i = 0; i < matrixSize; i++)
@@ -140,22 +140,32 @@ int main()
 			double time;
 			int *route = new int[sizeMatrix];
 			int amount;
+			int timeType = askTime();
+			int odp=0;
 
 			cout << "Podaj ile razy ma zostac wykonany algorytm: ";
 			cin >> amount;
 
+			while (odp != 1 && odp != 2) {
+				cout << "Wersja 1)depth first, 2)best first: ";
+				cin >> odp;
+			}
+
 			for (int i = 0; i < amount; i++) {
 				czas.czasStart();
-				minimum = BBMain(start, instanceName, route);
+				minimum = BBMain(start, instanceName, route,odp);
 				czas.czasStop();
 
-				time = getTime(czas);
+				time = getTime(czas,timeType);
 				cout << "\nMinimalna funkcja celu = " << minimum;
 				cout << "\nNajlepsza droga: ";
 				for (int i = 0; i < sizeMatrix; i++)
 					cout << route[i] << " ";
 				cout << endl;
-				saveToFile(instanceName, "Branch&Bound", time, minimum);
+				if(odp==1)
+					saveToFile(instanceName, "Branch&Bound DF ", time, minimum);
+				if(odp==2)
+					saveToFile(instanceName, "Branch&Bound BF", time, minimum);
 			}
 			break;
 		}
@@ -177,6 +187,8 @@ int main()
 				possibleRouteTab[i] = vector<int>(pow(2, sizeMatrix));
 			}
 
+			int timeType = askTime();
+
 			cout << "Podaj ile razy ma zostac wykonany algorytm: ";
 			cin >> amount;
 
@@ -186,7 +198,7 @@ int main()
 				startDynamic(min, TSPMatrix, sizeMatrix, tabNodeValues, possibleRouteTab,bestTab);
 				czas.czasStop();
 
-				time = getTime(czas);
+				time = getTime(czas,timeType);
 
 				cout << "\nMinimalna funkcja celu = " << min;
 				cout << "\nNajlepsza droga: ";

@@ -19,6 +19,9 @@ void permute(int *a, int *b, int l, int r, int &min, int size, int **matrix)
 	int value;
 	if (l == r) {
 		value = calculate(a,size,matrix);
+		//for (int i = 0; i < size; i++)
+			//cout << a[i] << "-";
+		//cout << endl;
 		if (value < min) {
 			for (int i = 0; i <= r; i++)
 				b[i] = a[i];
@@ -201,12 +204,37 @@ void saveToFile(string a, string b, double c, int d) {
 	plik.close();
 }
 
-double getTime(Czas czas) {
+double getTime(Czas czas, int odp) {
 	double czasSek;
 
-	czasSek = czas.czasWykonaniaNano();
-	czasSek = czasSek / 1000000000;
-	printf("\nCzas wykonania algorytmu: %.9gs", czasSek);
+	switch (odp) {
+	case 1:
+		czasSek = czas.czasWykonaniaMili();
+		czasSek = czasSek / 1000;
+		printf("\nCzas wykonania algorytmu: %.3gs", czasSek);
+		break;
+	case 2:
+		czasSek = czas.czasWykonania();
+		czasSek = czasSek / 1000000;
+		printf("\nCzas wykonania algorytmu: %.6gs", czasSek);
+		break;
+	case 3:
+		czasSek = czas.czasWykonaniaNano();
+		czasSek = czasSek / 1000000000;
+		printf("\nCzas wykonania algorytmu: %.9gs", czasSek);
+		break;
+	}
+
 		
 	return czasSek;
+}
+
+int askTime() {
+	int odp = 0;
+	while (odp < 1 || odp>3) {
+		cout << "Liczyc w 1)milisekundach, 2)mikrosekundach, 3)nanosekundach: ";
+		cin >> odp;
+	}
+
+	return odp;
 }

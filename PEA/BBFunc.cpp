@@ -164,7 +164,7 @@ int getFirstUpperBound(int *bestTab, int size, int &helpMin, int **macierz,int *
 	return helpMin;
 }
 
-int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int min, int &index){
+int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int min, int &index, int odp){
 	int helpMin = min;
 	int betterNodeId;
 	//----------------------------------------------------------------------
@@ -178,29 +178,32 @@ int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int
 	//sprawdzamy w poziomie o jeden wyzszym, jesli jest znajdowany wierzcholek o lower bound mniejszym niz upper bound
 	//to w zakresie poziomu sprawdzamy czy ktorys z wierzcholkow ma jeszcze mniejszy lower bound
 	//to jego bedziemy sprawdzac
-	//----------------------------------------------------------------------
-	//WERSJA DEPTH FIRST
-	//----------------------------------------------------------------------
-	/*for (unsigned int i = graph.size(); i > 0; i--)
-		if (graph[i - 1].getValue() < min) {
-			betterNodeId = i - 1;
-			tempLevel = graph[i - 1].getLvl();
-			for (int j = i - 1; graph[j].getLvl() == graph[i - 1].getLvl(); j--) {
-				if (graph[j].getValue() < graph[i - 1].getValue() && (graph[j].getLvl() == tempLevel))
-					betterNodeId = graph[j].getIndex();
+	if (odp == 1) {
+		//----------------------------------------------------------------------
+		//WERSJA DEPTH FIRST
+		//----------------------------------------------------------------------
+		for (unsigned int i = graph.size(); i > 0; i--)
+			if (graph[i - 1].getValue() < min) {
+				betterNodeId = i - 1;
+				tempLevel = graph[i - 1].getLvl();
+				for (int j = i - 1; graph[j].getLvl() == graph[i - 1].getLvl(); j--) {
+					if (graph[j].getValue() < graph[i - 1].getValue() && (graph[j].getLvl() == tempLevel))
+						betterNodeId = graph[j].getIndex();
+				}
+				break;
 			}
-			break;
-		}*/
-	//---------------------------------------------------------------------
-	//WERSJA BEST FIRST
-	//----------------------------------------------------------------------
-	for (unsigned int i = 0; i < graph.size(); i++)
-		if (graph[i].getValue() < helpMin) {
-			betterNodeId = i;
-			helpMin=graph[i].getValue();
-			tempLevel = graph[i].getLvl();
-		}
-	
+	}
+	if (odp == 2) {
+		//---------------------------------------------------------------------
+		//WERSJA BEST FIRST
+		//----------------------------------------------------------------------
+		for (unsigned int i = 0; i < graph.size(); i++)
+			if (graph[i].getValue() < helpMin) {
+				betterNodeId = i;
+				helpMin = graph[i].getValue();
+				tempLevel = graph[i].getLvl();
+			}
+	}
 	//----------------------------------------------------------------------
 	//Usuniecie wierzcholkow o lower bound wiekszym lub rownym obecnemu upper bound
 	//----------------------------------------------------------------------
@@ -220,7 +223,7 @@ int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int
 	for (unsigned int i = 0; i < graph.size(); i++)
 		graph[i].setIndex(i);
 
-	return betterNodeId;
+	return index;
 }
 
 void prepareNextIteration(int &helpMin, vector<Node>& graph, int size, int *visitedTab, int *routeTab, int index, int **macierz, int **mainMacierz, int &tempLevel, int&counter, int &deleteNodesAmount) {
@@ -321,7 +324,7 @@ void developingGraph(int min, int tempLevel, int size, bool &ifBetter, int &best
 }
 
 
-int BBMain(Node start, string instanceName, int *bestTab) {
+int BBMain(Node start, string instanceName, int *bestTab, int odp) {
 	vector<Node> graph;
 	int nodesAmount = 0, deleteNodesAmount = 0;
 	int betterNodeId;//zmienna przechowujaca id wierzcholka ktory powinien byc rozwijany
@@ -348,7 +351,7 @@ int BBMain(Node start, string instanceName, int *bestTab) {
 	helpMin = reduceMatrix(macierz, matrixSize);
 
 	min = getFirstUpperBound(bestTab, matrixSize, helpMin, macierz, mainMacierz, visitedTab, tempMin, routeTab, savedBestCol, nodesAmount, graph, deleteNodesAmount);
-	betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index);
+	betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index,odp);
 
 	//----------------------------------------------------------------------
 	//				ZAPETLENIE-DO CALKOWITEGO USUNIECIA GRAFU
@@ -357,7 +360,7 @@ int BBMain(Node start, string instanceName, int *bestTab) {
 	while (!graph.empty()) {
 		counterek++;
 		if (counterek % 100 == 0) {
-			//cout << "Current min = " << min << ", iteration #" << counterek << ", " << nodesAmount << " nodes checked and " << nodesAmount - deleteNodesAmount << " still exist." << endl;
+			cout << "Current min = " << min << ", iteration #" << counterek << ", " << nodesAmount << " nodes checked and " << nodesAmount - deleteNodesAmount << " still exist." << endl;
 		}
 
 		prepareNextIteration(helpMin, graph, matrixSize, visitedTab, routeTab, index, macierz, mainMacierz, tempLevel, counter, deleteNodesAmount);
@@ -374,7 +377,7 @@ int BBMain(Node start, string instanceName, int *bestTab) {
 				bestTab[i] = routeTab[i];
 		}
 
-		betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index);
+		betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index,odp);
 	}
 	//----------------------------------------------------------------------
 

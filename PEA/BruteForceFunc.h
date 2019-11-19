@@ -21,7 +21,8 @@ void printVector(vector<Node>& newGraph, int a);
 void showMatrix(int **matrix, int size);
 void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMatrix);
 void saveToFile(string a, string b, double c, int d);
-double getTime(Czas czas);
+double getTime(Czas czas, int odp);
+int askTime();
 
 #endif#pragma once
 #pragma once
