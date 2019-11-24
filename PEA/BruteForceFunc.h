@@ -22,6 +22,7 @@ void showMatrix(int **matrix, int size);
 void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMatrix);
 void saveToFile(string a, string b, double c, int d);
 double getTime(Czas czas, int odp);
+void saveToFileRand(string a, int k, int i, string b, double c, int d, int e, int f);
 int askTime();
 
 #endif#pragma once

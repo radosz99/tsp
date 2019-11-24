@@ -14,6 +14,7 @@ int showMenu() {
 	cout << "7. Oblicz optymalna sciezke (dynamiczne programowanie)" << endl;
 	cout << "8. Wyswietl macierz" << endl;
 	cout << "9. EXIT" << endl;
+	cout << "10. TESTY AUTOMATYCZNE" << endl;
 	cin >> ans;
 
 	return ans;

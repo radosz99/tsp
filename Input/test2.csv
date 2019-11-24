@@ -1,162 +1,874 @@
-Instancja;Metoda;Czas;Minimum
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-;;;
-gr17.tsp;Branch&Bound DF ;14.089;2085
-data18;Branch&Bound DF ;0.061;187
-data18;Branch&Bound BF;0.022;187
-gr21.tsp;Branch&Bound BF;0.368;2758
-gr21.tsp;Branch&Bound DF ;1.45;2707
-data10;BruteForce-nextpermu;0.066107;212
-data10;BruteForce-swap;0.08927;212
-data10;BruteForce-drzewo;0.261631;212
-data10;BruteForce-drzewo;0.261605;212
-data10;BruteForce-nextpermu;0.06365;212
-data10;BruteForce-drzewo;0.265022;212
-data10;BruteForce-nextpermu;0.070006;212
-data10;BruteForce-drzewo;0.264733;212
-data10;BruteForce-swap;0.091986;212
-ftv33.atsp;Branch&Bound BF;31.376;1365
-data18;Branch&Bound DF ;0.064;187
-data18;Branch&Bound BF;0.023;187
-data18;Branch&Bound DF ;0.065;187
-data18;Branch&Bound BF;0.023;187
-data18;Branch&Bound DF ;0.066;187
-gr17.tsp;Branch&Bound BF;0.386;2085
-gr17.tsp;Branch&Bound BF;0.392;2085
-gr17.tsp;Branch&Bound DF ;15.21;2085
-gr21.tsp;Branch&Bound DF ;1.46;2707
-gr17.tsp;Branch&Bound DF ;14.477;2085
-data18;Branch&Bound DF ;0.061079;187
-gr17.tsp;Branch&Bound DF ;14.3859;2085
-gr17.tsp;Branch&Bound DF ;14.22;2085
-data13;BruteForce-swap;171.6;269
-data18;Dynamiczne;1.161;187
-data18;Branch&Bound DF ;0.06;187
-data18;Branch&Bound BF;0.022;187
-gr17.tsp;Dynamiczne;0.481;2085
-gr17.tsp;Branch&Bound BF;0.376;2085
-gr17.tsp;Dynamiczne;0.482;2085
-data10;Branch&Bound DF ;0;212
-data10;BruteForce-drzewo;0.259042;212
-data10;BruteForce-nextpermu;0.061857;212
-data10;BruteForce-swap;0.091525;212
-data11;BruteForce-drzewo;2.81947;202
-data11;BruteForce-nextpermu;0.75381;202
-data11;BruteForce-swap;1.02048;202
-data6;BruteForce-swap;0.554855;158
-data6;BruteForce-swap;0.08716;158
-data11;BruteForce-swap;0.092438;202
-data11;BruteForce-nextpermu;0.748557;202
-data12;BruteForce-swap;1.02671;264
-data12;BruteForce-swap;1.02135;264
-data13;BruteForce-swap;13.6656;269
-data6;BruteForce-swap;0.081709;158
-data6;BruteForce-drzewo;0.092427;158
-data4;BruteForce-swap;0.003038;165
-data4;BruteForce-drzewo;0.002055;165
-data4;BruteForce-swap;0.003156;165
-data5;BruteForce-drzewo;0.008569;34
-data5;BruteForce-swap;0.009417;34
-data5;BruteForce-swap;0.029431;34
-data5;BruteForce-swap;0.010827;34
-data6;BruteForce-swap;0.086332;158
-data5;BruteForce-swap;0.037158;34
-data6;BruteForce-swap;0.258994;158
-data5;BruteForce-swap;0.009096;34
-data5;BruteForce-swap;0.036857;34
-data4;BruteForce-drzewo;0.003633;165
-data4;BruteForce-drzewo;0.079714;165
-data4;BruteForce-drzewo;0.122974;165
-data4;BruteForce-drzewo;0.0809;165
-data4;BruteForce-drzewo;0.101051;165
-data4;BruteForce-drzewo;0.100562;165
-data4;BruteForce-drzewo;0.119163;165
-data4;BruteForce-drzewo;0.189002;165
-data4;BruteForce-drzewo;0.101692;165
-data4;BruteForce-drzewo;0.093392;165
-data10;BruteForce-drzewo;0.266428;212
-data10;BruteForce-drzewo;0.26442;212
-data10;BruteForce-drzewo;0.267155;212
-data10;BruteForce-drzewo;0.268476;212
-data10;BruteForce-drzewo;0.266858;212
-data10;BruteForce-drzewo;0.266459;212
-data10;BruteForce-drzewo;0.271264;212
-data10;BruteForce-drzewo;0.303507;212
-data10;BruteForce-drzewo;0.265128;212
-data10;BruteForce-drzewo;0.265309;212
-data10;BruteForce-drzewo;0.266243;212
-data10;BruteForce-drzewo;0.283287;212
-data10;BruteForce-drzewo;0.270844;212
-data10;BruteForce-drzewo;0.267125;212
-data10;BruteForce-drzewo;0.266065;212
-data10;BruteForce-drzewo;0.268155;212
-data10;BruteForce-drzewo;0.2663;212
-data10;BruteForce-drzewo;0.265113;212
-data11;BruteForce-drzewo;2.74354;202
-data10;BruteForce-drzewo;0.263143;212
-data10;BruteForce-drzewo;0.259742;212
-data10;BruteForce-drzewo;0.261302;212
-data10;BruteForce-drzewo;0.261076;212
-data10;BruteForce-drzewo;0.265868;212
-data10;BruteForce-drzewo;0.260768;212
-data10;BruteForce-drzewo;0.263032;212
-data10;BruteForce-drzewo;0.263359;212
-data10;BruteForce-drzewo;0.269485;212
-data6;BruteForce-drzewo;0.000118;29
-data5;BruteForce-drzewo;3.7e-05;34
-data10;BruteForce-drzewo;0.263924;212
-data10;BruteForce-drzewo;0.272238;212
-data11;BruteForce-drzewo;2.87324;202
+ ; Wielkosc ; Nr ;Metoda;Czas;MinWart;MaxWart
+rand;4;0;Branch&Bound DF;22600;121;10;100
+rand;4;1;Branch&Bound DF;17900;224;10;100
+rand;4;2;Branch&Bound DF;19000;199;10;100
+rand;4;3;Branch&Bound DF;21100;183;10;100
+rand;4;4;Branch&Bound DF;17300;108;10;100
+rand;4;5;Branch&Bound DF;18700;160;10;100
+rand;4;6;Branch&Bound DF;19400;100;10;100
+rand;4;7;Branch&Bound DF;18400;193;10;100
+rand;4;8;Branch&Bound DF;15300;154;10;100
+rand;4;9;Branch&Bound DF;17500;100;10;100
+rand;4;10;Branch&Bound DF;13000;175;10;100
+rand;4;11;Branch&Bound DF;49200;160;10;100
+rand;4;12;Branch&Bound DF;75400;151;10;100
+rand;4;13;Branch&Bound DF;81200;146;10;100
+rand;4;14;Branch&Bound DF;29900;111;10;100
+rand;4;15;Branch&Bound DF;38400;227;10;100
+rand;4;16;Branch&Bound DF;29100;146;10;100
+rand;4;17;Branch&Bound DF;34100;122;10;100
+rand;4;18;Branch&Bound DF;29000;177;10;100
+rand;4;19;Branch&Bound DF;37000;140;10;100
+rand;4;20;Branch&Bound DF;30000;119;10;100
+rand;4;21;Branch&Bound DF;29300;111;10;100
+rand;4;22;Branch&Bound DF;91200;185;10;100
+rand;4;23;Branch&Bound DF;36200;173;10;100
+rand;4;24;Branch&Bound DF;28700;209;10;100
+rand;4;25;Branch&Bound DF;52100;120;10;100
+rand;4;26;Branch&Bound DF;16000;163;10;100
+rand;4;27;Branch&Bound DF;20600;114;10;100
+rand;4;28;Branch&Bound DF;17100;216;10;100
+rand;4;29;Branch&Bound DF;16000;144;10;100
+rand;4;30;Branch&Bound DF;15400;174;10;100
+rand;4;31;Branch&Bound DF;17000;193;10;100
+rand;4;32;Branch&Bound DF;63600;179;10;100
+rand;4;33;Branch&Bound DF;15600;172;10;100
+rand;4;34;Branch&Bound DF;14600;159;10;100
+rand;4;35;Branch&Bound DF;17000;184;10;100
+rand;4;36;Branch&Bound DF;13100;177;10;100
+rand;4;37;Branch&Bound DF;16000;212;10;100
+rand;4;38;Branch&Bound DF;13400;186;10;100
+rand;4;39;Branch&Bound DF;19900;145;10;100
+rand;4;40;Branch&Bound DF;16500;127;10;100
+rand;4;41;Branch&Bound DF;13200;137;10;100
+rand;4;42;Branch&Bound DF;14800;128;10;100
+rand;4;43;Branch&Bound DF;15200;186;10;100
+rand;4;44;Branch&Bound DF;49500;143;10;100
+rand;4;45;Branch&Bound DF;52200;145;10;100
+rand;4;46;Branch&Bound DF;57400;133;10;100
+rand;4;47;Branch&Bound DF;83900;141;10;100
+rand;4;48;Branch&Bound DF;41500;183;10;100
+rand;4;49;Branch&Bound DF;79700;186;10;100
+rand;5;0;Branch&Bound DF;107300;214;10;100
+rand;5;1;Branch&Bound DF;79700;234;10;100
+rand;5;2;Branch&Bound DF;62700;109;10;100
+rand;5;3;Branch&Bound DF;66300;192;10;100
+rand;5;4;Branch&Bound DF;36400;170;10;100
+rand;5;5;Branch&Bound DF;77400;132;10;100
+rand;5;6;Branch&Bound DF;66300;196;10;100
+rand;5;7;Branch&Bound DF;56100;182;10;100
+rand;5;8;Branch&Bound DF;43400;181;10;100
+rand;5;9;Branch&Bound DF;48000;150;10;100
+rand;5;10;Branch&Bound DF;49700;179;10;100
+rand;5;11;Branch&Bound DF;47400;163;10;100
+rand;5;12;Branch&Bound DF;50500;105;10;100
+rand;5;13;Branch&Bound DF;24000;162;10;100
+rand;5;14;Branch&Bound DF;21700;179;10;100
+rand;5;15;Branch&Bound DF;21500;168;10;100
+rand;5;16;Branch&Bound DF;34400;201;10;100
+rand;5;17;Branch&Bound DF;22300;165;10;100
+rand;5;18;Branch&Bound DF;45400;170;10;100
+rand;5;19;Branch&Bound DF;48700;117;10;100
+rand;5;20;Branch&Bound DF;51500;204;10;100
+rand;5;21;Branch&Bound DF;33900;185;10;100
+rand;5;22;Branch&Bound DF;46700;143;10;100
+rand;5;23;Branch&Bound DF;44700;139;10;100
+rand;5;24;Branch&Bound DF;37100;203;10;100
+rand;5;25;Branch&Bound DF;58000;186;10;100
+rand;5;26;Branch&Bound DF;55500;172;10;100
+rand;5;27;Branch&Bound DF;50800;133;10;100
+rand;5;28;Branch&Bound DF;42500;112;10;100
+rand;5;29;Branch&Bound DF;51600;201;10;100
+rand;5;30;Branch&Bound DF;45800;163;10;100
+rand;5;31;Branch&Bound DF;44700;212;10;100
+rand;5;32;Branch&Bound DF;80100;203;10;100
+rand;5;33;Branch&Bound DF;52600;103;10;100
+rand;5;34;Branch&Bound DF;52600;131;10;100
+rand;5;35;Branch&Bound DF;51000;264;10;100
+rand;5;36;Branch&Bound DF;28700;204;10;100
+rand;5;37;Branch&Bound DF;47100;161;10;100
+rand;5;38;Branch&Bound DF;60300;136;10;100
+rand;5;39;Branch&Bound DF;43900;200;10;100
+rand;5;40;Branch&Bound DF;45300;159;10;100
+rand;5;41;Branch&Bound DF;23200;155;10;100
+rand;5;42;Branch&Bound DF;53600;206;10;100
+rand;5;43;Branch&Bound DF;48400;192;10;100
+rand;5;44;Branch&Bound DF;69400;201;10;100
+rand;5;45;Branch&Bound DF;47000;214;10;100
+rand;5;46;Branch&Bound DF;46700;202;10;100
+rand;5;47;Branch&Bound DF;43100;122;10;100
+rand;5;48;Branch&Bound DF;49500;129;10;100
+rand;5;49;Branch&Bound DF;61400;179;10;100
+rand;6;0;Branch&Bound DF;122100;175;10;100
+rand;6;1;Branch&Bound DF;58400;179;10;100
+rand;6;2;Branch&Bound DF;69500;194;10;100
+rand;6;3;Branch&Bound DF;58200;203;10;100
+rand;6;4;Branch&Bound DF;59100;197;10;100
+rand;6;5;Branch&Bound DF;104700;154;10;100
+rand;6;6;Branch&Bound DF;34000;229;10;100
+rand;6;7;Branch&Bound DF;71100;220;10;100
+rand;6;8;Branch&Bound DF;112500;208;10;100
+rand;6;9;Branch&Bound DF;74300;214;10;100
+rand;6;10;Branch&Bound DF;36700;165;10;100
+rand;6;11;Branch&Bound DF;70500;194;10;100
+rand;6;12;Branch&Bound DF;79400;184;10;100
+rand;6;13;Branch&Bound DF;34600;163;10;100
+rand;6;14;Branch&Bound DF;32900;250;10;100
+rand;6;15;Branch&Bound DF;117300;153;10;100
+rand;6;16;Branch&Bound DF;132200;150;10;100
+rand;6;17;Branch&Bound DF;34600;210;10;100
+rand;6;18;Branch&Bound DF;72400;205;10;100
+rand;6;19;Branch&Bound DF;50500;160;10;100
+rand;6;20;Branch&Bound DF;48200;126;10;100
+rand;6;21;Branch&Bound DF;35100;161;10;100
+rand;6;22;Branch&Bound DF;61600;228;10;100
+rand;6;23;Branch&Bound DF;72700;233;10;100
+rand;6;24;Branch&Bound DF;37400;203;10;100
+rand;6;25;Branch&Bound DF;54700;197;10;100
+rand;6;26;Branch&Bound DF;73600;223;10;100
+rand;6;27;Branch&Bound DF;46300;209;10;100
+rand;6;28;Branch&Bound DF;35600;275;10;100
+rand;6;29;Branch&Bound DF;46300;160;10;100
+rand;6;30;Branch&Bound DF;118200;194;10;100
+rand;6;31;Branch&Bound DF;34300;180;10;100
+rand;6;32;Branch&Bound DF;52800;157;10;100
+rand;6;33;Branch&Bound DF;47000;225;10;100
+rand;6;34;Branch&Bound DF;60200;181;10;100
+rand;6;35;Branch&Bound DF;58000;166;10;100
+rand;6;36;Branch&Bound DF;71200;152;10;100
+rand;6;37;Branch&Bound DF;46200;167;10;100
+rand;6;38;Branch&Bound DF;113300;255;10;100
+rand;6;39;Branch&Bound DF;32600;200;10;100
+rand;6;40;Branch&Bound DF;84000;238;10;100
+rand;6;41;Branch&Bound DF;57700;181;10;100
+rand;6;42;Branch&Bound DF;33000;185;10;100
+rand;6;43;Branch&Bound DF;47900;182;10;100
+rand;6;44;Branch&Bound DF;68700;182;10;100
+rand;6;45;Branch&Bound DF;89000;278;10;100
+rand;6;46;Branch&Bound DF;57100;242;10;100
+rand;6;47;Branch&Bound DF;57000;199;10;100
+rand;6;48;Branch&Bound DF;53200;180;10;100
+rand;6;49;Branch&Bound DF;47000;211;10;100
+rand;7;0;Branch&Bound DF;144;221;10;100
+rand;7;1;Branch&Bound DF;111;223;10;100
+rand;7;2;Branch&Bound DF;156;194;10;100
+rand;7;3;Branch&Bound DF;209;271;10;100
+rand;7;4;Branch&Bound DF;123;204;10;100
+rand;7;5;Branch&Bound DF;67;182;10;100
+rand;7;6;Branch&Bound DF;166;210;10;100
+rand;7;7;Branch&Bound DF;152;239;10;100
+rand;7;8;Branch&Bound DF;98;227;10;100
+rand;7;9;Branch&Bound DF;88;177;10;100
+rand;7;10;Branch&Bound DF;77;206;10;100
+rand;7;11;Branch&Bound DF;163;263;10;100
+rand;7;12;Branch&Bound DF;186;181;10;100
+rand;7;13;Branch&Bound DF;68;181;10;100
+rand;7;14;Branch&Bound DF;166;211;10;100
+rand;7;15;Branch&Bound DF;114;212;10;100
+rand;7;16;Branch&Bound DF;121;194;10;100
+rand;7;17;Branch&Bound DF;69;223;10;100
+rand;7;18;Branch&Bound DF;70;256;10;100
+rand;7;19;Branch&Bound DF;89;165;10;100
+rand;7;20;Branch&Bound DF;51;199;10;100
+rand;7;21;Branch&Bound DF;101;245;10;100
+rand;7;22;Branch&Bound DF;62;234;10;100
+rand;7;23;Branch&Bound DF;125;185;10;100
+rand;7;24;Branch&Bound DF;100;200;10;100
+rand;7;25;Branch&Bound DF;66;199;10;100
+rand;7;26;Branch&Bound DF;181;225;10;100
+rand;7;27;Branch&Bound DF;108;224;10;100
+rand;7;28;Branch&Bound DF;64;205;10;100
+rand;7;29;Branch&Bound DF;153;198;10;100
+rand;7;30;Branch&Bound DF;80;148;10;100
+rand;7;31;Branch&Bound DF;91;158;10;100
+rand;7;32;Branch&Bound DF;160;258;10;100
+rand;7;33;Branch&Bound DF;139;197;10;100
+rand;7;34;Branch&Bound DF;109;182;10;100
+rand;7;35;Branch&Bound DF;77;221;10;100
+rand;7;36;Branch&Bound DF;84;254;10;100
+rand;7;37;Branch&Bound DF;52;213;10;100
+rand;7;38;Branch&Bound DF;144;253;10;100
+rand;7;39;Branch&Bound DF;52;205;10;100
+rand;7;40;Branch&Bound DF;120;235;10;100
+rand;7;41;Branch&Bound DF;169;219;10;100
+rand;7;42;Branch&Bound DF;103;296;10;100
+rand;7;43;Branch&Bound DF;79;146;10;100
+rand;7;44;Branch&Bound DF;107;232;10;100
+rand;7;45;Branch&Bound DF;77;169;10;100
+rand;7;46;Branch&Bound DF;52;172;10;100
+rand;7;47;Branch&Bound DF;54;154;10;100
+rand;7;48;Branch&Bound DF;124;290;10;100
+rand;7;49;Branch&Bound DF;124;175;10;100
+rand;8;0;Branch&Bound DF;135;221;10;100
+rand;8;1;Branch&Bound DF;102;214;10;100
+rand;8;2;Branch&Bound DF;85;215;10;100
+rand;8;3;Branch&Bound DF;167;221;10;100
+rand;8;4;Branch&Bound DF;237;173;10;100
+rand;8;5;Branch&Bound DF;91;253;10;100
+rand;8;6;Branch&Bound DF;81;242;10;100
+rand;8;7;Branch&Bound DF;187;281;10;100
+rand;8;8;Branch&Bound DF;189;211;10;100
+rand;8;9;Branch&Bound DF;292;252;10;100
+rand;8;10;Branch&Bound DF;217;275;10;100
+rand;8;11;Branch&Bound DF;111;230;10;100
+rand;8;12;Branch&Bound DF;323;204;10;100
+rand;8;13;Branch&Bound DF;126;182;10;100
+rand;8;14;Branch&Bound DF;260;264;10;100
+rand;8;15;Branch&Bound DF;156;259;10;100
+rand;8;16;Branch&Bound DF;74;137;10;100
+rand;8;17;Branch&Bound DF;205;208;10;100
+rand;8;18;Branch&Bound DF;130;206;10;100
+rand;8;19;Branch&Bound DF;279;287;10;100
+rand;8;20;Branch&Bound DF;75;182;10;100
+rand;8;21;Branch&Bound DF;77;200;10;100
+rand;8;22;Branch&Bound DF;386;275;10;100
+rand;8;23;Branch&Bound DF;141;199;10;100
+rand;8;24;Branch&Bound DF;234;243;10;100
+rand;8;25;Branch&Bound DF;77;191;10;100
+rand;8;26;Branch&Bound DF;147;265;10;100
+rand;8;27;Branch&Bound DF;92;175;10;100
+rand;8;28;Branch&Bound DF;125;195;10;100
+rand;8;29;Branch&Bound DF;149;207;10;100
+rand;8;30;Branch&Bound DF;141;235;10;100
+rand;8;31;Branch&Bound DF;177;177;10;100
+rand;8;32;Branch&Bound DF;254;249;10;100
+rand;8;33;Branch&Bound DF;81;218;10;100
+rand;8;34;Branch&Bound DF;102;155;10;100
+rand;8;35;Branch&Bound DF;77;173;10;100
+rand;8;36;Branch&Bound DF;88;150;10;100
+rand;8;37;Branch&Bound DF;173;234;10;100
+rand;8;38;Branch&Bound DF;185;212;10;100
+rand;8;39;Branch&Bound DF;146;226;10;100
+rand;8;40;Branch&Bound DF;91;270;10;100
+rand;8;41;Branch&Bound DF;77;167;10;100
+rand;8;42;Branch&Bound DF;175;187;10;100
+rand;8;43;Branch&Bound DF;72;194;10;100
+rand;8;44;Branch&Bound DF;193;224;10;100
+rand;8;45;Branch&Bound DF;74;173;10;100
+rand;8;46;Branch&Bound DF;75;132;10;100
+rand;8;47;Branch&Bound DF;165;221;10;100
+rand;8;48;Branch&Bound DF;112;207;10;100
+rand;8;49;Branch&Bound DF;265;212;10;100
+rand;9;0;Branch&Bound DF;411;247;10;100
+rand;9;1;Branch&Bound DF;174;204;10;100
+rand;9;2;Branch&Bound DF;206;273;10;100
+rand;9;3;Branch&Bound DF;423;244;10;100
+rand;9;4;Branch&Bound DF;241;241;10;100
+rand;9;5;Branch&Bound DF;277;207;10;100
+rand;9;6;Branch&Bound DF;128;191;10;100
+rand;9;7;Branch&Bound DF;198;223;10;100
+rand;9;8;Branch&Bound DF;253;249;10;100
+rand;9;9;Branch&Bound DF;386;253;10;100
+rand;9;10;Branch&Bound DF;241;244;10;100
+rand;9;11;Branch&Bound DF;819;268;10;100
+rand;9;12;Branch&Bound DF;420;235;10;100
+rand;9;13;Branch&Bound DF;806;252;10;100
+rand;9;14;Branch&Bound DF;386;239;10;100
+rand;9;15;Branch&Bound DF;170;223;10;100
+rand;9;16;Branch&Bound DF;303;271;10;100
+rand;9;17;Branch&Bound DF;351;195;10;100
+rand;9;18;Branch&Bound DF;152;174;10;100
+rand;9;19;Branch&Bound DF;137;187;10;100
+rand;9;20;Branch&Bound DF;423;182;10;100
+rand;9;21;Branch&Bound DF;228;279;10;100
+rand;9;22;Branch&Bound DF;286;221;10;100
+rand;9;23;Branch&Bound DF;286;189;10;100
+rand;9;24;Branch&Bound DF;104;260;10;100
+rand;9;25;Branch&Bound DF;113;163;10;100
+rand;9;26;Branch&Bound DF;571;245;10;100
+rand;9;27;Branch&Bound DF;208;246;10;100
+rand;9;28;Branch&Bound DF;212;185;10;100
+rand;9;29;Branch&Bound DF;664;341;10;100
+rand;9;30;Branch&Bound DF;332;233;10;100
+rand;9;31;Branch&Bound DF;543;256;10;100
+rand;9;32;Branch&Bound DF;302;283;10;100
+rand;9;33;Branch&Bound DF;488;201;10;100
+rand;9;34;Branch&Bound DF;263;198;10;100
+rand;9;35;Branch&Bound DF;278;166;10;100
+rand;9;36;Branch&Bound DF;232;241;10;100
+rand;9;37;Branch&Bound DF;221;203;10;100
+rand;9;38;Branch&Bound DF;382;263;10;100
+rand;9;39;Branch&Bound DF;120;199;10;100
+rand;9;40;Branch&Bound DF;186;256;10;100
+rand;9;41;Branch&Bound DF;174;235;10;100
+rand;9;42;Branch&Bound DF;280;245;10;100
+rand;9;43;Branch&Bound DF;408;263;10;100
+rand;9;44;Branch&Bound DF;131;261;10;100
+rand;9;45;Branch&Bound DF;278;231;10;100
+rand;9;46;Branch&Bound DF;192;207;10;100
+rand;9;47;Branch&Bound DF;269;214;10;100
+rand;9;48;Branch&Bound DF;177;211;10;100
+rand;9;49;Branch&Bound DF;282;229;10;100
+rand;10;0;Branch&Bound DF;717;225;10;100
+rand;10;1;Branch&Bound DF;404;231;10;100
+rand;10;2;Branch&Bound DF;670;240;10;100
+rand;10;3;Branch&Bound DF;949;231;10;100
+rand;10;4;Branch&Bound DF;917;205;10;100
+rand;10;5;Branch&Bound DF;520;211;10;100
+rand;10;6;Branch&Bound DF;348;254;10;100
+rand;10;7;Branch&Bound DF;340;277;10;100
+rand;10;8;Branch&Bound DF;450;302;10;100
+rand;10;9;Branch&Bound DF;312;220;10;100
+rand;10;10;Branch&Bound DF;488;229;10;100
+rand;10;11;Branch&Bound DF;1110;268;10;100
+rand;10;12;Branch&Bound DF;731;218;10;100
+rand;10;13;Branch&Bound DF;311;226;10;100
+rand;10;14;Branch&Bound DF;149;219;10;100
+rand;10;15;Branch&Bound DF;164;200;10;100
+rand;10;16;Branch&Bound DF;495;219;10;100
+rand;10;17;Branch&Bound DF;165;248;10;100
+rand;10;18;Branch&Bound DF;242;246;10;100
+rand;10;19;Branch&Bound DF;435;229;10;100
+rand;10;20;Branch&Bound DF;397;231;10;100
+rand;10;21;Branch&Bound DF;471;246;10;100
+rand;10;22;Branch&Bound DF;264;249;10;100
+rand;10;23;Branch&Bound DF;833;251;10;100
+rand;10;24;Branch&Bound DF;440;264;10;100
+rand;10;25;Branch&Bound DF;336;230;10;100
+rand;10;26;Branch&Bound DF;182;212;10;100
+rand;10;27;Branch&Bound DF;202;252;10;100
+rand;10;28;Branch&Bound DF;280;224;10;100
+rand;10;29;Branch&Bound DF;924;282;10;100
+rand;10;30;Branch&Bound DF;800;204;10;100
+rand;10;31;Branch&Bound DF;186;223;10;100
+rand;10;32;Branch&Bound DF;275;261;10;100
+rand;10;33;Branch&Bound DF;1094;295;10;100
+rand;10;34;Branch&Bound DF;546;249;10;100
+rand;10;35;Branch&Bound DF;484;282;10;100
+rand;10;36;Branch&Bound DF;540;280;10;100
+rand;10;37;Branch&Bound DF;223;181;10;100
+rand;10;38;Branch&Bound DF;573;237;10;100
+rand;10;39;Branch&Bound DF;428;214;10;100
+rand;10;40;Branch&Bound DF;486;223;10;100
+rand;10;41;Branch&Bound DF;177;262;10;100
+rand;10;42;Branch&Bound DF;347;208;10;100
+rand;10;43;Branch&Bound DF;433;210;10;100
+rand;10;44;Branch&Bound DF;533;262;10;100
+rand;10;45;Branch&Bound DF;145;216;10;100
+rand;10;46;Branch&Bound DF;348;196;10;100
+rand;10;47;Branch&Bound DF;637;222;10;100
+rand;10;48;Branch&Bound DF;413;201;10;100
+rand;10;49;Branch&Bound DF;486;251;10;100
+rand;11;0;Branch&Bound DF;637;268;10;100
+rand;11;1;Branch&Bound DF;1288;328;10;100
+rand;11;2;Branch&Bound DF;1197;210;10;100
+rand;11;3;Branch&Bound DF;239;235;10;100
+rand;11;4;Branch&Bound DF;199;182;10;100
+rand;11;5;Branch&Bound DF;223;213;10;100
+rand;11;6;Branch&Bound DF;650;302;10;100
+rand;11;7;Branch&Bound DF;633;244;10;100
+rand;11;8;Branch&Bound DF;1632;245;10;100
+rand;11;9;Branch&Bound DF;235;192;10;100
+rand;11;10;Branch&Bound DF;670;198;10;100
+rand;11;11;Branch&Bound DF;542;243;10;100
+rand;11;12;Branch&Bound DF;813;223;10;100
+rand;11;13;Branch&Bound DF;669;241;10;100
+rand;11;14;Branch&Bound DF;762;247;10;100
+rand;11;15;Branch&Bound DF;605;230;10;100
+rand;11;16;Branch&Bound DF;473;224;10;100
+rand;11;17;Branch&Bound DF;346;246;10;100
+rand;11;18;Branch&Bound DF;1528;265;10;100
+rand;11;19;Branch&Bound DF;473;182;10;100
+rand;11;20;Branch&Bound DF;397;301;10;100
+rand;11;21;Branch&Bound DF;477;243;10;100
+rand;11;22;Branch&Bound DF;595;236;10;100
+rand;11;23;Branch&Bound DF;254;266;10;100
+rand;11;24;Branch&Bound DF;1259;228;10;100
+rand;11;25;Branch&Bound DF;339;265;10;100
+rand;11;26;Branch&Bound DF;765;234;10;100
+rand;11;27;Branch&Bound DF;1595;220;10;100
+rand;11;28;Branch&Bound DF;257;240;10;100
+rand;11;29;Branch&Bound DF;261;179;10;100
+rand;11;30;Branch&Bound DF;359;234;10;100
+rand;11;31;Branch&Bound DF;833;268;10;100
+rand;11;32;Branch&Bound DF;598;190;10;100
+rand;11;33;Branch&Bound DF;871;232;10;100
+rand;11;34;Branch&Bound DF;420;230;10;100
+rand;11;35;Branch&Bound DF;642;199;10;100
+rand;11;36;Branch&Bound DF;321;250;10;100
+rand;11;37;Branch&Bound DF;810;256;10;100
+rand;11;38;Branch&Bound DF;854;214;10;100
+rand;11;39;Branch&Bound DF;823;292;10;100
+rand;11;40;Branch&Bound DF;935;232;10;100
+rand;11;41;Branch&Bound DF;641;189;10;100
+rand;11;42;Branch&Bound DF;608;227;10;100
+rand;11;43;Branch&Bound DF;1339;244;10;100
+rand;11;44;Branch&Bound DF;954;251;10;100
+rand;11;45;Branch&Bound DF;702;295;10;100
+rand;11;46;Branch&Bound DF;496;244;10;100
+rand;11;47;Branch&Bound DF;634;257;10;100
+rand;11;48;Branch&Bound DF;641;263;10;100
+rand;11;49;Branch&Bound DF;703;280;10;100
+rand;12;0;Branch&Bound DF;2152;298;10;100
+rand;12;1;Branch&Bound DF;4117;266;10;100
+rand;12;2;Branch&Bound DF;793;233;10;100
+rand;12;3;Branch&Bound DF;682;248;10;100
+rand;12;4;Branch&Bound DF;2480;234;10;100
+rand;12;5;Branch&Bound DF;1451;301;10;100
+rand;12;6;Branch&Bound DF;1124;276;10;100
+rand;12;7;Branch&Bound DF;2863;274;10;100
+rand;12;8;Branch&Bound DF;530;233;10;100
+rand;12;9;Branch&Bound DF;799;270;10;100
+rand;12;10;Branch&Bound DF;593;259;10;100
+rand;12;11;Branch&Bound DF;371;265;10;100
+rand;12;12;Branch&Bound DF;663;247;10;100
+rand;12;13;Branch&Bound DF;426;216;10;100
+rand;12;14;Branch&Bound DF;957;257;10;100
+rand;12;15;Branch&Bound DF;758;243;10;100
+rand;12;16;Branch&Bound DF;1233;235;10;100
+rand;12;17;Branch&Bound DF;673;281;10;100
+rand;12;18;Branch&Bound DF;682;263;10;100
+rand;12;19;Branch&Bound DF;663;225;10;100
+rand;12;20;Branch&Bound DF;2787;265;10;100
+rand;12;21;Branch&Bound DF;1414;233;10;100
+rand;12;22;Branch&Bound DF;849;291;10;100
+rand;12;23;Branch&Bound DF;1137;229;10;100
+rand;12;24;Branch&Bound DF;1148;285;10;100
+rand;12;25;Branch&Bound DF;2010;272;10;100
+rand;12;26;Branch&Bound DF;2014;227;10;100
+rand;12;27;Branch&Bound DF;1346;225;10;100
+rand;12;28;Branch&Bound DF;1714;285;10;100
+rand;12;29;Branch&Bound DF;1338;289;10;100
+rand;12;30;Branch&Bound DF;2576;267;10;100
+rand;12;31;Branch&Bound DF;2170;241;10;100
+rand;12;32;Branch&Bound DF;2231;252;10;100
+rand;12;33;Branch&Bound DF;962;291;10;100
+rand;12;34;Branch&Bound DF;986;249;10;100
+rand;12;35;Branch&Bound DF;1099;262;10;100
+rand;12;36;Branch&Bound DF;2824;295;10;100
+rand;12;37;Branch&Bound DF;1405;239;10;100
+rand;12;38;Branch&Bound DF;1726;254;10;100
+rand;12;39;Branch&Bound DF;2137;283;10;100
+rand;12;40;Branch&Bound DF;515;288;10;100
+rand;12;41;Branch&Bound DF;413;253;10;100
+rand;12;42;Branch&Bound DF;2261;263;10;100
+rand;12;43;Branch&Bound DF;1294;299;10;100
+rand;12;44;Branch&Bound DF;3926;284;10;100
+rand;12;45;Branch&Bound DF;2115;297;10;100
+rand;12;46;Branch&Bound DF;1536;277;10;100
+rand;12;47;Branch&Bound DF;2937;280;10;100
+rand;12;48;Branch&Bound DF;323;254;10;100
+rand;12;49;Branch&Bound DF;749;242;10;100
+rand;13;0;Branch&Bound DF;3821;291;10;100
+rand;13;1;Branch&Bound DF;784;244;10;100
+rand;13;2;Branch&Bound DF;1936;235;10;100
+rand;13;3;Branch&Bound DF;1265;246;10;100
+rand;13;4;Branch&Bound DF;510;214;10;100
+rand;13;5;Branch&Bound DF;3197;271;10;100
+rand;13;6;Branch&Bound DF;2277;232;10;100
+rand;13;7;Branch&Bound DF;1157;277;10;100
+rand;13;8;Branch&Bound DF;10785;317;10;100
+rand;13;9;Branch&Bound DF;2491;330;10;100
+rand;13;10;Branch&Bound DF;2326;270;10;100
+rand;13;11;Branch&Bound DF;1697;233;10;100
+rand;13;12;Branch&Bound DF;2195;305;10;100
+rand;13;13;Branch&Bound DF;15432;328;10;100
+rand;13;14;Branch&Bound DF;4490;253;10;100
+rand;13;15;Branch&Bound DF;2130;312;10;100
+rand;13;16;Branch&Bound DF;1669;338;10;100
+rand;13;17;Branch&Bound DF;439;291;10;100
+rand;13;18;Branch&Bound DF;5026;315;10;100
+rand;13;19;Branch&Bound DF;1678;282;10;100
+rand;13;20;Branch&Bound DF;1245;284;10;100
+rand;13;21;Branch&Bound DF;1168;254;10;100
+rand;13;22;Branch&Bound DF;431;260;10;100
+rand;13;23;Branch&Bound DF;3032;262;10;100
+rand;13;24;Branch&Bound DF;4098;277;10;100
+rand;13;25;Branch&Bound DF;354;283;10;100
+rand;13;26;Branch&Bound DF;4278;244;10;100
+rand;13;27;Branch&Bound DF;1307;280;10;100
+rand;13;28;Branch&Bound DF;1553;255;10;100
+rand;13;29;Branch&Bound DF;601;216;10;100
+rand;13;30;Branch&Bound DF;2657;309;10;100
+rand;13;31;Branch&Bound DF;698;288;10;100
+rand;13;32;Branch&Bound DF;3346;273;10;100
+rand;13;33;Branch&Bound DF;914;297;10;100
+rand;13;34;Branch&Bound DF;1183;274;10;100
+rand;13;35;Branch&Bound DF;882;253;10;100
+rand;13;36;Branch&Bound DF;2989;271;10;100
+rand;13;37;Branch&Bound DF;317;277;10;100
+rand;13;38;Branch&Bound DF;2592;309;10;100
+rand;13;39;Branch&Bound DF;1938;254;10;100
+rand;13;40;Branch&Bound DF;8800;286;10;100
+rand;13;41;Branch&Bound DF;2422;280;10;100
+rand;13;42;Branch&Bound DF;9805;298;10;100
+rand;13;43;Branch&Bound DF;1067;268;10;100
+rand;13;44;Branch&Bound DF;2107;224;10;100
+rand;13;45;Branch&Bound DF;2010;245;10;100
+rand;13;46;Branch&Bound DF;2381;296;10;100
+rand;13;47;Branch&Bound DF;751;243;10;100
+rand;13;48;Branch&Bound DF;1355;237;10;100
+rand;13;49;Branch&Bound DF;3029;253;10;100
+rand;14;0;Branch&Bound DF;13710;328;10;100
+rand;14;1;Branch&Bound DF;1613;255;10;100
+rand;14;2;Branch&Bound DF;4502;253;10;100
+rand;14;3;Branch&Bound DF;1275;232;10;100
+rand;14;4;Branch&Bound DF;4481;306;10;100
+rand;14;5;Branch&Bound DF;2492;251;10;100
+rand;14;6;Branch&Bound DF;5071;270;10;100
+rand;14;7;Branch&Bound DF;2207;329;10;100
+rand;14;8;Branch&Bound DF;11754;305;10;100
+rand;14;9;Branch&Bound DF;954;247;10;100
+rand;14;10;Branch&Bound DF;5100;324;10;100
+rand;14;11;Branch&Bound DF;1022;221;10;100
+rand;14;12;Branch&Bound DF;1297;261;10;100
+rand;14;13;Branch&Bound DF;1537;243;10;100
+rand;14;14;Branch&Bound DF;988;227;10;100
+rand;14;15;Branch&Bound DF;2100;267;10;100
+rand;14;16;Branch&Bound DF;1158;231;10;100
+rand;14;17;Branch&Bound DF;407;261;10;100
+rand;14;18;Branch&Bound DF;4394;289;10;100
+rand;14;19;Branch&Bound DF;872;276;10;100
+rand;14;20;Branch&Bound DF;6341;337;10;100
+rand;14;21;Branch&Bound DF;4020;262;10;100
+rand;14;22;Branch&Bound DF;9973;262;10;100
+rand;14;23;Branch&Bound DF;2897;292;10;100
+rand;14;24;Branch&Bound DF;1708;267;10;100
+rand;14;25;Branch&Bound DF;435;224;10;100
+rand;14;26;Branch&Bound DF;598;232;10;100
+rand;14;27;Branch&Bound DF;3195;280;10;100
+rand;14;28;Branch&Bound DF;2495;269;10;100
+rand;14;29;Branch&Bound DF;9822;294;10;100
+rand;14;30;Branch&Bound DF;6864;277;10;100
+rand;14;31;Branch&Bound DF;4046;302;10;100
+rand;14;32;Branch&Bound DF;1134;297;10;100
+rand;14;33;Branch&Bound DF;4162;245;10;100
+rand;14;34;Branch&Bound DF;16930;234;10;100
+rand;14;35;Branch&Bound DF;850;242;10;100
+rand;14;36;Branch&Bound DF;3322;277;10;100
+rand;14;37;Branch&Bound DF;6401;293;10;100
+rand;14;38;Branch&Bound DF;3591;287;10;100
+rand;14;39;Branch&Bound DF;3488;271;10;100
+rand;14;40;Branch&Bound DF;998;224;10;100
+rand;14;41;Branch&Bound DF;10065;315;10;100
+rand;14;42;Branch&Bound DF;11115;296;10;100
+rand;14;43;Branch&Bound DF;3297;250;10;100
+rand;14;44;Branch&Bound DF;2387;258;10;100
+rand;14;45;Branch&Bound DF;5351;356;10;100
+rand;14;46;Branch&Bound DF;7248;272;10;100
+rand;14;47;Branch&Bound DF;2968;319;10;100
+rand;14;48;Branch&Bound DF;2601;284;10;100
+rand;14;49;Branch&Bound DF;4130;309;10;100
+rand;15;0;Branch&Bound DF;11935;315;10;100
+rand;15;1;Branch&Bound DF;16867;293;10;100
+rand;15;2;Branch&Bound DF;14787;330;10;100
+rand;15;3;Branch&Bound DF;1675;243;10;100
+rand;15;4;Branch&Bound DF;4065;300;10;100
+rand;15;5;Branch&Bound DF;5559;270;10;100
+rand;15;6;Branch&Bound DF;23090;298;10;100
+rand;15;7;Branch&Bound DF;2291;248;10;100
+rand;15;8;Branch&Bound DF;2815;298;10;100
+rand;15;9;Branch&Bound DF;2142;321;10;100
+rand;15;10;Branch&Bound DF;3342;252;10;100
+rand;15;11;Branch&Bound DF;2261;250;10;100
+rand;15;12;Branch&Bound DF;2177;289;10;100
+rand;15;13;Branch&Bound DF;3546;310;10;100
+rand;15;14;Branch&Bound DF;937;304;10;100
+rand;15;15;Branch&Bound DF;3270;285;10;100
+rand;15;16;Branch&Bound DF;3663;256;10;100
+rand;15;17;Branch&Bound DF;903;264;10;100
+rand;15;18;Branch&Bound DF;2307;272;10;100
+rand;15;19;Branch&Bound DF;5373;270;10;100
+rand;15;20;Branch&Bound DF;5258;323;10;100
+rand;15;21;Branch&Bound DF;4974;332;10;100
+rand;15;22;Branch&Bound DF;3427;258;10;100
+rand;15;23;Branch&Bound DF;1764;262;10;100
+rand;15;24;Branch&Bound DF;5840;302;10;100
+rand;15;25;Branch&Bound DF;39826;312;10;100
+rand;15;26;Branch&Bound DF;7732;290;10;100
+rand;15;27;Branch&Bound DF;2950;285;10;100
+rand;15;28;Branch&Bound DF;3086;295;10;100
+rand;15;29;Branch&Bound DF;7469;267;10;100
+rand;15;30;Branch&Bound DF;2568;282;10;100
+rand;15;31;Branch&Bound DF;3033;330;10;100
+rand;15;32;Branch&Bound DF;4204;318;10;100
+rand;15;33;Branch&Bound DF;2338;266;10;100
+rand;15;34;Branch&Bound DF;5454;274;10;100
+rand;15;35;Branch&Bound DF;6737;352;10;100
+rand;15;36;Branch&Bound DF;1749;266;10;100
+rand;15;37;Branch&Bound DF;12323;271;10;100
+rand;15;38;Branch&Bound DF;3086;297;10;100
+rand;15;39;Branch&Bound DF;6133;302;10;100
+rand;15;40;Branch&Bound DF;900;242;10;100
+rand;15;41;Branch&Bound DF;4796;361;10;100
+rand;15;42;Branch&Bound DF;2506;277;10;100
+rand;15;43;Branch&Bound DF;2090;291;10;100
+rand;15;44;Branch&Bound DF;4756;255;10;100
+rand;15;45;Branch&Bound DF;15432;312;10;100
+rand;15;46;Branch&Bound DF;2028;315;10;100
+rand;15;47;Branch&Bound DF;5598;264;10;100
+rand;15;48;Branch&Bound DF;4722;293;10;100
+rand;15;49;Branch&Bound DF;3293;308;10;100
+rand;16;0;Branch&Bound DF;22811;361;10;100
+rand;16;1;Branch&Bound DF;16272;318;10;100
+rand;16;2;Branch&Bound DF;20901;303;10;100
+rand;16;3;Branch&Bound DF;11679;330;10;100
+rand;16;4;Branch&Bound DF;1998;284;10;100
+rand;16;5;Branch&Bound DF;11067;271;10;100
+rand;16;6;Branch&Bound DF;7074;280;10;100
+rand;16;7;Branch&Bound DF;4097;317;10;100
+rand;16;8;Branch&Bound DF;6144;260;10;100
+rand;16;9;Branch&Bound DF;3651;312;10;100
+rand;16;10;Branch&Bound DF;2119;290;10;100
+rand;16;11;Branch&Bound DF;2726;296;10;100
+rand;16;12;Branch&Bound DF;2209;304;10;100
+rand;16;13;Branch&Bound DF;5824;279;10;100
+rand;16;14;Branch&Bound DF;15594;266;10;100
+rand;16;15;Branch&Bound DF;4106;303;10;100
+rand;16;16;Branch&Bound DF;15178;335;10;100
+rand;16;17;Branch&Bound DF;1297;284;10;100
+rand;16;18;Branch&Bound DF;3157;276;10;100
+rand;16;19;Branch&Bound DF;4068;284;10;100
+rand;16;20;Branch&Bound DF;5695;319;10;100
+rand;16;21;Branch&Bound DF;6400;346;10;100
+rand;16;22;Branch&Bound DF;1972;276;10;100
+rand;16;23;Branch&Bound DF;8121;320;10;100
+rand;16;24;Branch&Bound DF;2102;310;10;100
+rand;16;25;Branch&Bound DF;3180;261;10;100
+rand;16;26;Branch&Bound DF;11110;359;10;100
+rand;16;27;Branch&Bound DF;16325;272;10;100
+rand;16;28;Branch&Bound DF;26067;306;10;100
+rand;16;29;Branch&Bound DF;13310;308;10;100
+rand;16;30;Branch&Bound DF;3634;265;10;100
+rand;16;31;Branch&Bound DF;17451;296;10;100
+rand;16;32;Branch&Bound DF;6802;314;10;100
+rand;16;33;Branch&Bound DF;1101;293;10;100
+rand;16;34;Branch&Bound DF;3113;309;10;100
+rand;16;35;Branch&Bound DF;15460;321;10;100
+rand;16;36;Branch&Bound DF;10974;259;10;100
+rand;16;37;Branch&Bound DF;9345;289;10;100
+rand;16;38;Branch&Bound DF;5097;255;10;100
+rand;16;39;Branch&Bound DF;7048;308;10;100
+rand;16;40;Branch&Bound DF;13344;290;10;100
+rand;16;41;Branch&Bound DF;5976;291;10;100
+rand;16;42;Branch&Bound DF;1603;264;10;100
+rand;16;43;Branch&Bound DF;8407;299;10;100
+rand;16;44;Branch&Bound DF;9292;293;10;100
+rand;16;45;Branch&Bound DF;36848;333;10;100
+rand;16;46;Branch&Bound DF;35504;328;10;100
+rand;16;47;Branch&Bound DF;30014;315;10;100
+rand;16;48;Branch&Bound DF;3429;343;10;100
+rand;16;49;Branch&Bound DF;18005;333;10;100
+rand;17;0;Branch&Bound DF;7717;299;10;100
+rand;17;1;Branch&Bound DF;3266;275;10;100
+rand;17;2;Branch&Bound DF;15698;315;10;100
+rand;17;3;Branch&Bound DF;3820;313;10;100
+rand;17;4;Branch&Bound DF;72724;329;10;100
+rand;17;5;Branch&Bound DF;7899;297;10;100
+rand;17;6;Branch&Bound DF;20654;350;10;100
+rand;17;7;Branch&Bound DF;3370;309;10;100
+rand;17;8;Branch&Bound DF;9613;265;10;100
+rand;17;9;Branch&Bound DF;9532;338;10;100
+rand;17;10;Branch&Bound DF;5262;256;10;100
+rand;17;11;Branch&Bound DF;44159;307;10;100
+rand;17;12;Branch&Bound DF;2542;260;10;100
+rand;17;13;Branch&Bound DF;10798;302;10;100
+rand;17;14;Branch&Bound DF;13318;311;10;100
+rand;17;15;Branch&Bound DF;18028;332;10;100
+rand;17;16;Branch&Bound DF;4469;374;10;100
+rand;17;17;Branch&Bound DF;1180;240;10;100
+rand;17;18;Branch&Bound DF;16604;324;10;100
+rand;17;19;Branch&Bound DF;79535;340;10;100
+rand;17;20;Branch&Bound DF;1573;278;10;100
+rand;17;21;Branch&Bound DF;3055;292;10;100
+rand;17;22;Branch&Bound DF;2617;286;10;100
+rand;17;23;Branch&Bound DF;48709;336;10;100
+rand;17;24;Branch&Bound DF;29028;307;10;100
+rand;17;25;Branch&Bound DF;5495;315;10;100
+rand;17;26;Branch&Bound DF;859;265;10;100
+rand;17;27;Branch&Bound DF;6260;307;10;100
+rand;17;28;Branch&Bound DF;20033;346;10;100
+rand;17;29;Branch&Bound DF;10953;321;10;100
+rand;17;30;Branch&Bound DF;19016;255;10;100
+rand;17;31;Branch&Bound DF;5947;308;10;100
+rand;17;32;Branch&Bound DF;2351;319;10;100
+rand;17;33;Branch&Bound DF;14699;323;10;100
+rand;17;34;Branch&Bound DF;13844;273;10;100
+rand;17;35;Branch&Bound DF;12486;320;10;100
+rand;17;36;Branch&Bound DF;115341;356;10;100
+rand;17;37;Branch&Bound DF;27186;278;10;100
+rand;17;38;Branch&Bound DF;2361;280;10;100
+rand;17;39;Branch&Bound DF;13035;348;10;100
+rand;17;40;Branch&Bound DF;7009;302;10;100
+rand;17;41;Branch&Bound DF;3755;260;10;100
+rand;17;42;Branch&Bound DF;29208;291;10;100
+rand;17;43;Branch&Bound DF;1548;245;10;100
+rand;17;44;Branch&Bound DF;69104;303;10;100
+rand;17;45;Branch&Bound DF;2475;272;10;100
+rand;17;46;Branch&Bound DF;35560;302;10;100
+rand;17;47;Branch&Bound DF;19862;285;10;100
+rand;17;48;Branch&Bound DF;57392;344;10;100
+rand;17;49;Branch&Bound DF;25757;371;10;100
+rand;18;0;Branch&Bound DF;3090;277;10;100
+rand;18;1;Branch&Bound DF;16573;321;10;100
+rand;18;2;Branch&Bound DF;15778;286;10;100
+rand;18;3;Branch&Bound DF;7635;313;10;100
+rand;18;4;Branch&Bound DF;10300;348;10;100
+rand;18;5;Branch&Bound DF;5076;292;10;100
+rand;18;6;Branch&Bound DF;24629;300;10;100
+rand;18;7;Branch&Bound DF;15180;315;10;100
+rand;18;8;Branch&Bound DF;37326;351;10;100
+rand;18;9;Branch&Bound DF;40085;288;10;100
+rand;18;10;Branch&Bound DF;6955;296;10;100
+rand;18;11;Branch&Bound DF;29792;313;10;100
+rand;18;12;Branch&Bound DF;8789;331;10;100
+rand;18;13;Branch&Bound DF;23477;324;10;100
+rand;18;14;Branch&Bound DF;74041;328;10;100
+rand;18;15;Branch&Bound DF;9741;351;10;100
+rand;18;16;Branch&Bound DF;7123;331;10;100
+rand;18;17;Branch&Bound DF;10115;307;10;100
+rand;18;18;Branch&Bound DF;29991;319;10;100
+rand;18;19;Branch&Bound DF;127711;345;10;100
+rand;18;20;Branch&Bound DF;1610;312;10;100
+rand;18;21;Branch&Bound DF;3966;311;10;100
+rand;18;22;Branch&Bound DF;20757;298;10;100
+rand;18;23;Branch&Bound DF;12510;292;10;100
+rand;18;24;Branch&Bound DF;14477;283;10;100
+rand;18;25;Branch&Bound DF;15210;303;10;100
+rand;18;26;Branch&Bound DF;42530;359;10;100
+rand;18;27;Branch&Bound DF;18062;302;10;100
+rand;18;28;Branch&Bound DF;2359;302;10;100
+rand;18;29;Branch&Bound DF;10065;289;10;100
+rand;18;30;Branch&Bound DF;129556;325;10;100
+rand;18;31;Branch&Bound DF;9659;326;10;100
+rand;18;32;Branch&Bound DF;2185;343;10;100
+rand;18;33;Branch&Bound DF;6779;312;10;100
+rand;18;34;Branch&Bound DF;11077;313;10;100
+rand;18;35;Branch&Bound DF;5441;326;10;100
+rand;18;36;Branch&Bound DF;11159;330;10;100
+rand;18;37;Branch&Bound DF;6252;311;10;100
+rand;18;38;Branch&Bound DF;30537;276;10;100
+rand;18;39;Branch&Bound DF;14728;308;10;100
+rand;18;40;Branch&Bound DF;4550;267;10;100
+rand;18;41;Branch&Bound DF;107812;330;10;100
+rand;18;42;Branch&Bound DF;125581;320;10;100
+rand;18;43;Branch&Bound DF;83207;319;10;100
+rand;18;44;Branch&Bound DF;36707;335;10;100
+rand;18;45;Branch&Bound DF;44605;341;10;100
+rand;18;46;Branch&Bound DF;8851;269;10;100
+rand;18;47;Branch&Bound DF;12577;298;10;100
+rand;18;48;Branch&Bound DF;15263;307;10;100
+rand;18;49;Branch&Bound DF;39107;320;10;100
+rand;19;0;Branch&Bound DF;63590;330;10;100
+rand;19;1;Branch&Bound DF;41384;358;10;100
+rand;19;2;Branch&Bound DF;54604;318;10;100
+rand;19;3;Branch&Bound DF;3902;369;10;100
+rand;19;4;Branch&Bound DF;20994;325;10;100
+rand;19;5;Branch&Bound DF;11486;341;10;100
+rand;19;6;Branch&Bound DF;185015;376;10;100
+rand;19;7;Branch&Bound DF;169695;345;10;100
+rand;19;8;Branch&Bound DF;40955;297;10;100
+rand;19;9;Branch&Bound DF;78423;325;10;100
+rand;19;10;Branch&Bound DF;8353;300;10;100
+rand;19;11;Branch&Bound DF;87793;349;10;100
+rand;19;12;Branch&Bound DF;9351;275;10;100
+rand;19;13;Branch&Bound DF;31324;364;10;100
+rand;19;14;Branch&Bound DF;35855;319;10;100
+rand;19;15;Branch&Bound DF;47202;302;10;100
+rand;19;16;Branch&Bound DF;369401;366;10;100
+rand;19;17;Branch&Bound DF;54678;316;10;100
+rand;19;18;Branch&Bound DF;47928;294;10;100
+rand;19;19;Branch&Bound DF;52971;392;10;100
+rand;19;20;Branch&Bound DF;47503;307;10;100
+rand;19;21;Branch&Bound DF;204269;333;10;100
+rand;19;22;Branch&Bound DF;69434;335;10;100
+rand;19;23;Branch&Bound DF;5640;339;10;100
+rand;19;24;Branch&Bound DF;8777;296;10;100
+rand;19;25;Branch&Bound DF;204275;364;10;100
+rand;19;26;Branch&Bound DF;174048;339;10;100
+rand;19;27;Branch&Bound DF;25364;303;10;100
+rand;19;28;Branch&Bound DF;20317;327;10;100
+rand;19;29;Branch&Bound DF;40193;299;10;100
+rand;19;30;Branch&Bound DF;53748;326;10;100
+rand;19;31;Branch&Bound DF;3401;328;10;100
+rand;19;32;Branch&Bound DF;44219;286;10;100
+rand;19;33;Branch&Bound DF;26115;303;10;100
+rand;19;34;Branch&Bound DF;14876;310;10;100
+rand;19;35;Branch&Bound DF;2767;314;10;100
+rand;19;36;Branch&Bound DF;138467;326;10;100
+rand;19;37;Branch&Bound DF;13530;373;10;100
+rand;19;38;Branch&Bound DF;10356;294;10;100
+rand;19;39;Branch&Bound DF;75822;333;10;100
+rand;19;40;Branch&Bound DF;56149;353;10;100
+rand;19;41;Branch&Bound DF;65493;311;10;100
+rand;19;42;Branch&Bound DF;3189;272;10;100
+rand;19;43;Branch&Bound DF;67174;325;10;100
+rand;19;44;Branch&Bound DF;27206;336;10;100
+rand;19;45;Branch&Bound DF;34527;260;10;100
+rand;19;46;Branch&Bound DF;25408;337;10;100
+rand;19;47;Branch&Bound DF;48476;287;10;100
+rand;19;48;Branch&Bound DF;85948;299;10;100
+rand;19;49;Branch&Bound DF;40489;368;10;100
+rand;20;0;Branch&Bound DF;3;349;10;100
+rand;20;1;Branch&Bound DF;40;316;10;100
+rand;20;2;Branch&Bound DF;44;294;10;100
+rand;20;3;Branch&Bound DF;56;347;10;100
+rand;20;4;Branch&Bound DF;44;362;10;100
+rand;20;5;Branch&Bound DF;55;376;10;100
+rand;20;6;Branch&Bound DF;14;322;10;100
+rand;20;7;Branch&Bound DF;31;322;10;100
+rand;20;8;Branch&Bound DF;63;373;10;100
+rand;20;9;Branch&Bound DF;248;423;10;100
+rand;20;10;Branch&Bound DF;5;331;10;100
+rand;20;11;Branch&Bound DF;58;303;10;100
+rand;20;12;Branch&Bound DF;53;339;10;100
+rand;20;13;Branch&Bound DF;105;383;10;100
+rand;20;14;Branch&Bound DF;13;324;10;100
+rand;20;15;Branch&Bound DF;35;305;10;100
+rand;20;16;Branch&Bound DF;111;380;10;100
+rand;20;17;Branch&Bound DF;266;333;10;100
+rand;20;18;Branch&Bound DF;209;338;10;100
+rand;20;19;Branch&Bound DF;43;334;10;100
+rand;20;20;Branch&Bound DF;38;296;10;100
+rand;20;21;Branch&Bound DF;253;333;10;100
+rand;20;22;Branch&Bound DF;29;313;10;100
+rand;20;23;Branch&Bound DF;7;323;10;100
+rand;20;24;Branch&Bound DF;100;341;10;100
+rand;20;25;Branch&Bound DF;81;330;10;100
+rand;20;26;Branch&Bound DF;60;332;10;100
+rand;20;27;Branch&Bound DF;103;338;10;100
+rand;20;28;Branch&Bound DF;5;349;10;100
+rand;20;29;Branch&Bound DF;29;351;10;100
+rand;20;30;Branch&Bound DF;9;299;10;100
+rand;20;31;Branch&Bound DF;17;338;10;100
+rand;20;32;Branch&Bound DF;101;376;10;100
+rand;20;33;Branch&Bound DF;69;334;10;100
+rand;20;34;Branch&Bound DF;36;314;10;100
+rand;20;35;Branch&Bound DF;51;329;10;100
+rand;20;36;Branch&Bound DF;13;322;10;100
+rand;20;37;Branch&Bound DF;34;350;10;100
+rand;20;38;Branch&Bound DF;130;397;10;100
+rand;20;39;Branch&Bound DF;75;382;10;100
+rand;20;40;Branch&Bound DF;34;302;10;100
+rand;20;41;Branch&Bound DF;90;360;10;100
+rand;20;42;Branch&Bound DF;19;350;10;100
+rand;20;43;Branch&Bound DF;79;355;10;100
+rand;20;44;Branch&Bound DF;37;338;10;100
+rand;20;45;Branch&Bound DF;15;361;10;100
+rand;20;46;Branch&Bound DF;64;348;10;100
+rand;20;47;Branch&Bound DF;440;386;10;100
+rand;20;48;Branch&Bound DF;121;381;10;100
+rand;20;49;Branch&Bound DF;181;424;10;100
+rand;21;0;Branch&Bound DF;13;349;10;100
+rand;21;1;Branch&Bound DF;39;367;10;100
+rand;21;2;Branch&Bound DF;220;388;10;100
+rand;21;3;Branch&Bound DF;45;347;10;100
+rand;21;4;Branch&Bound DF;28;373;10;100
+rand;21;5;Branch&Bound DF;80;354;10;100
+rand;21;6;Branch&Bound DF;259;364;10;100
+rand;21;7;Branch&Bound DF;91;339;10;100
+rand;21;8;Branch&Bound DF;29;387;10;100
+rand;21;9;Branch&Bound DF;38;342;10;100
+rand;21;10;Branch&Bound DF;60;306;10;100
+rand;21;11;Branch&Bound DF;88;313;10;100
+rand;21;12;Branch&Bound DF;51;362;10;100
+rand;21;13;Branch&Bound DF;705;399;10;100
+rand;21;14;Branch&Bound DF;77;342;10;100
+rand;21;15;Branch&Bound DF;39;393;10;100
+rand;21;16;Branch&Bound DF;83;358;10;100
+rand;21;17;Branch&Bound DF;18;344;10;100
+rand;21;18;Branch&Bound DF;38;319;10;100
+rand;21;19;Branch&Bound DF;79;339;10;100
+rand;21;20;Branch&Bound DF;178;351;10;100
+rand;21;21;Branch&Bound DF;77;357;10;100
+rand;21;22;Branch&Bound DF;85;349;10;100

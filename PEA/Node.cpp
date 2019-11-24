@@ -24,6 +24,15 @@ Node::Node(int a, int b, int c, int d, int **macierz, int e, int *f) {
 	}
 
 }
+Node::~Node() {
+	/*delete[]route;
+
+	for (int i = 0; i < size; i++) {
+		delete[]matrix[i];
+	}
+	delete[]matrix;*/
+}
+
 
 Node::Node(int *a, int*b, int c, int d, int e, int *f) {
 	//cout << "Dajemy d = " << d << endl;
@@ -40,8 +49,6 @@ Node::Node(int *a, int*b, int c, int d, int e, int *f) {
 	}
 }
 
-Node::~Node() {
-}
 
 void Node::setIndex(int i) {
 	index = i;
@@ -99,6 +106,18 @@ void Node::copyMatrix(int **macierz) {
 	for (int i = 0; i < startMatrixSize; i++)
 		for (int j = 0; j < startMatrixSize; j++)
 			macierz[i][j] = startMatrix[i][j];
+}
+
+void Node::setMatrix(int **macierz, int a) {
+	startMatrix = new int *[a];
+	for (int i = 0; i < a; i++)  // dla ka¿dego wiersza macierzy:
+		startMatrix[i] = new int[a];  // utworzenie i-tej tablicy typu int
+
+	size = a;
+	startMatrixSize = a;
+	for (int i = 0; i < a; i++)
+		for (int j = 0; j < a; j++)
+			startMatrix[i][j] = macierz[i][j];
 }
 
 void Node::loadInfo() {

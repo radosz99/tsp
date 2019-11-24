@@ -19,6 +19,7 @@ public:
 
 	//Accessor Function
 	void copyMatrix(int**);
+	void setMatrix(int **, int);
 	void loadInfo();
 	int getStartSize();
 	int getSize();

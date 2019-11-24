@@ -160,7 +160,7 @@ int getFirstUpperBound(int *bestTab, int size, int &helpMin, int **macierz,int *
 	}
 	for (int i = 0; i < size; i++)
 		bestTab[i] = routeTab[i];
-
+	//printVector(graph, size);
 	return helpMin;
 }
 
@@ -182,17 +182,23 @@ int graphTidying(vector<Node>& graph, int &tempLevel, int&deleteNodesAmount, int
 		//----------------------------------------------------------------------
 		//WERSJA DEPTH FIRST
 		//----------------------------------------------------------------------
+
 		for (unsigned int i = graph.size(); i > 0; i--)
 			if (graph[i - 1].getValue() < min) {
 				betterNodeId = i - 1;
 				tempLevel = graph[i - 1].getLvl();
-				for (int j = i - 1; graph[j].getLvl() == graph[i - 1].getLvl(); j--) {
-					if (graph[j].getValue() < graph[i - 1].getValue() && (graph[j].getLvl() == tempLevel))
+
+				/*
+				for (int j = i - 1; graph[j].getLvl() == graph[i - 1].getLvl() && j>=0; j--) { // w obrebie jednego poziomu wybieramy najlepszy wierzcholek
+					if (graph[j].getValue() < graph[i - 1].getValue() && (graph[j].getLvl() == tempLevel)) {
 						betterNodeId = graph[j].getIndex();
-				}
+					}
+				}*/
+
 				break;
 			}
 	}
+
 	if (odp == 2) {
 		//---------------------------------------------------------------------
 		//WERSJA BEST FIRST
@@ -252,6 +258,12 @@ void prepareNextIteration(int &helpMin, vector<Node>& graph, int size, int *visi
 	counter = graph.size(); //pomocnicza zmienna zapewniajaca unikalnosc atrybutu index nowych wierzcholkow
 	graph.erase(graph.begin() + index); //usuniecie wierzcholka ktory bedziemy rozwijac - jego odpowiednie atrybuty zostaly juz zapisane
 	deleteNodesAmount++;
+
+	delete[]helpTab1;
+	for (int i = 0; i < size; i++) {
+		delete[]helpMacierz[i];
+	}
+	delete[]helpMacierz;
 }
 
 void developingGraph(int min, int tempLevel, int size, bool &ifBetter, int &bestMin, int *visitedTab, int **macierz, int **mainMacierz, int *routeTab, int savedBestCol, int &tempMin, int &helpMin, int counter, vector<Node>& graph, int &nodesAmount, int &deleteNodesAmount) {
@@ -347,6 +359,7 @@ int BBMain(Node start, string instanceName, int *bestTab, int odp) {
 		mainMacierz[i] = new int[matrixSize];
 	}
 	start.copyMatrix(macierz); //zapisanie do zmiennej macierz macierzy wczytanej z pliku
+
 	routeTab[0] = 0; //routeTab to sciezka, pierwszy w sciezce bedzie wierzcholek nr 0
 	helpMin = reduceMatrix(macierz, matrixSize);
 
@@ -360,7 +373,7 @@ int BBMain(Node start, string instanceName, int *bestTab, int odp) {
 	while (!graph.empty()) {
 		counterek++;
 		if (counterek % 100 == 0) {
-			cout << "Current min = " << min << ", iteration #" << counterek << ", " << nodesAmount << " nodes checked and " << nodesAmount - deleteNodesAmount << " still exist." << endl;
+			//cout << "Current min = " << min << ", iteration #" << counterek << ", " << nodesAmount << " nodes checked and " << nodesAmount - deleteNodesAmount << " still exist." << endl;
 		}
 
 		prepareNextIteration(helpMin, graph, matrixSize, visitedTab, routeTab, index, macierz, mainMacierz, tempLevel, counter, deleteNodesAmount);
@@ -385,6 +398,15 @@ int BBMain(Node start, string instanceName, int *bestTab, int odp) {
 	//cout << "\nUtworzonych wierzcholkow: " << nodesAmount;
 	//cout << "\nUsunietych wierzcholkow: " << deleteNodesAmount;
 	//cout << "\nLacznie iteracji: " << counterek;
+	delete[]visitedTab;
+	delete[]routeTab;
 
+	for (int i = 0; i < matrixSize; i++) { 
+		delete[]macierz[i];
+		delete[]mainMacierz[i];
+	}
+	delete[]macierz;
+	delete[]mainMacierz;
+	graph.clear();
 	return min;
 }

@@ -34,10 +34,6 @@ void permute(int *a, int *b, int l, int r, int &min, int size, int **matrix)
 			//cout << "Swapuje " << l << " z " << i << endl;
 			permute(a, b, l + 1, r, min, size,matrix);
 			swap(a[l], a[i]);
-			cout << "Powrot: ";
-			for (int i = 0; i < size; i++)
-				cout << a[i] << "-";
-			cout << endl;
 		}
 	}
 }
@@ -98,7 +94,7 @@ void printVector(vector<Node>& newGraph, int a) {
 		//for(unsigned int i=0; i<newMyClass.size(); i++){ IF WE WANNA MODIFY CONTENT OF VECTOR
 		cout << "Node index: " << newGraph[i].getIndex() << endl;
 		cout << "Node id: " << newGraph[i].getId() << endl;
-		//cout << "Node value: " << newGraph[i].getValue() << endl;
+		cout << "Node value: " << newGraph[i].getValue() << endl;
 		cout << "Node lvl: " << newGraph[i].getLvl() << endl;
 
 		sciezka = newGraph[i].getRoute();
@@ -107,7 +103,7 @@ void printVector(vector<Node>& newGraph, int a) {
 		for (int i = 0; i < matrixSize; i++)
 			cout << sciezka[i] << "-";
 		cout << endl;
-		sciezka = newGraph[i].getVisited();
+		/*sciezka = newGraph[i].getVisited();
 		cout << "Visited ";
 		for (int i = 0; i < matrixSize; i++)
 			cout << sciezka[i] << "-";
@@ -118,7 +114,7 @@ void printVector(vector<Node>& newGraph, int a) {
 			cout << sciezka[i] << "-";
 		cout << endl << endl;
 		macierz = newGraph[i].getMatrix();
-		/*
+
 		cout << "Node matrix: " << endl;
 		for (int i=0; i<matrixSize; i++){
 			for (int j=0; j<matrixSize; j++)
@@ -189,7 +185,7 @@ void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMat
 					wskVisited[i] = 1;
 					beforeVisited[i] = 1;
 					visitedNodesAmount++;
-					Node newNode(route, beforeVisited, tempLvl, matrixSize, visitedNodesAmount, beforeVisited);
+					Node newNode(route, beforeVisited, tempLvl, matrixSize, graph[graphSize - 1].getLvl() + 2, beforeVisited);
 					nodesAmount++;
 					graph.push_back(newNode);
 					graph[graphSize - 1].setId(visitedNodesAmount);
@@ -215,24 +211,34 @@ void saveToFile(string a, string b, double c, int d) {
 	plik.close();
 }
 
+void saveToFileRand(string a, int k, int i, string b, double c, int d, int e, int f) {
+	ofstream plik;
+	plik.open("C:/Users/Radek/source/repos/PEA/Input/test2.csv", std::ios_base::app);
+	plik << a << ";" << k << ";" << i << ";" << b << ";" << c << ";" << d << ";" << e << ";" << f << endl;
+	plik.close();
+}
+
 double getTime(Czas czas, int odp) {
 	double czasSek;
 
 	switch (odp) {
 	case 1:
 		czasSek = czas.czasWykonaniaMili();
-		czasSek = czasSek / 1000;
-		printf("\nCzas wykonania algorytmu: %.3gs", czasSek);
+		//czasSek = czasSek / 1000;
+		//cout << endl;
+		//cout << czasSek << " milisekund";
 		break;
 	case 2:
 		czasSek = czas.czasWykonania();
-		czasSek = czasSek / 1000000;
-		printf("\nCzas wykonania algorytmu: %.6gs", czasSek);
+		//czasSek = czasSek / 1000000;
+		//cout << endl;
+		//cout << czasSek << " mikrosekund";
 		break;
 	case 3:
 		czasSek = czas.czasWykonaniaNano();
-		czasSek = czasSek / 1000000000;
-		printf("\nCzas wykonania algorytmu: %.9gs", czasSek);
+		//czasSek = czasSek / 1000000000;
+		//cout << endl;
+		//cout << czasSek << " nanosekund";
 		break;
 	}
 
