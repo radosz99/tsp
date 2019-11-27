@@ -1,111 +1,111 @@
- ; Wielkosc ; Nr ;Metoda;Czas;MinWart;MaxWart;;;;;;;;;;;;;;;;;;;;;
-rand;20;0;Branch&Bound BF;36;305;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;1;Branch&Bound BF;18;323;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;2;Branch&Bound BF;38;308;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;3;Branch&Bound BF;38;377;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;4;Branch&Bound BF;26;350;10;100;;;;;;;;;sredni;;;mediana;;;odchyelnie;;min;;max;
-rand;20;5;Branch&Bound BF;32;323;10;100;;;;;;;;;;ms;;;ms;;;ms;;;;
-rand;20;6;Branch&Bound BF;6;344;10;100;;;;;;;;4;27,54166667;2,75417E-05;;25;0,000025;;21,38400127;2,1384E-05;2;0,000002;101;0,000101
-rand;20;7;Branch&Bound BF;2;301;10;100;;;;;;;;5;49,5;0,0000495;;40;0,00004;;36,69933548;3,66993E-05;4;0,000004;153;0,000153
-rand;20;8;Branch&Bound BF;23;336;10;100;;;;;;;;6;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;9;Branch&Bound BF;13;323;10;100;;;;;;;;7;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;10;Branch&Bound BF;7;306;10;100;;;;;;;;8;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;11;Branch&Bound BF;26;312;10;100;;;;;;;;9;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;12;Branch&Bound BF;34;348;10;100;;;;;;;;10;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;13;Branch&Bound BF;19;312;10;100;;;;;;;;11;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;14;Branch&Bound BF;35;354;10;100;;;;;;;;12;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;15;Branch&Bound BF;22;331;10;100;;;;;;;;13;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;16;Branch&Bound BF;40;334;10;100;;;;;;;;14;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;17;Branch&Bound BF;74;381;10;100;;;;;;;;15;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;18;Branch&Bound BF;10;340;10;100;;;;;;;;16;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;19;Branch&Bound BF;28;334;10;100;;;;;;;;17;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;20;Branch&Bound BF;17;300;10;100;;;;;;;;18;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;21;Branch&Bound BF;24;305;10;100;;;;;;;;19;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;22;Branch&Bound BF;6;300;10;100;;;;;;;;20;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;23;Branch&Bound BF;7;311;10;100;;;;;;;;21;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;24;Branch&Bound BF;50;326;10;100;;;;;;;;22;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;25;Branch&Bound BF;30;333;10;100;;;;;;;;23;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;26;Branch&Bound BF;16;353;10;100;;;;;;;;24;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;0;0;0;0
-rand;20;27;Branch&Bound BF;5;310;10;100;;;;;;;;25;0;0;;#LICZBA!;#LICZBA!;;#DZIEL/0!;#DZIEL/0!;;0;;0
-rand;20;28;Branch&Bound BF;9;352;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;29;Branch&Bound BF;46;384;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;30;Branch&Bound BF;17;323;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;31;Branch&Bound BF;33;385;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;32;Branch&Bound BF;18;338;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;33;Branch&Bound BF;12;339;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;34;Branch&Bound BF;35;363;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;35;Branch&Bound BF;18;348;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;36;Branch&Bound BF;35;343;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;37;Branch&Bound BF;101;338;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;38;Branch&Bound BF;34;337;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;39;Branch&Bound BF;14;330;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;40;Branch&Bound BF;17;326;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;41;Branch&Bound BF;13;342;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;42;Branch&Bound BF;49;334;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;43;Branch&Bound BF;37;313;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;44;Branch&Bound BF;44;321;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;45;Branch&Bound BF;9;325;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;46;Branch&Bound BF;5;308;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;47;Branch&Bound BF;99;356;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;48;Branch&Bound BF;37;327;10;100;;;;;;;;;;;;;;;;;;;;
-rand;20;49;Branch&Bound BF;61;312;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;0;Branch&Bound BF;22;350;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;1;Branch&Bound BF;48;352;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;2;Branch&Bound BF;17;312;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;3;Branch&Bound BF;36;319;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;4;Branch&Bound BF;54;365;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;5;Branch&Bound BF;28;326;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;6;Branch&Bound BF;26;338;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;7;Branch&Bound BF;40;347;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;8;Branch&Bound BF;55;375;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;9;Branch&Bound BF;9;339;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;10;Branch&Bound BF;40;391;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;11;Branch&Bound BF;31;357;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;12;Branch&Bound BF;77;316;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;13;Branch&Bound BF;102;363;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;14;Branch&Bound BF;70;391;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;15;Branch&Bound BF;49;358;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;16;Branch&Bound BF;48;430;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;17;Branch&Bound BF;58;330;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;18;Branch&Bound BF;140;393;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;19;Branch&Bound BF;24;342;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;20;Branch&Bound BF;24;352;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;21;Branch&Bound BF;4;344;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;22;Branch&Bound BF;21;355;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;23;Branch&Bound BF;78;334;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;24;Branch&Bound BF;50;336;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;25;Branch&Bound BF;38;302;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;26;Branch&Bound BF;42;357;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;27;Branch&Bound BF;101;392;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;28;Branch&Bound BF;54;396;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;29;Branch&Bound BF;40;351;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;30;Branch&Bound BF;87;409;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;31;Branch&Bound BF;65;340;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;32;Branch&Bound BF;153;348;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;33;Branch&Bound BF;13;342;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;34;Branch&Bound BF;9;346;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;35;Branch&Bound BF;39;348;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;36;Branch&Bound BF;17;334;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;37;Branch&Bound BF;62;332;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;38;Branch&Bound BF;11;314;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;39;Branch&Bound BF;48;340;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;40;Branch&Bound BF;23;322;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;41;Branch&Bound BF;51;362;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;42;Branch&Bound BF;37;328;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;43;Branch&Bound BF;37;342;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;44;Branch&Bound BF;28;333;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;45;Branch&Bound BF;36;338;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;46;Branch&Bound BF;60;356;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;47;Branch&Bound BF;151;380;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;48;Branch&Bound BF;150;342;10;100;;;;;;;;;;;;;;;;;;;;
-rand;21;49;Branch&Bound BF;30;383;10;100;;;;;;;;;;;;;;;;;;;;
-data13;BruteForce-swap;1.34458e+07;269
-data13;BruteForce-swap;1.37125e+07;269
-data13;BruteForce-swap;1.35009e+07;269
-data13;BruteForce-swap;1.35716e+07;269
-data13;BruteForce-swap;1.33191e+07;269
-data13;BruteForce-swap;1.34337e+07;269
-data13;BruteForce-swap;1.36025e+07;269
-data13;BruteForce-swap;1.32643e+07;269
-data13;BruteForce-swap;1.34186e+07;269
-data13;BruteForce-swap;1.32741e+07;269
+ ; Wielkosc ; Nr ;Metoda;Czas;MinWart;MaxWart;;;;;;;;;;;;;;;;;
+rand;20;0;Branch&Bound BF;36;305;10;100;;;;;;;;;;;;;;;;
+rand;20;1;Branch&Bound BF;18;323;10;100;;;;;;;;;;;;;;;;
+rand;20;2;Branch&Bound BF;38;308;10;100;;;;;;;;;;;;;;;;
+rand;20;3;Branch&Bound BF;38;377;10;100;;;;;;;;;;;;;;;;
+rand;20;4;Branch&Bound BF;26;350;10;100;;;;;;;;;;;;;;;;
+rand;20;5;Branch&Bound BF;32;323;10;100;;;;;;;;;;;;;;;;
+rand;20;6;Branch&Bound BF;6;344;10;100;;;;;;;;;;;;;;;;
+rand;20;7;Branch&Bound BF;2;301;10;100;;;;;;;;;;;;;;;;
+rand;20;8;Branch&Bound BF;23;336;10;100;;;;;;;;;;;;;;;;
+rand;20;9;Branch&Bound BF;13;323;10;100;;;;;;;;;;;;;;;;
+rand;20;10;Branch&Bound BF;7;306;10;100;;;;;;;;;;;;;;;;
+rand;20;11;Branch&Bound BF;26;312;10;100;;;;;;;;;;;;;;;;
+rand;20;12;Branch&Bound BF;34;348;10;100;;;;;;;;;;;;;;;;
+rand;20;13;Branch&Bound BF;19;312;10;100;;;;;;;;;;;;;;;;
+rand;20;14;Branch&Bound BF;35;354;10;100;;;;;;;;;;;;;;;;
+rand;20;15;Branch&Bound BF;22;331;10;100;;;;;;;;;;;;;;;;
+rand;20;16;Branch&Bound BF;40;334;10;100;;;;;;;;;;;;;;;;
+rand;20;17;Branch&Bound BF;74;381;10;100;;;;;;;;;;;;;;;;
+rand;20;18;Branch&Bound BF;10;340;10;100;;;;;;;;;;;;;;;;
+rand;20;19;Branch&Bound BF;28;334;10;100;;;;;;;;;;;;;;;;
+rand;20;20;Branch&Bound BF;17;300;10;100;;;;;;;;;;;;;;;;
+rand;20;21;Branch&Bound BF;24;305;10;100;;;;;;;;;;;;;;;;
+rand;20;22;Branch&Bound BF;6;300;10;100;;;;;;;;;;;;;;;;
+rand;20;23;Branch&Bound BF;7;311;10;100;;;;;;;;;;;;;;;;
+rand;20;24;Branch&Bound BF;50;326;10;100;;;;;;;;;;;;;;;;
+rand;20;25;Branch&Bound BF;30;333;10;100;;;;;;;;;;;;;;;;
+rand;20;26;Branch&Bound BF;16;353;10;100;;;;;;;;;;;;;;;;
+rand;20;27;Branch&Bound BF;5;310;10;100;;;;;;;;;;;;;;;;
+rand;20;28;Branch&Bound BF;9;352;10;100;;;;;;;;;;;;;;;;
+rand;20;29;Branch&Bound BF;46;384;10;100;;;;;;;;;;;;;;;;
+rand;20;30;Branch&Bound BF;17;323;10;100;;;;;;;;;;;;;;;;
+rand;20;31;Branch&Bound BF;33;385;10;100;;;;;;;;;;;;;;;;
+rand;20;32;Branch&Bound BF;18;338;10;100;;;;;;;;;;;;;;;;
+rand;20;33;Branch&Bound BF;12;339;10;100;;;;;;;;;;;;;;;;
+rand;20;34;Branch&Bound BF;35;363;10;100;;;;;;;;;;;;;;;;
+rand;20;35;Branch&Bound BF;18;348;10;100;;;;;;;;;;;;;;;;
+rand;20;36;Branch&Bound BF;35;343;10;100;;;;;;;;;;;;;;;;
+rand;20;37;Branch&Bound BF;101;338;10;100;;;;;;;;;;;;;;;;
+rand;20;38;Branch&Bound BF;34;337;10;100;;;;;;;;;;;;;;;;
+rand;20;39;Branch&Bound BF;14;330;10;100;;;;;;;;;;;;;;;;
+rand;20;40;Branch&Bound BF;17;326;10;100;;;;;;;;;;;;;;;;
+rand;20;41;Branch&Bound BF;13;342;10;100;;;;;;;;;;;;;;;;
+rand;20;42;Branch&Bound BF;49;334;10;100;;;;;;;;;;;;;;;;
+rand;20;43;Branch&Bound BF;37;313;10;100;;;;;;;;;;;;;;;;
+rand;20;44;Branch&Bound BF;44;321;10;100;;;;;;;;;;;;;;;;
+rand;20;45;Branch&Bound BF;9;325;10;100;;;;;;;;;;;;;;;;
+rand;20;46;Branch&Bound BF;5;308;10;100;;;;;;;;;;;;;;;;
+rand;20;47;Branch&Bound BF;99;356;10;100;;;;;;;;;;;;;;;;
+rand;20;48;Branch&Bound BF;37;327;10;100;;;;;;;;;;;;;;;;
+rand;20;49;Branch&Bound BF;61;312;10;100;;;;;;;;;;;;;;;;
+rand;21;0;Branch&Bound BF;22;350;10;100;;;;;;;;;;;;;;;;
+rand;21;1;Branch&Bound BF;48;352;10;100;;;;;;;;;;;;;;;;
+rand;21;2;Branch&Bound BF;17;312;10;100;;;;;;;;;;;;;;;;
+rand;21;3;Branch&Bound BF;36;319;10;100;;;;;;;;;;;;;;;;
+rand;21;4;Branch&Bound BF;54;365;10;100;;;;;;;;;;;;;;;;
+rand;21;5;Branch&Bound BF;28;326;10;100;;;;;;;;;;;;;;;;
+rand;21;6;Branch&Bound BF;26;338;10;100;;;;;;;;;;;;;;;;
+rand;21;7;Branch&Bound BF;40;347;10;100;;;;;;;;;;;;;;;;
+rand;21;8;Branch&Bound BF;55;375;10;100;;;;;;;;;;;;;;;;
+rand;21;9;Branch&Bound BF;9;339;10;100;;;;;;;;;;;;;;;;
+rand;21;10;Branch&Bound BF;40;391;10;100;;;;;;;;;;;;;;;;
+rand;21;11;Branch&Bound BF;31;357;10;100;;;;;;;;;;;;;;;;
+rand;21;12;Branch&Bound BF;77;316;10;100;;;;;;;;;;;;;;;;
+rand;21;13;Branch&Bound BF;102;363;10;100;;;;;;;;;;;;;;;;
+rand;21;14;Branch&Bound BF;70;391;10;100;;;;;;;;;;;;;;;;
+rand;21;15;Branch&Bound BF;49;358;10;100;;;;;;;;;;;;;;;;
+rand;21;16;Branch&Bound BF;48;430;10;100;;;;;;;;;;;;;;;;
+rand;21;17;Branch&Bound BF;58;330;10;100;;;;;;;;;;;;;;;;
+rand;21;18;Branch&Bound BF;140;393;10;100;;;;;;;;;;;;;;;;
+rand;21;19;Branch&Bound BF;24;342;10;100;;;;;;;;;;;;;;;;
+rand;21;20;Branch&Bound BF;24;352;10;100;;;;;;;;;;;;;;;;
+rand;21;21;Branch&Bound BF;4;344;10;100;;;;;;;;;;;;;;;;
+rand;21;22;Branch&Bound BF;21;355;10;100;;;;;;;;;;;;;;;;
+rand;21;23;Branch&Bound BF;78;334;10;100;;;;;;;;;;;;;;;;
+rand;21;24;Branch&Bound BF;50;336;10;100;;;;;;;;;;;;;;;;
+rand;21;25;Branch&Bound BF;38;302;10;100;;;;;;;;;;;;;;;;
+rand;21;26;Branch&Bound BF;42;357;10;100;;;;;;;;;;;;;;;;
+rand;21;27;Branch&Bound BF;101;392;10;100;;;;;;;;;;;;;;;;
+rand;21;28;Branch&Bound BF;54;396;10;100;;;;;;;;;;;;;;;;
+rand;21;29;Branch&Bound BF;40;351;10;100;;;;;;;;;;;;;;;;
+rand;21;30;Branch&Bound BF;87;409;10;100;;;;;;;;;;;;;;;;
+rand;21;31;Branch&Bound BF;65;340;10;100;;;;;;;;;;;;;;;;
+rand;21;32;Branch&Bound BF;153;348;10;100;;;;;;;;;;;;;;;;
+rand;21;33;Branch&Bound BF;13;342;10;100;;;;;;;;;;;;;;;;
+rand;21;34;Branch&Bound BF;9;346;10;100;;;;;;;;;;;;;;;;
+rand;21;35;Branch&Bound BF;39;348;10;100;;;;;;;;;;;;;;;;
+rand;21;36;Branch&Bound BF;17;334;10;100;;;;;;;;;;;;;;;;
+rand;21;37;Branch&Bound BF;62;332;10;100;;;;;;;;;;;;;;;;
+rand;21;38;Branch&Bound BF;11;314;10;100;;;;;;;;;;;;;;;;
+rand;21;39;Branch&Bound BF;48;340;10;100;;;;;;;;;;;;;;;;
+rand;21;40;Branch&Bound BF;23;322;10;100;;;;;;;;;;;;;;;;
+rand;21;41;Branch&Bound BF;51;362;10;100;;;;;;;;;;;;;;;;
+rand;21;42;Branch&Bound BF;37;328;10;100;;;;;;;;;;;;;;;;
+rand;21;43;Branch&Bound BF;37;342;10;100;;;;;;;;;;;;;;;;
+rand;21;44;Branch&Bound BF;28;333;10;100;;;;;;;;;;;;;;;;
+rand;21;45;Branch&Bound BF;36;338;10;100;;;;;;;;;;;;;;;;
+rand;21;46;Branch&Bound BF;60;356;10;100;;;;;;;;;;;;;;;;
+rand;21;47;Branch&Bound BF;151;380;10;100;;;;;;;;;;;;;;;;
+rand;21;48;Branch&Bound BF;150;342;10;100;;;;;;;;;;;;;;;;
+rand;21;49;Branch&Bound BF;30;383;10;100;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.34458e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.37125e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.35009e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.35716e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.33191e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.34337e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.36025e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.32643e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.34186e+07;269;;;;;;;;;;;;;;;;;;;;
+data13;BruteForce-swap;1.32741e+07;269;;;;;;;;;;;;;;;;;;;;
