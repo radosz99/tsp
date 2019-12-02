@@ -122,6 +122,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="DPFunc.cpp" />
+    <ClCompile Include="Tabu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BBFunc.h" />
@@ -130,6 +131,7 @@
     <ClInclude Include="DPFunc.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Tabu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -19,6 +19,18 @@ public:
 	long czasWykonania();
 	long czasWykonaniaMili();
 	long czasWykonaniaNano();
+
+	Czas();
+	void start();
+	void stop();
+	double read();
+
+private:
+	std::chrono::duration<double> measurement;
+	std::chrono::time_point<std::chrono::steady_clock> tstart;
+	std::chrono::time_point<std::chrono::steady_clock> tstop;
+
+
 };
 
 

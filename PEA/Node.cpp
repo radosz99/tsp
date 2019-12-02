@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <cstdio>
+#include <ctime>
+#include <cstdlib>
 #include "Node.H"
 
 Node::Node() {
@@ -126,7 +129,7 @@ void Node::loadInfo() {
 	bool ifOpen = false;
 
 	while (ifOpen == false) {
-		cout << "Wczytaj nazwe pliku z macierza: ";
+		cout << "Wczytaj plik (bez rozszerzenia): ";
 		cin >> name;
 		name = name + ".txt";
 
@@ -146,9 +149,9 @@ void Node::loadInfo() {
 			for (int i = 0; i < startMatrixSize; i++) {
 				for (int j = 0; j < startMatrixSize; j++) {
 					plik >> startMatrix[i][j];
-					cout << startMatrix[i][j] << " ";
+					//cout << startMatrix[i][j] << " ";
 				}
-				cout << endl;
+				//cout << endl;
 			}
 
 		}
@@ -157,6 +160,31 @@ void Node::loadInfo() {
 	plik.close();
 }
 
+void Node::generateRandMatrix() {
+	srand(time(NULL));
+	int valMin, valMax, size;
+	cout << "Rozmiar problemu: ";
+	cin >> size;
+	instanceName = "rand";
+	startMatrixSize = size;
+	cout << "Dolna granica wartosci krawedzi: ";
+	cin >> valMin;
+	cout << "Gorna granica wartosci krawedzi: ";
+	cin >> valMax;
+
+	startMatrix = new int*[size];
+	for (int i = 0; i < size; i++)
+		startMatrix[i] = new int[size];
+
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (i == j)
+				startMatrix[i][j] = -1;
+			else
+				startMatrix[i][j] = (double)rand() / (RAND_MAX + 1) * (valMax - valMin+1) + valMin;
+		}
+	}
+}
 
 
 

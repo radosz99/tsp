@@ -1,0 +1,2 @@
+Instancja; Wielkosc ; Nr testu;Metoda;Czas;Jednostka;Min;MinWart;MaxWart
+rand;10;0;BruteForce-swap;8816;us;10;1;2

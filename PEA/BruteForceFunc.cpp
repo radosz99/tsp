@@ -14,6 +14,7 @@
 
 using namespace std; 
 
+
 void permute(int *a, int *b, int l, int r, int &min, int size, int **matrix)
 {
 	int value;
@@ -204,17 +205,17 @@ void tree(int &nodesAmount, int matrixSize, int *bestTab, int &min, int **TSPMat
 	}
 }
 
-void saveToFile(string a, string b, double c, int d) {
+void saveToFile(string a, string b, double c, string e,int d) {
 	ofstream plik;
-	plik.open("C:/Users/Radek/source/repos/PEA/Input/test2.csv", std::ios_base::app);
-	plik << a << ";" << b << ";" << c << ";" << d << endl;
+	plik.open("C:/Users/Radek/source/repos/PEA/Output/wyniki.csv", std::ios_base::app);
+	plik << a << ";" << b << ";" << c << ";" << e << ";" <<d << endl;
 	plik.close();
 }
 
-void saveToFileRand(string a, int k, int i, string b, double c, int d, int e, int f) {
+void saveToFileRand(string a, int k, int i, string b, double c, string g, int d, int e, int f) {
 	ofstream plik;
-	plik.open("C:/Users/Radek/source/repos/PEA/Input/test2.csv", std::ios_base::app);
-	plik << a << ";" << k << ";" << i << ";" << b << ";" << c << ";" << d << ";" << e << ";" << f << endl;
+	plik.open("C:/Users/Radek/source/repos/PEA/Output/wynikiTesty.csv", std::ios_base::app);
+	plik << a << ";" << k << ";" << i << ";" << b << ";" << c << ";" << g << ";" << d << ";" << e << ";" << f << endl;
 	plik.close();
 }
 
@@ -224,25 +225,14 @@ double getTime(Czas czas, int odp) {
 	switch (odp) {
 	case 1:
 		czasSek = czas.czasWykonaniaMili();
-		//czasSek = czasSek / 1000;
-		//cout << endl;
-		//cout << czasSek << " milisekund";
 		break;
 	case 2:
 		czasSek = czas.czasWykonania();
-		//czasSek = czasSek / 1000000;
-		//cout << endl;
-		//cout << czasSek << " mikrosekund";
 		break;
 	case 3:
 		czasSek = czas.czasWykonaniaNano();
-		//czasSek = czasSek / 1000000000;
-		//cout << endl;
-		//cout << czasSek << " nanosekund";
 		break;
 	}
-
-		
 	return czasSek;
 }
 
@@ -254,4 +244,10 @@ int askTime() {
 	}
 
 	return odp;
+}
+void saveToFileTabu(int a, unsigned b, int c, int d, int e, bool i, int h) {
+	ofstream plik;
+	plik.open("C:/Users/Radek/source/repos/PEA/Output/wynikiTestyTabu.csv", std::ios_base::app);
+	plik << a << ";" << b << ";" <<c << ";" << d << ";" << e<< ";" << i << ";" << h << endl;
+	plik.close();
 }

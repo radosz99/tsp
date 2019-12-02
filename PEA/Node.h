@@ -33,6 +33,7 @@ public:
 	int *getRoute();
 	int *getVisited();
 	int *getBeforeVisited();
+	void generateRandMatrix();
 	void setIndex(int);
 	/*void setInd(int);
 	void setId(int);

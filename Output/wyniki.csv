@@ -1,0 +1,72 @@
+Instancja;Metoda;Czas;Jednostka;Minimum
+data18;Branch&Bound DF;69;ms;187
+data18;Branch&Bound BF;22;ms;187
+data18;Branch&Bound DF;70;ms;187
+data18;Branch&Bound DF;70;ms;187
+data10;Branch&Bound DF;0;ms;212
+data10;Branch&Bound DF;669300;ns;212
+data10;Branch&Bound DF;656;us;212
+rand;Branch&Bound DF;0;ms;225
+rand;Branch&Bound DF;0;ms;225
+rand;Dynamiczne;1;ms;225
+rand;Branch&Bound DF;1;ms;2334
+rand;BruteForce-nextpermu;72925;us;11
+rand;BruteForce-drzewo;272310;us;11
+rand;Branch&Bound DF;0;ms;11
+data10;BruteForce-drzewo;267282;us;212
+data10;BruteForce-drzewo;273867;us;212
+data11;Branch&Bound DF;0;ms;202
+data10;Branch&Bound DF;0;ms;212
+data11;Branch&Bound DF;0;ms;202
+data18;Branch&Bound DF;69;ms;187
+data10;Branch&Bound DF;0;ms;212
+data13;Branch&Bound BF;0;ms;269
+data18;Branch&Bound DF;71;ms;187
+data18;Branch&Bound DF;73;ms;187
+data10;BruteForce-swap;130862;us;212
+data10;BruteForce-swap;133342;us;212
+data10;BruteForce-swap;130680;us;212
+data10;BruteForce-swap;131390;us;212
+data10;BruteForce-swap;132942;us;212
+data10;BruteForce-swap;137151;us;212
+data10;BruteForce-swap;130947;us;212
+data10;BruteForce-swap;137508;us;212
+data10;BruteForce-swap;133179;us;212
+data10;BruteForce-swap;128529;us;212
+data10;BruteForce-swap;129190;us;212
+data10;BruteForce-swap;133079;us;212
+data11;BruteForce-swap;1.3103e+06;us;202
+data14;Dynamiczne;52;ms;125
+rand;Branch&Bound DF;207;ms;375
+rand;Branch&Bound DF;296;ms;424
+rand;Branch&Bound DF;24274;ms;491
+data10;BruteForce-swap;9665;us;212
+data10;Branch&Bound DF;0;ms;212
+data6;BruteForce-nextpermu;11;us;158
+data6;BruteForce-nextpermu;12;us;158
+data5;BruteForce-nextpermu;3;us;34
+data6;BruteForce-nextpermu;10;us;158
+data16;Dynamiczne;251;ms;156
+data16;Dynamiczne;251;ms;156
+data14;Branch&Bound DF;2;ms;125
+data16;Dynamiczne;253;ms;156
+gr17.tsp;Dynamiczne;569;ms;2085
+fri26.tsp;Branch&Bound BF;3355;ms;966
+gr24.tsp;Branch&Bound BF;8739;ms;1299
+ftv33.atsp;Branch&Bound BF;32138;ms;1365
+gr24.tsp;Branch&Bound BF;8725;ms;1299
+gr24.tsp;Branch&Bound BF;8731;ms;1299
+gr24.tsp;Branch&Bound BF;8735;ms;1299
+rand;Branch&Bound DF;507;ms;427
+rand;Branch&Bound BF;275;ms;427
+rand;Branch&Bound DF;5622;ms;427
+rand;Branch&Bound BF;889;ms;427
+rand;Branch&Bound DF;1205;ms;461
+rand;Branch&Bound BF;93;ms;461
+rand;Branch&Bound DF;6183;ms;458
+rand;Branch&Bound BF;618;ms;460
+data10;Branch&Bound DF;1;ms;212
+data10;Branch&Bound DF;2;ms;212
+gr17.tsp;Branch&Bound DF;11956;ms;2085
+rand;Branch&Bound DF;563;ms;429
+rand;Branch&Bound DF;13897;ms;457

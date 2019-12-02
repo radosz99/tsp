@@ -364,6 +364,7 @@ int BBMain(Node start, string instanceName, int *bestTab, int odp) {
 	helpMin = reduceMatrix(macierz, matrixSize);
 
 	min = getFirstUpperBound(bestTab, matrixSize, helpMin, macierz, mainMacierz, visitedTab, tempMin, routeTab, savedBestCol, nodesAmount, graph, deleteNodesAmount);
+
 	betterNodeId = graphTidying(graph, tempLevel, deleteNodesAmount, min, index,odp);
 
 	//----------------------------------------------------------------------
@@ -385,6 +386,7 @@ int BBMain(Node start, string instanceName, int *bestTab, int odp) {
 		developingGraph(min, tempLevel, matrixSize, ifBetter, bestMin, visitedTab, macierz, mainMacierz, routeTab, savedBestCol, tempMin, helpMin, counter, graph, nodesAmount, deleteNodesAmount);
 
 		if (min > helpMin) {
+			//cout << "nowe min = " << min << endl;
 			min = helpMin; //opcjonalne ustawienie nowej wartosci upper bound
 			for (int i = 0; i < matrixSize; i++)
 				bestTab[i] = routeTab[i];

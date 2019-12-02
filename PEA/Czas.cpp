@@ -29,3 +29,24 @@ long Czas::czasWykonaniaNano() {
 		return duration_cast<nanoseconds>(Czas::czasKoncowy - Czas::czasPoczatkowy).count();
 
 }
+
+Czas::Czas()
+{
+	
+}
+
+void Czas::start()
+{
+	tstart = std::chrono::steady_clock::now();
+}
+
+void Czas::stop()
+{
+	tstop = std::chrono::steady_clock::now();
+	measurement = tstop - tstart;
+}
+
+double Czas::read()
+{
+	return measurement.count();
+}
