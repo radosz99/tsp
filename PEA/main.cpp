@@ -251,7 +251,16 @@ int main()
 			}
 
 			case 10: {	
-
+				/*
+				vector < unsigned > bestRouteRed;
+				vector < unsigned > current;
+				int actualMinReduc = 0;
+				getInitialReduction(bestRouteRed, actualMinReduc, start);
+				cout << "\nREDUKCJA Najlepsza droga: ";
+				for (int i = 0; i <= matrixSize; i++)
+					cout << bestRouteRed.at(i) << " ";
+				cout << endl << endl;
+				*/
 				//----------------------------------------------------------------
 				//-------POROWNANIE REDUCTION_RANDOM z GREEDY_RANDOM--------
 				/*
@@ -259,13 +268,13 @@ int main()
 				for (int i = 0; i < 100; i++) {
 					vector < unsigned > bestRouteRed;
 					int actualMinReduc = 0;
-					getInitialReductionAndRandom(bestRouteRed, actualMinReduc, start, 1);
+					getInitialReductionAndRandom(bestRouteRed, actualMinReduc, start, 2);
 					//cout << "Reduc" << actualMinReduc << endl;
 
 
 					int actualMinGreedy = 0;
 					vector < unsigned > bestRouteGreedy;
-					getInitialGreedyAndRandom(bestRouteGreedy, actualMinGreedy, start, 1);
+					getInitialGreedyAndRandom(bestRouteGreedy, actualMinGreedy, start, 2);
 					//cout << "Greedy" << actualMinGreedy << endl;
 
 					if (actualMinReduc > actualMinGreedy) {
@@ -287,24 +296,28 @@ int main()
 				min = 0;
 				getInitialGreedy(bestRouteGreedy, min, start);
 				cout << "Funkcja celu zachlanny " << min << endl << endl;
-				*/
+				//*/
 				//----------------------------------------------------------------
-
+				//------------PARAMETRY TABU DLA DANYCH INSTANCJI-----------------
+				//----------------------------------------------------------------
 				/*
 				int result = 0;
 				for (int i = 0; i < 10; i++) {
-					result = Tabu(start, matrixSize, TSPMatrix, 20, 15, 10000, 4, 1, true); /dla data34
+					result = Tabu(start, matrixSize, TSPMatrix, 30, 30, 5000, 4, 1, true, 0); //dla swiss42
 					cout << result << endl;
 				}
-				*/
+				//*/
 				
 				///*
-				int cadenceTab[3] = {27,30,33};
-				int timeTab[1] = {60};
-				int iterTab[2] = { 10000,20000 };
-				int divCadTab[1] = {4 };
-				int randNodesTab[1] = { 1 };
+				int cadenceTab[1] = {20};
+				int timeTab[1] = {10};
+				int iterTab[1] = { 5000 };
+				int divCadTab[1] = {4};
+				int randNodesTab[1] = {1};
 				bool algTab[1] = { true };
+				int typesTab[1] = {0};
+
+				int result = 0;
 
 				for (int a = 0; a < sizeof(cadenceTab) / sizeof(*cadenceTab); a++) {
 					for (int b = 0; b < sizeof(timeTab) / sizeof(*timeTab); b++) {
@@ -312,12 +325,13 @@ int main()
 							for (int d = 0; d < sizeof(divCadTab) / sizeof(*divCadTab); d++) {
 								for (int e = 0; e < sizeof(randNodesTab) / sizeof(*randNodesTab);e++) {
 									for (int f = 0; f < sizeof(algTab) / sizeof(*algTab); f++) {
-										int result = 0;
-										for (int repeat = 0; repeat < 5; repeat++) {
-											result = 0;
-											result = Tabu(start, matrixSize, TSPMatrix, cadenceTab[a], timeTab[b], iterTab[c], divCadTab[d], randNodesTab[e], algTab[f]);
-											cout << result << endl;
-											saveToFileTabu(cadenceTab[a], timeTab[b], iterTab[c], divCadTab[d], randNodesTab[e], algTab[f], result);
+										for (int g = 0; g < sizeof(typesTab) / sizeof(*typesTab); g++) {						
+											for (int repeat = 0; repeat < 5; repeat++) {
+												result = 0;
+												result = Tabu(start, matrixSize, TSPMatrix, cadenceTab[a], timeTab[b], iterTab[c], divCadTab[d], randNodesTab[e], algTab[f], typesTab[g]);
+												cout << result << endl;
+												saveToFileTabu(cadenceTab[a], timeTab[b], iterTab[c], divCadTab[d], randNodesTab[e], algTab[f], typesTab[g],result);
+											}
 										}
 									}
 								}

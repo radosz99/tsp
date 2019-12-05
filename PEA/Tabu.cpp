@@ -28,7 +28,6 @@ void getInitialReduction(vector < unsigned >&bestTab, int &helpMin, Node start) 
 		mainMacierz[i] = new int[size];
 	}
 		start.copyMatrix(macierz);
-		//reduceMatrix(macierz, size);
 		int bestMin = 0, tempMin = 0, savedBestCol = 0;
 		helpMin = 0;
 		int *routeTab = new int[size];
@@ -50,17 +49,6 @@ void getInitialReduction(vector < unsigned >&bestTab, int &helpMin, Node start) 
 					suitableRowColToInf(macierz, routeTab[i], j, size); //ustawienie wartosci w odpowiednim wierszu i kolumnie na -1
 					tempMin = reduceMatrix(macierz, size); //zredukowanie macierzy
 					tempMin += mainMacierz[routeTab[i]][j]; //dodanie przejscia
-
-					/*cout << "------------TEMPMIN----" << tempMin << "------" << endl;
-					cout << "------------BESTMIN----" << bestMin << "------" << endl;
-					for (int i = 0; i < size; i++) {
-						for (int j = 0; j < size; j++) {
-							cout << mainMacierz[i][j] << " ";
-						}
-						cout << endl;
-					}
-					cout << endl;
-					cout << "----------------------------------------------" << endl;*/
 
 					if (tempMin < bestMin) { //jako ze wszyscy synowie maja ten sam lower bound ojca to nie jest tu uwzgledniany
 						bestMin = tempMin; //najlepszy lower bound (bez uwzglednienia lower bound ojca) jest zapisywany do bestMin
@@ -101,17 +89,14 @@ void getInitialReduction(vector < unsigned >&bestTab, int &helpMin, Node start) 
 		delete[]mainMacierz;
 }
 
-int getInitialReductionAndRandom(vector < unsigned >&bestTab, int &helpMin, Node start, int divider) {
+void getInitialReductionAndRandom(vector < unsigned >&bestTab, int &helpMin, Node start, int divider) {
 	int size = start.getStartSize();
 	random_device randomSrc;
 	default_random_engine randomGen(randomSrc());
 	uniform_int_distribution<> nodesRand(1, size / divider);
 	uniform_int_distribution<> nodeRand(1, size - 1);
 	helpMin = 0;
-	//int randomNodes = nodesRand(randomGen);
 	int randomNodes = divider;
-	//cout << "--------------------" << endl;
-	//cout << "random nodes :" << randomNodes << endl;
 	int randomNode;
 	int **macierz = new int *[size]; //macierz do operacji
 	int **mainMacierz = new int *[size]; //ta sama macierz, ale do odtwarzania
@@ -161,17 +146,6 @@ int getInitialReductionAndRandom(vector < unsigned >&bestTab, int &helpMin, Node
 				tempMin = reduceMatrix(macierz, size); //zredukowanie macierzy
 				tempMin += mainMacierz[routeTab[i]][j]; //dodanie przejscia
 
-				/*cout << "------------TEMPMIN----" << tempMin << "------" << endl;
-				cout << "------------BESTMIN----" << bestMin << "------" << endl;
-				for (int i = 0; i < size; i++) {
-					for (int j = 0; j < size; j++) {
-						cout << mainMacierz[i][j] << " ";
-					}
-					cout << endl;
-				}
-				cout << endl;
-				cout << "----------------------------------------------" << endl;*/
-
 				if (tempMin < bestMin) { //jako ze wszyscy synowie maja ten sam lower bound ojca to nie jest tu uwzgledniany
 					bestMin = tempMin; //najlepszy lower bound (bez uwzglednienia lower bound ojca) jest zapisywany do bestMin
 					savedBestCol = j; //id wierzcholka z bestMin jest zapisywane do savedBestCol
@@ -199,14 +173,7 @@ int getInitialReductionAndRandom(vector < unsigned >&bestTab, int &helpMin, Node
 
 	start.copyMatrix(macierz);
 
-	//for (int l = 0; l < size; l++)
-	//	cout << routeTab[l] << "-";
-	//cout << endl;
-
-	//cout << " Min " << helpMin;
 	helpMin = calculate(routeTab, size, macierz);
-	//cout << " i po kalkulacji " << helpMin << endl;
-	//cout << "--------------------" << endl;
 	for (int i = 0; i < size; i++)
 		bestTab.push_back(routeTab[i]);
 
@@ -220,8 +187,6 @@ int getInitialReductionAndRandom(vector < unsigned >&bestTab, int &helpMin, Node
 	}
 	delete[]macierz;
 	delete[]mainMacierz;
-
-	return randomNodes;
 }
 
 void getInitialGreedy(vector < unsigned >&bestTab, int &helpMin, Node start) {
@@ -296,11 +261,7 @@ void getInitialGreedyAndRandom(vector < unsigned >&bestTab, int &helpMin, Node s
 
 	start.copyMatrix(macierz);
 	bool ifVisited;
-
-	//int randomNodes = nodesRand(randomGen);
-	//cout << "Random nodes: " << randomNodes << endl;
 	int randomNodes = divider;
-
 	int randomNode;
 
 	for (int i = 0; i < size; i++) {
@@ -317,7 +278,6 @@ void getInitialGreedyAndRandom(vector < unsigned >&bestTab, int &helpMin, Node s
 					}
 				}
 			}
-			//cout << "Random Node: " << randomNode << endl;
 			tempBest = randomNode;
 			bestMin = macierz[oldTempBest][randomNode];
 			randomNodes--;
@@ -353,22 +313,19 @@ void getInitialGreedyAndRandom(vector < unsigned >&bestTab, int &helpMin, Node s
 		delete[]macierz[i];
 	}
 	delete[]macierz;
-
-
 }
 
-int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, int f, int g,bool alg) {
+int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, int f, int g, bool alg, int neighborhoodType) {
 	//cout << "TABU SEARCH" << endl;
 	vector < unsigned > bestRoute;
 	vector < unsigned > bestRouteGreedy;
 	int min = 0;
 
-	//int tabuIterationsToRestart = 10000;
 	int tabuIterationsToRestart = e;
-	//unsigned tabuStopTime = 30;
 	unsigned tabuStopTime = d;
 	int greedyStart = 1;
-	getInitialReduction(bestRoute, min, start);
+	getInitialGreedy(bestRoute, min, start);
+	//getInitialReduction(bestRoute, min, start);
 
 	/*
 	cout << "\nREDUKCJA Minimalna funkcja celu = " << min;
@@ -376,7 +333,7 @@ int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, 
 	for (int i = 0; i <= matrixSize; i++)
 		cout << bestRoute.at(i) << " ";
 	cout << endl << endl;
-	*/
+	//*/
 
 	vector < unsigned > currentRoute = bestRoute;
 	vector< vector<unsigned> > tabuList;
@@ -400,97 +357,138 @@ int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, 
 	Czas onboardClock;
 	onboardClock.start();
 	bool diversification = true;
-	//cout << "JESTEM TU" << endl;
+
 	while (continuing == true) {
 		intensification = false;
 		bestBalance = INT_MAX;
 		vector<unsigned> currentTabu(3, 0);
 
-		for (int i = 1; i < matrixSize - 1; i++) {
-			for (int j = i + 1; j < matrixSize; j++) {
-				currentTabu.at(2) = cadence;
+		if (neighborhoodType == 2) {
+			for (int i = 1; i < matrixSize - 1; i++) {
+				for (int j = 1; j <= matrixSize; j++) {;
+					if (i != j - 1 && i != j && i != j + 1) {
+						currentTabu.at(2) = cadence;
+						balance = 0 - TSPMatrix[currentRoute.at(i)][currentRoute.at(i + 1)];
+						balance = balance - TSPMatrix[currentRoute.at(j - 1)][currentRoute.at(j)];
+						balance = balance - TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(i)];
+						balance = balance + TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(i + 1)];
+						balance = balance + TSPMatrix[currentRoute.at(j - 1)][currentRoute.at(i)];
+						balance = balance +TSPMatrix[currentRoute.at(i)][currentRoute.at(j)];
 
-				//cout << "ZAMIENIAM " << i << " Z " << j << endl;
+						ifTabu = false;
 
-				if (i + 1 == j) {
-					balance = 0 - TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(i)];
-					balance = balance - TSPMatrix[currentRoute.at(i)][currentRoute.at(j)];
-					balance = balance - TSPMatrix[currentRoute.at(j)][currentRoute.at(j + 1)];
-					balance = balance + TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(j)];
-					balance = balance + TSPMatrix[currentRoute.at(j)][currentRoute.at(i)];
-					balance = balance + TSPMatrix[currentRoute.at(i)][currentRoute.at(j + 1)];
-					//cout << "BILANS = " << balance << endl;
-					//cout << "WYNIK = " << min+balance << endl;
-				}
-				else {
-					balance = 0 - TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(i)];
-					balance = balance - TSPMatrix[currentRoute.at(i)][currentRoute.at(i + 1)];
-					balance = balance - TSPMatrix[currentRoute.at(j - 1)][currentRoute.at(j)];
-					balance = balance - TSPMatrix[currentRoute.at(j)][currentRoute.at(j + 1)];
-					balance = balance + TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(j)];
-					balance = balance + TSPMatrix[currentRoute.at(j)][currentRoute.at(i + 1)];
-					balance = balance + TSPMatrix[currentRoute.at(j - 1)][currentRoute.at(i)];
-					balance = balance + TSPMatrix[currentRoute.at(i)][currentRoute.at(j + 1)];
-					//cout << "BILANS = " << balance << endl;
-					//cout << "WYNIK = " << min + balance << endl;
-				}
+						for (int k = 0; k < tabuList.size(); k++)
+						{
+							if (tabuList.at(k).at(0) == currentRoute.at(i) && tabuList.at(k).at(1) == currentRoute.at(j-1))
+							{
+								ifTabu = true;
+								break;
+							}
 
+						}
 
-				ifTabu = false;
+						if (ifTabu == true && actualMin + balance >= min)
+							continue;
 
-				for (int k = 0; k < tabuList.size(); k++)
-				{
-					if (tabuList.at(k).at(0) == currentRoute.at(i) && tabuList.at(k).at(1) == currentRoute.at(j))
-					{
-						ifTabu = true;
-						break;
-					}
-					if (tabuList.at(k).at(0) == currentRoute.at(j) && tabuList.at(k).at(1) == currentRoute.at(i))
-					{
-						ifTabu = true;
-						break;
+						if (balance < bestBalance) {
+							bestBalance = balance;
+							currentTabu.at(0) = currentRoute[i];
+							currentTabu.at(1) = currentRoute[j-1];
+							bestI = i;
+							bestJ = j;
+						}
 					}
 				}
-
-				// Kryterium aspiracji...
-				if (ifTabu == true && actualMin + balance >= min)
-					// ...jezeli niespelnione - pomijamy ruch
-					continue;
-
-				if (balance < bestBalance) {
-					bestBalance = balance;
-					currentTabu.at(0) = currentRoute[i];
-					currentTabu.at(1) = currentRoute[j];
-					bestI = i;
-					bestJ = j;
-				}
-
 			}
 		}
-		//cout << "Najlepszy bilans = " << bestBalance << ", to swap miedzy " << currentTabu.at(0) << " i " << currentTabu.at(1) << endl;
+		else {
+			for (int i = 1; i < matrixSize - 1; i++) {
+				for (int j = i + 1; j < matrixSize; j++) {
+					currentTabu.at(2) = cadence;
+
+					if (neighborhoodType == 0) {
+						balance = 0;
+						balance = 0 - TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(i)] - TSPMatrix[currentRoute.at(j)][currentRoute.at(j + 1)];
+						balance = balance + TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(j)] + TSPMatrix[currentRoute.at(i)][currentRoute.at(j + 1)];
+
+						for (int k = i; k < j; k++)
+							balance = balance - TSPMatrix[currentRoute.at(k)][currentRoute.at(k + 1)] + TSPMatrix[currentRoute.at(k + 1)][currentRoute.at(k)];
+					}
+					//cout << "ZAMIENIAM " << i << " Z " << j << endl;
+					if (neighborhoodType == 1) {
+						if (i + 1 == j) {
+							balance = 0 - TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(i)];
+							balance = balance - TSPMatrix[currentRoute.at(i)][currentRoute.at(j)];
+							balance = balance - TSPMatrix[currentRoute.at(j)][currentRoute.at(j + 1)];
+							balance = balance + TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(j)];
+							balance = balance + TSPMatrix[currentRoute.at(j)][currentRoute.at(i)];
+							balance = balance + TSPMatrix[currentRoute.at(i)][currentRoute.at(j + 1)];
+						}
+						else {
+							balance = 0 - TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(i)];
+							balance = balance - TSPMatrix[currentRoute.at(i)][currentRoute.at(i + 1)];
+							balance = balance - TSPMatrix[currentRoute.at(j - 1)][currentRoute.at(j)];
+							balance = balance - TSPMatrix[currentRoute.at(j)][currentRoute.at(j + 1)];
+							balance = balance + TSPMatrix[currentRoute.at(i - 1)][currentRoute.at(j)];
+							balance = balance + TSPMatrix[currentRoute.at(j)][currentRoute.at(i + 1)];
+							balance = balance + TSPMatrix[currentRoute.at(j - 1)][currentRoute.at(i)];
+							balance = balance + TSPMatrix[currentRoute.at(i)][currentRoute.at(j + 1)];
+						}
+					}
+
+
+					ifTabu = false;
+
+					for (int k = 0; k < tabuList.size(); k++)
+					{
+						if (tabuList.at(k).at(0) == currentRoute.at(i) && tabuList.at(k).at(1) == currentRoute.at(j))
+						{
+							ifTabu = true;
+							break;
+						}
+						if (tabuList.at(k).at(0) == currentRoute.at(j) && tabuList.at(k).at(1) == currentRoute.at(i))
+						{
+							ifTabu = true;
+							break;
+						}
+					}
+
+					if (ifTabu == true && actualMin + balance >= min)
+						continue;
+
+					if (balance < bestBalance) {
+						bestBalance = balance;
+						currentTabu.at(0) = currentRoute[i];
+						currentTabu.at(1) = currentRoute[j];
+						bestI = i;
+						bestJ = j;
+					}
+
+				}
+			}
+		}
 		actualMin = actualMin + bestBalance;
 
-		unsigned buffer = currentRoute.at(bestJ);
-		currentRoute.at(bestJ) = currentRoute.at(bestI);
-		currentRoute.at(bestI) = buffer;
+		if (neighborhoodType == 0) {
+			reverse(currentRoute.begin() +bestI, currentRoute.begin() +bestJ+1);
+		}
+		if (neighborhoodType == 1) {
+			unsigned buffer = currentRoute.at(bestJ);
+			currentRoute.at(bestJ) = currentRoute.at(bestI);
+			currentRoute.at(bestI) = buffer;
+		}
+		
+		if (neighborhoodType == 2) {
+			currentRoute.insert(currentRoute.begin() + bestJ, currentRoute.at(bestI));
+			if (bestJ > bestI)
+				currentRoute.erase(currentRoute.begin() + bestI);
+			else
+				currentRoute.erase(currentRoute.begin() + bestI + 1);
+
+		}
 
 
 		if (actualMin < min) {
-			if (actualMin == 1286) {
-				/*
-				cout << "AKTUALNA LISTA TABU:" << endl;
-				for (int k = 0; k < tabuList.size(); k++)
-				{
-					cout << "Kadencja " << tabuList.at(k).at(2) << " swap " << tabuList.at(k).at(0) << " i " << tabuList.at(k).at(1) << endl;
-				}
-				cout << "Iteration no. " << iterWithoutImprovementRand << endl;
-				cout << "routeToDisplayFunc " << routeToDisplayFunc << endl;
-				for (int y = 0; y < matrixSize; y++)
-					cout << routeToDisplay.at(y) << "-";
-				cout << endl;
-				*/
-	
-			}
 			iterWithoutImprovement = 0;
 			intensification = true;
 			min = actualMin;
@@ -514,21 +512,6 @@ int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, 
 
 		tabuList.push_back(currentTabu);
 
-		/*
-		cout << "AKTUALNA LISTA TABU:" << endl;
-		for (int k = 0; k < tabuList.size(); k++)
-		{
-			cout << "Kadencja " << tabuList.at(k).at(2) << " swap " << tabuList.at(k).at(0) << " i " << tabuList.at(k).at(1) << endl;
-		}
-
-
-		cout << "\nNajlepsza droga: ";
-		for (int i = 0; i <= matrixSize; i++)
-			cout << currentRoute.at(i) << " ";
-		cout << endl;
-		cout << "Min = " << actualMin << endl;
-		*/
-
 		counter++;
 		iterWithoutImprovement++;
 		iterWithoutImprovementRand++;
@@ -539,21 +522,14 @@ int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, 
 
 		if (intensification == true)
 		{
-			// Intensyfikacja przeszukiwania przez skrócenie kadencji
-			// (jezeli w ostatnim przebiegu znaleziono nowe minimum)
-			//cadence = defaultCadence / 2;
 			cadence = defaultCadence / f;
-			//cout << "Obecna " << cadence << endl;
 			intensification = false;
 		}
 
 		if (iterWithoutImprovement > tabuIterationsToRestart) {
 			if (diversification == true)
 			{
-				// W innym przypadku wlasciwa dywersyfikacja przez wygenerowanie nowego
-				// rozwiazania startowego algorytmem hybrydowym losowo-zachlannym
 				vector < unsigned > bestRouteGreedy;
-				//cout << "ponowienie" << endl;
 				actualMin = 0;
 				if (greedyStart != 0) {
 					getInitialGreedy(bestRouteGreedy, actualMin, start);
@@ -561,7 +537,7 @@ int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, 
 				}
 				else {
 					if (alg==true)
-					randomNodes=getInitialReductionAndRandom(bestRouteGreedy, actualMin, start, g);
+					getInitialReductionAndRandom(bestRouteGreedy, actualMin, start, g);
 					else
 					getInitialGreedyAndRandom(bestRouteGreedy, actualMin, start, g);
 				}
@@ -572,27 +548,8 @@ int Tabu(Node start, int matrixSize, int **TSPMatrix, int c, unsigned d, int e, 
 				iterWithoutImprovementRand = 0;
 				routeToDisplayFunc = actualMin;
 
-				//cout << "SWAP SIZE " << swaps.size() << endl;
-				/*
-				cout << "\nGREEDY droga: ";
-				for (int i = 0; i <= matrixSize; i++)
-					cout << bestRouteGreedy.at(i) << " ";
-				cout << endl;
-
-				cout << "\nGREEDY BEST Min = " << actualMin << endl;
-				cout << endl << endl;
-				*/
 			}
 		}
 	}
-	/*
-	cout << "Iteracji: " << counter;
-	cout << "\nBEST droga: ";
-	for (int i = 0; i <= matrixSize; i++)
-		cout << bestRoute.at(i) << " ";
-	cout << endl;
-	cout << "BEST Min = " << min << endl;
-	cout << endl << endl;
-	*/
 	return min;
 }

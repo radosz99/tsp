@@ -70,3 +70,9 @@ data10;Branch&Bound DF;2;ms;212
 gr17.tsp;Branch&Bound DF;11956;ms;2085
 rand;Branch&Bound DF;563;ms;429
 rand;Branch&Bound DF;13897;ms;457
+banan;BruteForce-nextpermu;68574;us;10
+banan;BruteForce-swap;9834;us;10
+banan;Branch&Bound DF;0;ms;10
+banan;BruteForce-nextpermu;65286;us;10
+br17.atsp;Dynamiczne;579;ms;39
+br17.atsp;Branch&Bound BF;53460;ms;39

@@ -245,9 +245,9 @@ int askTime() {
 
 	return odp;
 }
-void saveToFileTabu(int a, unsigned b, int c, int d, int e, bool i, int h) {
+void saveToFileTabu(int a, unsigned b, int c, int d, int e, bool i, int h, int j) {
 	ofstream plik;
 	plik.open("C:/Users/Radek/source/repos/PEA/Output/wynikiTestyTabu.csv", std::ios_base::app);
-	plik << a << ";" << b << ";" <<c << ";" << d << ";" << e<< ";" << i << ";" << h << endl;
+	plik << a << ";" << b << ";" <<c << ";" << d << ";" << e<< ";" << i << ";" << h << ";" << j << endl;
 	plik.close();
 }
