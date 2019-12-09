@@ -21,6 +21,7 @@ public:
 	void copyMatrix(int**);
 	void setMatrix(int **, int);
 	void loadInfo();
+	void loadInfoGiven(string name);
 	int getStartSize();
 	int getSize();
 	string getInstanceName();

@@ -15,8 +15,9 @@ int showMenu() {
 	cout << "8. Oblicz optymalna sciezke (branch&bound)" << endl;
 	cout << "9. Oblicz optymalna sciezke (dynamiczne programowanie)" << endl;
 	cout << "10. Oblicz (nie)optymalna sciezke (tabu search)" << endl;
-	cout << "11. TESTY AUTOMATYCZNE" << endl;
-	cout << "12. EXIT" << endl;
+	cout << "11. Oblicz (nie)optymalna sciezke (symulowane wyzarzanie)" << endl;
+	cout << "12. TESTY AUTOMATYCZNE" << endl;
+	cout << "13. EXIT" << endl;
 	cin >> ans;
 
 	return ans;

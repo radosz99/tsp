@@ -115,23 +115,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BBFunc.cpp" />
-    <ClCompile Include="BruteForceFunc.cpp" />
+    <ClCompile Include="BranchBound.cpp" />
+    <ClCompile Include="BruteForce.cpp" />
     <ClCompile Include="Czas.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Node.cpp" />
-    <ClCompile Include="DPFunc.cpp" />
-    <ClCompile Include="Tabu.cpp" />
+    <ClCompile Include="Dynamic.cpp" />
+    <ClCompile Include="LocalSearch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BBFunc.h" />
-    <ClInclude Include="BruteForceFunc.h" />
+    <ClInclude Include="BranchBound.h" />
+    <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Czas.h" />
-    <ClInclude Include="DPFunc.h" />
+    <ClInclude Include="Dynamic.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Node.h" />
-    <ClInclude Include="Tabu.h" />
+    <ClInclude Include="LocalSearch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

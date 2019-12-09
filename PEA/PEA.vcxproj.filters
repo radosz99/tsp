@@ -27,16 +27,16 @@
     <ClCompile Include="Czas.cpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClCompile>
-    <ClCompile Include="BruteForceFunc.cpp">
+    <ClCompile Include="LocalSearch.cpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClCompile>
-    <ClCompile Include="BBFunc.cpp">
+    <ClCompile Include="BranchBound.cpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClCompile>
-    <ClCompile Include="DPFunc.cpp">
+    <ClCompile Include="Dynamic.cpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClCompile>
-    <ClCompile Include="Tabu.cpp">
+    <ClCompile Include="BruteForce.cpp">
       <Filter>Pliki nagłówkowe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,16 +50,16 @@
     <ClInclude Include="Czas.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
-    <ClInclude Include="BruteForceFunc.h">
+    <ClInclude Include="LocalSearch.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
-    <ClInclude Include="BBFunc.h">
+    <ClInclude Include="BranchBound.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
-    <ClInclude Include="DPFunc.h">
+    <ClInclude Include="Dynamic.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
-    <ClInclude Include="Tabu.h">
+    <ClInclude Include="BruteForce.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
   </ItemGroup>

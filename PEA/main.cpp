@@ -13,10 +13,10 @@
 #include "Czas.h"
 #include "Node.h"
 #include <vector>
-#include "BruteForceFunc.h"
-#include "BBFunc.h"
-#include "DPFunc.h"
-#include "Tabu.h"
+#include "BruteForce.h"
+#include "BranchBound.h"
+#include "Dynamic.h"
+#include "LocalSearch.h"
 using namespace std;
 
 int main()
@@ -252,15 +252,15 @@ int main()
 
 		case 10: {
 
-			int cadenceTab[1] = { 10 };
-			int timeTab[1] = { 1 };
+			int cadenceTab[1] = { 25 };
+			int timeTab[1] = { 15 };
 			int iterTab[1] = { 5000 };
-			int divCadTab[1] = { 4 };
+			int divCadTab[1] = { 4};
 			int randNodesTab[1] = { 1 };
 			bool algTab[1] = { true };
-			int typesTab[1] = { 0 };
+			int typesTab[1] = {2 };
 
-			Tabu tabu;
+			LocalSearch tabu;
 
 			for (int a = 0; a < sizeof(cadenceTab) / sizeof(*cadenceTab); a++)
 				for (int b = 0; b < sizeof(timeTab) / sizeof(*timeTab); b++)
@@ -269,7 +269,7 @@ int main()
 							for (int e = 0; e < sizeof(randNodesTab) / sizeof(*randNodesTab); e++)
 								for (int f = 0; f < sizeof(algTab) / sizeof(*algTab); f++)
 									for (int g = 0; g < sizeof(typesTab) / sizeof(*typesTab); g++)
-										for (int repeat = 0; repeat < 2; repeat++) {
+										for (int repeat = 0; repeat < 1; repeat++) {
 											tabu.setSettingsTabu(cadenceTab[a], timeTab[b], iterTab[c], divCadTab[d], randNodesTab[e], algTab[f], typesTab[g]);
 											tabu.TabuMechanism(matrixSize, TSPMatrix);
 
@@ -278,12 +278,60 @@ int main()
 											cout << "Sciezka: ";
 											tabu.displayRoute();
 											//*/
-											tabu.saveToFileTabu();
+											tabu.saveToFileTabu(instanceName);
 										}
 			break;
 		}
 
 		case 11: {
+			
+			string matrixes[1] = {"ftv47.txt" };
+			double initTemp[2] = { 100.0,1000.0 };
+			double minTemp[3] = { 0.1,0.01,0.001 };
+			int iter[3] = { 10,100,1000 };
+			double cooling[4] = { 0.85,0.90,0.95,0.99 };
+			bool alg[1]= { true };
+			int neigh[3] = {0,1, 2 };
+		
+
+			LocalSearch sa;
+
+			///*
+			for (int x = 0; x < sizeof(matrixes) / sizeof(*matrixes); x++) {
+				Node start;
+				start.loadInfoGiven(matrixes[x]);
+				matrixSize = start.getStartSize();
+				instanceName = start.getInstanceName();
+				TSPMatrix = new int *[matrixSize];
+				for (int i = 0; i < matrixSize; i++)
+					TSPMatrix[i] = new int[matrixSize];
+				start.copyMatrix(TSPMatrix);
+			//*/
+
+				for (int a = 0; a < sizeof(initTemp) / sizeof(*initTemp); a++) 
+					for (int b = 0; b < sizeof(minTemp) / sizeof(*minTemp); b++)
+						for (int c = 0; c < sizeof(iter) / sizeof(*iter); c++)
+							for (int d = 0; d < sizeof(cooling) / sizeof(*cooling); d++)
+								for (int e = 0; e < sizeof(alg) / sizeof(*alg); e++)
+									for (int f = 0; f < sizeof(neigh) / sizeof(*neigh); f++) {
+										sa.setSettingSA(initTemp[a], minTemp[b], iter[c], cooling[d], alg[e], neigh[f]);
+										for (int repeat = 0; repeat < 8; repeat++) {
+											sa.SimulatedAnnealingMechanism(matrixSize, TSPMatrix);
+											cout << "Optimum = " << sa.getOptMin() << endl;
+											/*
+											cout << "Sciezka: ";
+											tabu.displayRoute();
+											//*/
+											sa.saveToFileSA(instanceName);
+										}
+									}
+			}
+
+			break;
+		}
+
+
+		case 12: {
 			int odp;
 			int odp1, valMin, valMax, instSize, instSizeMin;
 			int **matrix = 0;
@@ -536,11 +584,11 @@ int main()
 			break;
 		}
 
-		case 12:
+		case 13:
 			system("pause");
 			break;
 		}
-	} while (answer != 12);
+	} while (answer != 13);
 
 	return 0;
 }

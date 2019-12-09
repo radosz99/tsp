@@ -166,6 +166,8 @@ void Node::generateRandMatrix() {
 	cout << "Rozmiar problemu: ";
 	cin >> size;
 	instanceName = "rand";
+	instanceName += to_string(size);
+	cout << instanceName << endl;
 	startMatrixSize = size;
 	cout << "Dolna granica wartosci krawedzi: ";
 	cin >> valMin;
@@ -185,6 +187,41 @@ void Node::generateRandMatrix() {
 		}
 	}
 }
+
+void Node::loadInfoGiven(string name) {
+
+	ifstream plik;
+	bool ifOpen = false;
+
+	while (ifOpen == false) {
+
+		plik.open("C:/Users/Radek/source/repos/PEA/Input/" + name);
+
+		if (plik.good() == true)
+		{
+			//cout << "\nUzyskano dostep do pliku!" << std::endl;
+			ifOpen = true;
+			plik >> instanceName;
+			plik >> startMatrixSize;
+
+			startMatrix = new int *[startMatrixSize];
+			for (int i = 0; i < startMatrixSize; i++)  // dla ka¿dego wiersza macierzy:
+				startMatrix[i] = new int[startMatrixSize];  // utworzenie i-tej tablicy typu int
+
+			for (int i = 0; i < startMatrixSize; i++) {
+				for (int j = 0; j < startMatrixSize; j++) {
+					plik >> startMatrix[i][j];
+					//cout << startMatrix[i][j] << " ";
+				}
+				//cout << endl;
+			}
+
+		}
+		//else cout << "Dostep do pliku zostal zabroniony!" << endl;
+	}
+	plik.close();
+}
+
 
 
 
