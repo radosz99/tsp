@@ -252,13 +252,15 @@ int main()
 
 		case 10: {
 
-			int cadenceTab[1] = { 25 };
-			int timeTab[1] = { 15 };
-			int iterTab[1] = { 5000 };
-			int divCadTab[1] = { 4};
-			int randNodesTab[1] = { 1 };
-			bool algTab[1] = { true };
-			int typesTab[1] = {2 };
+			//-----tabele z roznymi wartosciami parametrow do testow---
+
+			int cadenceTab[1] = { 22 }; //kadencja
+			int timeTab[1] = { 45};//czas wykonania algorytmu
+			int iterTab[1] = { 5000 };//limit iteracji bez poprawy, po osiagnieciu ktorego jest generowana nowa sciezka
+			int divCadTab[1] = { 4}; //dzielnik kadencji (intensyfikacja) w przypadku znalezienia globalnie najlepszego rozwiazania
+			int randNodesTab[1] = { 2 };//liczba poczatkowych losowych wierzcholkow przy generowaniu nowej sciezki
+			bool algTab[1] = { false };//rodzaj algorytmu generujacego nowa sciezke
+			int typesTab[1] = {1};//rodzaj sasiedztwa
 
 			LocalSearch tabu;
 
@@ -269,7 +271,7 @@ int main()
 							for (int e = 0; e < sizeof(randNodesTab) / sizeof(*randNodesTab); e++)
 								for (int f = 0; f < sizeof(algTab) / sizeof(*algTab); f++)
 									for (int g = 0; g < sizeof(typesTab) / sizeof(*typesTab); g++)
-										for (int repeat = 0; repeat < 1; repeat++) {
+										for (int repeat = 0; repeat < 10; repeat++) {
 											tabu.setSettingsTabu(cadenceTab[a], timeTab[b], iterTab[c], divCadTab[d], randNodesTab[e], algTab[f], typesTab[g]);
 											tabu.TabuMechanism(matrixSize, TSPMatrix);
 
@@ -280,24 +282,28 @@ int main()
 											//*/
 											tabu.saveToFileTabu(instanceName);
 										}
+			cout << endl;
+			cout << "Testy wykonane, wyniki zapisane do Output/wynikiTestyTabu.csv" << endl;
+			cout << endl;
 			break;
 		}
 
 		case 11: {
 			
-			string matrixes[1] = {"ftv47.txt" };
-			double initTemp[2] = { 100.0,1000.0 };
-			double minTemp[3] = { 0.1,0.01,0.001 };
-			int iter[3] = { 10,100,1000 };
-			double cooling[4] = { 0.85,0.90,0.95,0.99 };
-			bool alg[1]= { true };
-			int neigh[3] = {0,1, 2 };
+			string matrixes[1] = {"ftv47.txt" }; //nazwy plikow txt z instancjami do testow
+			double initTemp[2] = { 100.0,1000.0 }; //poczatkowe temperatury
+			double minTemp[3] = { 0.1,0.01,0.001 }; //minimalne temperatury
+			int iter[3] = { 10,100,1000 };//liczba iteracji przypadajaca na jedna temperature
+			double cooling[4] = { 0.85,0.90,0.95,0.99 };//wspolczynnik chlodzenia
+			bool alg[1]= { true };//rodzaj algorytmu generujacego poczatkowa sciezke
+			int neigh[3] = {0,1, 2 }; //rodzaj sasiedztwa
 		
 
 			LocalSearch sa;
 
 			///*
 			for (int x = 0; x < sizeof(matrixes) / sizeof(*matrixes); x++) {
+				//dla testow wielu macierzy na raz
 				Node start;
 				start.loadInfoGiven(matrixes[x]);
 				matrixSize = start.getStartSize();
@@ -315,17 +321,20 @@ int main()
 								for (int e = 0; e < sizeof(alg) / sizeof(*alg); e++)
 									for (int f = 0; f < sizeof(neigh) / sizeof(*neigh); f++) {
 										sa.setSettingSA(initTemp[a], minTemp[b], iter[c], cooling[d], alg[e], neigh[f]);
-										for (int repeat = 0; repeat < 8; repeat++) {
+										for (int repeat = 0; repeat < 8; repeat++) { //liczba powtorzen dla jednej kombinacji parametrow
 											sa.SimulatedAnnealingMechanism(matrixSize, TSPMatrix);
 											cout << "Optimum = " << sa.getOptMin() << endl;
 											/*
 											cout << "Sciezka: ";
-											tabu.displayRoute();
+											sa.displayRoute();
 											//*/
 											sa.saveToFileSA(instanceName);
 										}
 									}
 			}
+			cout << endl;
+			cout << "Testy wykonane, wyniki zapisane do Output/wynikiTestySA.csv" << endl;
+			cout << endl;
 
 			break;
 		}

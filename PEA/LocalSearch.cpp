@@ -465,11 +465,8 @@ void LocalSearch::TabuMechanism(int a, int **TSPMatrix) {
 		if (iterWithoutImprovement > iterationsLimit) {
 			if (diversification == true)
 			{
-				/*
-				for (int i = 0; i < tabuList.size(); i++) {
-					tabuList.erase(tabuList.begin()+i);
-					i = i - 1;
-				}
+				///*
+				tabuList.clear();
 				// */
 				vector < unsigned > route;
 
