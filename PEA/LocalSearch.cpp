@@ -716,6 +716,7 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 		optMin = getInitialGreedy(bestRoute);
 	}
 
+	int counter = 0;
 	//cout << "optMin = " << optMin << endl;
 	currentRoute = bestRoute;
 	//displayRoute(currentRoute);
@@ -726,13 +727,13 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 	double temperature = initialTemperature;
 	currentOptMin = optMin;
 	int balance;
+	vector<unsigned> shuffled;
 
 	do
 	{
 		for (auto i = 0; i < iterationsLimit; i++)
 		{
-			vector<unsigned> shuffled = currentRoute;
-			
+			shuffled = currentRoute;
 			balance = reshufflePath(shuffled);
 			currentCost = currentCost + balance;
 			
@@ -751,9 +752,11 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 			}
 			iterations++;
 		}
-		static_cast<double>(temperature = temperature * cooling);
+		static_cast<double>(temperature = initialTemperature/(1+0.1*counter));
+		//cout << "temperature = " << temperature << endl;
+		counter++;
 	} while (temperature>minTemperature);
-
+	//cout << "Iteracje = " << counter << endl;
 	onboardClock.stop();
 	time = onboardClock.read();
 	bestRoute = currentRoute;
@@ -763,6 +766,9 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 		delete[]matrix[i];
 	}
 	delete[]matrix;
+
+	shuffled.clear();
+	vector<unsigned>().swap(shuffled);
 }
 
 int LocalSearch::reshufflePath(vector <unsigned>& shuffled) {
