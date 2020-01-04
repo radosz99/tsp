@@ -41,6 +41,11 @@ void permute(int *a, int *b, int l, int r, int &min, int size, int **matrix)
 	}
 }
 
+void showVector(vector <unsigned> vect) {
+	for (int j = 0; j < vect.size(); j++)
+		cout << vect.at(j) << " ";
+	cout << endl;
+}
 
 int calculate(int* permut, int size, int **matrix) {
 

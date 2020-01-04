@@ -53,7 +53,6 @@ int LocalSearch::calculateCost(vector <unsigned> a) {
 		sum += matrix[i][j];
 		//cout << matrix[i][j] << " ";
 	}
-	cout << endl;
 	return sum;
 }
 
@@ -84,7 +83,7 @@ void LocalSearch::displayRoute(vector <unsigned> a) {
 	cout << endl;
 
 }
-int LocalSearch::getInitialReduction() {
+int LocalSearch::getInitialReduction(vector <unsigned>& route) {
 	int localMin = 0;
 	int **macierz = new int *[matrixSize]; //macierz do operacji
 	int **mainMacierz = new int *[matrixSize]; //ta sama macierz, ale do odtwarzania
@@ -140,9 +139,9 @@ int LocalSearch::getInitialReduction() {
 
 	}
 	for (int i = 0; i < matrixSize; i++)
-		bestRoute.push_back(routeTab[i]);
+		route.push_back(routeTab[i]);
 
-	bestRoute.push_back(0);
+	route.push_back(0);
 	delete[]routeTab;
 	delete[]visitedTab;
 
@@ -247,7 +246,6 @@ int LocalSearch::getInitialReductionAndRandom(vector < unsigned >&bestTab) {
 }
 
 int LocalSearch::getInitialGreedy(vector < unsigned >&bestTab) {
-
 	int localMin = 0;
 	int bestMin, tempBest = 0, oldTempBest = 0;
 	int *visitedTab = new int[matrixSize];
@@ -383,11 +381,13 @@ void LocalSearch::TabuMechanism(int a, int **TSPMatrix) {
 
 	int greedyStart = 1;
 	///*
-	optMin = getInitialReduction();
-	currentRoute = bestRoute;
+	vector < unsigned > route;
+	optMin = getInitialReduction(route);
+	bestRoute = route;
+	vector < unsigned > currentRoute = bestRoute;
 	//*/
 	/*
-	vector < unsigned > route;
+	
 	optMin = getInitialGreedy(route);
 	bestRoute = route;
 	currentRoute = route;
@@ -410,24 +410,24 @@ void LocalSearch::TabuMechanism(int a, int **TSPMatrix) {
 		currentTabu.at(2) = currentTabuCadence;
 
 		if (neighborhoodType == 0) {
-			bestBalance = getBestNeighborhoodReverse(bestI, bestJ);
+			bestBalance = getBestNeighborhoodReverse(bestI, bestJ, currentRoute);
 			currentTabu.at(0) = currentRoute[bestI];
 			currentTabu.at(1) = currentRoute[bestJ];
-			reverseVector(bestI, bestJ);
+			reverseVector(bestI, bestJ, currentRoute);
 		}
 
 		if (neighborhoodType == 1) {
-			bestBalance = getBestNeighborhoodSwap(bestI,bestJ);
+			bestBalance = getBestNeighborhoodSwap(bestI,bestJ, currentRoute);
 			currentTabu.at(0) = currentRoute[bestI];
 			currentTabu.at(1) = currentRoute[bestJ];
-			swapVector(bestI, bestJ);
+			swapVector(bestI, bestJ, currentRoute);
 		}
 
 		if (neighborhoodType == 2) {
-			bestBalance = getBestNeighborhoodInsert(bestI, bestJ);
+			bestBalance = getBestNeighborhoodInsert(bestI, bestJ, currentRoute);
 			currentTabu.at(0) = currentRoute[bestI];
 			currentTabu.at(1) = currentRoute[bestJ - 1];
-			insertVector(bestI, bestJ);
+			insertVector(bestI, bestJ, currentRoute);
 		}
 
 		currentOptMin = currentOptMin + bestBalance;
@@ -493,10 +493,10 @@ void LocalSearch::TabuMechanism(int a, int **TSPMatrix) {
 			}
 		}
 	}
-	clearParameters();
+	clearParameters(currentRoute);
 }
 
-int LocalSearch::getBestNeighborhoodInsert(int &bestI, int &bestJ) {
+int LocalSearch::getBestNeighborhoodInsert(int &bestI, int &bestJ, vector <unsigned> currentRoute) {
 	int bestBalance = INT_MAX;
 	int balance;
 	bool ifTabu;
@@ -507,7 +507,7 @@ int LocalSearch::getBestNeighborhoodInsert(int &bestI, int &bestJ) {
 
 			if (i != j - 1 && i != j && i != j + 1) {
 
-				calculateInsert(i, j, balance);
+				calculateInsert(i, j, balance, currentRoute);
 
 				ifTabu = false;
 
@@ -535,7 +535,7 @@ int LocalSearch::getBestNeighborhoodInsert(int &bestI, int &bestJ) {
 	return bestBalance;
 }
 
-void LocalSearch::insertVector(int a, int b) {
+void LocalSearch::insertVector(int a, int b, vector <unsigned>& currentRoute) {
 	currentRoute.insert(currentRoute.begin() + b, currentRoute.at(a));
 	if (b > a)
 		currentRoute.erase(currentRoute.begin() + a);
@@ -543,7 +543,7 @@ void LocalSearch::insertVector(int a, int b) {
 		currentRoute.erase(currentRoute.begin() + a + 1);
 }
 
-void LocalSearch::calculateInsert(int i, int j, int &balance) {
+void LocalSearch::calculateInsert(int i, int j, int &balance, vector <unsigned> currentRoute) {
 	balance = 0 - matrix[currentRoute.at(i)][currentRoute.at(i + 1)];
 	balance = balance - matrix[currentRoute.at(j - 1)][currentRoute.at(j)];
 	balance = balance - matrix[currentRoute.at(i - 1)][currentRoute.at(i)];
@@ -552,7 +552,7 @@ void LocalSearch::calculateInsert(int i, int j, int &balance) {
 	balance = balance + matrix[currentRoute.at(i)][currentRoute.at(j)];
 }
 
-int LocalSearch::getBestNeighborhoodReverse(int &bestI, int &bestJ) {
+int LocalSearch::getBestNeighborhoodReverse(int &bestI, int &bestJ, vector <unsigned> currentRoute) {
 	int bestBalance = INT_MAX;
 	int balance;
 	bool ifTabu;
@@ -562,7 +562,7 @@ int LocalSearch::getBestNeighborhoodReverse(int &bestI, int &bestJ) {
 	for (int i = 1; i < matrixSize - 1; i++) {
 		for (int j = i + 1; j < matrixSize; j++) {
 
-			calculateReverse(i, j, balance);
+			calculateReverse(i, j, balance,currentRoute);
 
 			ifTabu = false;
 
@@ -595,11 +595,11 @@ int LocalSearch::getBestNeighborhoodReverse(int &bestI, int &bestJ) {
 	return bestBalance;
 }
 
-void LocalSearch::reverseVector(int a, int b) {
+void LocalSearch::reverseVector(int a, int b, vector <unsigned>& currentRoute) {
 	reverse(currentRoute.begin() + a, currentRoute.begin() + b + 1);
 }
 
-void LocalSearch::calculateReverse(int i, int j, int &balance) {
+void LocalSearch::calculateReverse(int i, int j, int &balance, vector <unsigned> currentRoute) {
 
 	balance = 0 - matrix[currentRoute.at(i - 1)][currentRoute.at(i)] - matrix[currentRoute.at(j)][currentRoute.at(j + 1)];
 	balance = balance + matrix[currentRoute.at(i - 1)][currentRoute.at(j)] + matrix[currentRoute.at(i)][currentRoute.at(j + 1)];
@@ -610,7 +610,7 @@ void LocalSearch::calculateReverse(int i, int j, int &balance) {
 }
 
 
-int LocalSearch::getBestNeighborhoodSwap(int &bestI, int &bestJ) {
+int LocalSearch::getBestNeighborhoodSwap(int &bestI, int &bestJ, vector <unsigned> currentRoute) {
 	int bestBalance = INT_MAX;
 	int balance;
 	bool ifTabu;
@@ -621,7 +621,7 @@ int LocalSearch::getBestNeighborhoodSwap(int &bestI, int &bestJ) {
 	for (int i = 1; i < matrixSize - 1; i++) {
 		for (int j = i + 1; j < matrixSize; j++) {
 
-			calculateSwap(i, j, balance);
+			calculateSwap(i, j, balance, currentRoute);
 
 			ifTabu = false;
 
@@ -654,14 +654,13 @@ int LocalSearch::getBestNeighborhoodSwap(int &bestI, int &bestJ) {
 	return bestBalance;
 }
 
-void LocalSearch::swapVector(int a, int b) {
+void LocalSearch::swapVector(int a, int b, vector <unsigned>& currentRoute) {
 	unsigned buffer = currentRoute.at(b);
 	currentRoute.at(b) = currentRoute.at(a);
 	currentRoute.at(a) = buffer;
 }
 
-void LocalSearch::calculateSwap(int i, int j, int &balance) {
-
+void LocalSearch::calculateSwap(int i, int j, int &balance, vector <unsigned> currentRoute) {
 	if (i + 1 == j) {
 		balance = 0 - matrix[currentRoute.at(i - 1)][currentRoute.at(i)];
 		balance = balance - matrix[currentRoute.at(i)][currentRoute.at(j)];
@@ -701,6 +700,7 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 	iterations = 0;
 	optMin = 0;
 	currentOptMin = 0;
+	//int optimum = INT_MAX;
 	matrixSize = a;
 	matrix = new int *[matrixSize];
 	for (int i = 0; i < matrixSize; i++) {
@@ -708,9 +708,11 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 		for (int j = 0; j < matrixSize; j++)
 			matrix[i][j] = TSPMatrix[i][j];
 	}
+	vector <unsigned> route;
 
 	if (algorithmType == 0) {
-		optMin = getInitialReduction();
+		optMin = getInitialReduction(bestRoute);
+
 	}
 	else if (algorithmType==1) {
 		optMin = getInitialGreedy(bestRoute);
@@ -718,7 +720,7 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 
 	int counter = 0;
 	//cout << "optMin = " << optMin << endl;
-	currentRoute = bestRoute;
+	vector <unsigned> currentRoute = bestRoute;
 	//displayRoute(currentRoute);
 	Czas onboardClock;
 	int currentCost = optMin;
@@ -734,13 +736,15 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 		for (auto i = 0; i < iterationsLimit; i++)
 		{
 			shuffled = currentRoute;
-			balance = reshufflePath(shuffled);
+			balance = reshufflePath(shuffled, currentRoute);
 			currentCost = currentCost + balance;
 			
 			if (currentCost < currentOptMin)
 			{
 				currentRoute = shuffled;
 				currentOptMin = currentCost;
+				//if (currentOptMin < optimum)
+				//	optimum = currentOptMin;
 			}
 			else if (static_cast<float>(rand()) / RAND_MAX < calculateProbability(currentOptMin, currentCost, temperature)) // Metropolis condition
 			{
@@ -761,17 +765,18 @@ void LocalSearch::SimulatedAnnealingMechanism(int a, int **TSPMatrix) {
 	time = onboardClock.read();
 	bestRoute = currentRoute;
 	optMin = currentOptMin;
-	clearParameters();
+	clearParameters(currentRoute);
 	for (int i = 0; i < matrixSize; i++) {
 		delete[]matrix[i];
 	}
 	delete[]matrix;
 
+	//cout << "rzeczywiste: " << optimum << endl;
 	shuffled.clear();
 	vector<unsigned>().swap(shuffled);
 }
 
-int LocalSearch::reshufflePath(vector <unsigned>& shuffled) {
+int LocalSearch::reshufflePath(vector <unsigned>& shuffled, vector <unsigned>currentRoute) {
 
 	random_device randomSrc;
 	default_random_engine randomGen(randomSrc());
@@ -784,7 +789,7 @@ int LocalSearch::reshufflePath(vector <unsigned>& shuffled) {
 			j = nodeRand(randomGen);
 		} while (i == j || j < i);
 
-		calculateSwap(i, j, balance);
+		calculateSwap(i, j, balance, currentRoute);
 
 		unsigned buffer = shuffled.at(j);
 		shuffled.at(j) = shuffled.at(i);
@@ -797,7 +802,7 @@ int LocalSearch::reshufflePath(vector <unsigned>& shuffled) {
 			j = nodeRand(randomGen);
 		} while (i == j - 1 || i == j || i == j + 1);
 
-		calculateInsert(i, j, balance);
+		calculateInsert(i, j, balance, currentRoute);
 
 		shuffled.insert(shuffled.begin() + j, shuffled.at(i));
 		if (j > i)
@@ -812,7 +817,7 @@ int LocalSearch::reshufflePath(vector <unsigned>& shuffled) {
 			j = nodeRand(randomGen);
 		} while (i == j || j < i);
 
-		calculateReverse(i, j, balance);
+		calculateReverse(i, j, balance, currentRoute);
 
 		reverse(shuffled.begin() + i, shuffled.begin() + j + 1);
 
@@ -831,7 +836,7 @@ int LocalSearch::calculateProbability(int newCost, int oldCost, double temperatu
 	return result;
 }
 
-void LocalSearch::clearParameters() {
+void LocalSearch::clearParameters(vector <unsigned> currentRoute) {
 	bestRoute.clear();
 	currentRoute.clear();
 }

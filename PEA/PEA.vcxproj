@@ -118,6 +118,7 @@
     <ClCompile Include="BranchBound.cpp" />
     <ClCompile Include="BruteForce.cpp" />
     <ClCompile Include="Czas.cpp" />
+    <ClCompile Include="Genetic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -129,6 +130,7 @@
     <ClInclude Include="BruteForce.h" />
     <ClInclude Include="Czas.h" />
     <ClInclude Include="Dynamic.h" />
+    <ClInclude Include="Genetic.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="LocalSearch.h" />

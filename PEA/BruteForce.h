@@ -25,6 +25,6 @@ double getTime(Czas czas, int odp);
 void saveToFileRand(string a, int k, int i, string b, double c, string g, int d, int e, int f);
 int askTime();
 void saveToFileTabu(int a, unsigned b, int c, int d, int e, bool i,int h, int j);
-
+void showVector(vector <unsigned> vect);
 #endif#pragma once
 #pragma once

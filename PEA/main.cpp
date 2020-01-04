@@ -17,6 +17,7 @@
 #include "BranchBound.h"
 #include "Dynamic.h"
 #include "LocalSearch.h"
+#include "Genetic.h"
 using namespace std;
 
 int main()
@@ -255,7 +256,7 @@ int main()
 			//-----tabele z roznymi wartosciami parametrow do testow---
 
 			int cadenceTab[1] = { 45 }; //kadencja
-			int timeTab[1] = {60 };//czas wykonania algorytmu
+			int timeTab[1] = {2 };//czas wykonania algorytmu
 			int iterTab[1] = { 5000 };//limit iteracji bez poprawy, po osiagnieciu ktorego jest generowana nowa sciezka
 			int divCadTab[1] = { 4}; //dzielnik kadencji (intensyfikacja) w przypadku znalezienia globalnie najlepszego rozwiazania
 			int randNodesTab[1] = {2 };//liczba poczatkowych losowych wierzcholkow przy generowaniu nowej sciezki
@@ -294,9 +295,9 @@ int main()
 
 		case 11: {
 			
-			string matrixes[1] = {"data34.txt" }; //nazwy plikow txt z instancjami do testow
+			//string matrixes[1] = {"data34.txt" }; //nazwy plikow txt z instancjami do testow
 			double initTemp[1] = {100.0}; //poczatkowe temperatury
-			double minTemp[2] = { 0.1 }; //minimalne temperatury
+			double minTemp[1] = { 0.1 }; //minimalne temperatury
 			int iter[1] = { 100 };//liczba iteracji przypadajaca na jedna temperature
 			double cooling[1] = { 0.999};//wspolczynnik chlodzenia
 			bool alg[1]= { false};//rodzaj algorytmu generujacego poczatkowa sciezke
@@ -305,8 +306,9 @@ int main()
 
 			LocalSearch sa;
 
+			/* dla testow wielu macierzy na raz
 			for (int x = 0; x < sizeof(matrixes) / sizeof(*matrixes); x++) {
-				//dla testow wielu macierzy na raz
+				
 				Node start;
 				start.loadInfoGiven(matrixes[x]);
 				matrixSize = start.getStartSize();
@@ -315,7 +317,7 @@ int main()
 				for (int i = 0; i < matrixSize; i++)
 					TSPMatrix[i] = new int[matrixSize];
 				start.copyMatrix(TSPMatrix);
-			
+			*/
 
 				for (int a = 0; a < sizeof(initTemp) / sizeof(*initTemp); a++) 
 					for (int b = 0; b < sizeof(minTemp) / sizeof(*minTemp); b++)
@@ -324,17 +326,13 @@ int main()
 								for (int e = 0; e < sizeof(alg) / sizeof(*alg); e++)
 									for (int f = 0; f < sizeof(neigh) / sizeof(*neigh); f++) {
 										sa.setSettingSA(initTemp[a], minTemp[b], iter[c], cooling[d], alg[e], neigh[f]);
-										for (int repeat = 0; repeat < 100; repeat++) { //liczba powtorzen dla jednej kombinacji parametrow
+										for (int repeat = 0; repeat < 10; repeat++) { //liczba powtorzen dla jednej kombinacji parametrow
 											sa.SimulatedAnnealingMechanism(matrixSize, TSPMatrix);
 											cout << "Optimum = " << sa.getOptMin() << endl;
-											/*
-											cout << "Sciezka: ";
-											sa.displayRoute();
-											//*/
-											//sa.saveToFileSA(instanceName);
+											sa.saveToFileSA(instanceName);
 										}
 									}
-			}
+			//}
 			
 			cout << endl;
 			cout << "Testy wykonane, wyniki zapisane do Output/wynikiTestySA.csv" << endl;
@@ -343,8 +341,48 @@ int main()
 			break;
 		}
 
-
 		case 12: {
+
+			int populationSize[1] = { 100 }; //rozmiary populacji
+			int amountRandomNodes[1] = { 2 }; //ilosc losowych wierzcholkow
+			double mutationProb[1] = { 0.15 };//prawd. mutacji
+			int crossoverType[1] = { 7 };//rodzaj krzyzowania
+			int selectionType[1] = { 2 };//rodzaj selekcji
+			int mutationType[1] = { 2 }; //rodzaj mutacji
+			int iterations[1] = { 100 }; //dlugosc trwania populacji
+			int elitismDivider[1] = { 4 }; //dlugosc trwania populacji
+
+
+			//populationSize, amountRandomNodes,mutationProb,crossoverType,selectionType,mutationType,iterations
+
+			for (int a = 0; a < sizeof(populationSize) / sizeof(*populationSize); a++)
+				for (int b = 0; b < sizeof(amountRandomNodes) / sizeof(*amountRandomNodes); b++)
+					for (int c = 0; c < sizeof(mutationProb) / sizeof(*mutationProb); c++)
+						for (int d = 0; d < sizeof(crossoverType) / sizeof(*crossoverType); d++)
+							for (int e = 0; e < sizeof(selectionType) / sizeof(*selectionType); e++)
+								for (int f = 0; f < sizeof(mutationType) / sizeof(*mutationType); f++)
+									for (int g= 0; g < sizeof(iterations) / sizeof(*iterations); g++)
+										for (int h = 0; h < sizeof(elitismDivider) / sizeof(*elitismDivider); h++) {
+											for (int repeat = 0; repeat < 50; repeat++) {
+												Genetic gen;
+												gen.setSettingsGenetic(populationSize[a], amountRandomNodes[b], mutationProb[c], crossoverType[d], selectionType[e], mutationType[f], iterations[g], elitismDivider[h]);
+												gen.GeneticMechanism(matrixSize, TSPMatrix);
+												cout << "Optimum = " << gen.getOptMin() << endl;
+												//cout << "Sciezka: ";
+												//gen.displayBestRoute();
+										}
+									}
+			
+
+			cout << endl;
+			cout << "Testy wykonane, wyniki zapisane do Output/wynikiTestyGenetic.csv" << endl;
+			cout << endl;
+
+			break;
+		}
+
+
+		case 13: {
 			int odp;
 			int odp1, valMin, valMax, instSize, instSizeMin;
 			int **matrix = 0;
@@ -597,11 +635,11 @@ int main()
 			break;
 		}
 
-		case 13:
+		case 14:
 			system("pause");
 			break;
 		}
-	} while (answer != 13);
+	} while (answer != 14);
 
 	return 0;
 }
