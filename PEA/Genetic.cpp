@@ -64,13 +64,13 @@ void Genetic::GeneticMechanism(int a, int **TSPMatrix) {
 		while(newPopulation.size()!=populationSize){
 			doSelection(parent1, parent2,population,fitnesses);
 			doCO(parent1, parent2, offspring1, offspring2);
-			offspring1 = parent1;
-			offspring2=parent2;
 			mutation(offspring1);
+			memeticImprovement(offspring1);
 			newPopulation.push_back(offspring1);
 
 			if (crossoverType != 6 && crossoverType != 7) {
 				mutation(offspring2);
+				memeticImprovement(offspring2);
 				newPopulation.push_back(offspring2);
 			}
 		}
@@ -199,37 +199,86 @@ void Genetic::mutation(vector <unsigned>& ind) {
 	random_device randomSrc;
 	default_random_engine randomGen(randomSrc());
 	uniform_int_distribution<> nodeRand(1, matrixSize - 1);
+	int bestI = 0;
+	int bestJ = 0;
+	int bestBalance = INT_MAX;
+
 
 	int i, j, balance = 0;
 	if (static_cast<float>(rand()) / RAND_MAX < mutationProb) {
-		if (mutationType == 0 || mutationType == 2) {
-			do {
-				i = nodeRand(randomGen);
-				j = nodeRand(randomGen);
-			} while (i == j || j < i);
+		if (mutationType == 0) {
+			for (int k = 0; k < 2; k++) { //po 2 losowania, wybierane lepsze
+				do {
+					i = nodeRand(randomGen);
+					j = nodeRand(randomGen);
+				} while (i == j || j < i);
 
-			if (mutationType == 0) {
 				LocalSearch::calculateSwap(i, j, balance, ind);
-				LocalSearch::swapVector(i, j, ind);
+				if (balance < bestBalance) {
+					bestI = i;
+					bestJ = j;
+					bestBalance = balance;
+				}
 			}
-
-			else {
-				LocalSearch::calculateReverse(i, j, balance, ind);
-				LocalSearch::reverseVector(i, j, ind);
-			}
+			LocalSearch::swapVector(bestI, bestJ, ind);
 		}
 
-		else if (mutationType == 1) {
-			do {
-				i = nodeRand(randomGen);
-				j = nodeRand(randomGen);
-			} while (i == j - 1 || i == j || i == j + 1);
+		else if (mutationType == 2) {
+			for (int k = 0; k < 2; k++) {
+				do {
+					i = nodeRand(randomGen);
+					j = nodeRand(randomGen);
+				} while (i == j || j < i);
 
-			LocalSearch::calculateInsert(i, j, balance, ind);
-			LocalSearch::insertVector(i, j, ind);
+				LocalSearch::calculateReverse(i, j, balance, ind);
+				if (balance < bestBalance) {
+					bestI = i;
+					bestJ = j;
+					bestBalance = balance;
+				}
+			}
+
+			LocalSearch::reverseVector(bestI, bestJ, ind);
+		}
+
+
+		else if (mutationType == 1) {
+			for (int k = 0; k < 2; k++) {
+				do {
+					i = nodeRand(randomGen);
+					j = nodeRand(randomGen);
+				} while (i == j - 1 || i == j || i == j + 1);
+
+				LocalSearch::calculateInsert(i, j, balance, ind);
+				if (balance < bestBalance) {
+					bestI = i;
+					bestJ = j;
+					bestBalance = balance;
+				}
+			}
+			LocalSearch::insertVector(bestI, bestJ, ind);
 		}
 
 		ind.at(matrixSize+1) += balance;
+	}
+}
+
+void Genetic::memeticImprovement(vector <unsigned>& ind) {
+	int bestBalance, bestI = 0, bestJ = 0;
+
+	if (mutationType == 0) {
+		bestBalance = getBestNeighborhoodSwap(bestI, bestJ, ind);
+		swapVector(bestI, bestJ, ind);
+	}
+
+	if (mutationType == 1) {
+		bestBalance = getBestNeighborhoodInsert(bestI, bestJ, ind);
+		insertVector(bestI, bestJ, ind);
+	}
+
+	if (mutationType == 2) {
+		bestBalance = getBestNeighborhoodReverse(bestI, bestJ, ind);
+		reverseVector(bestI, bestJ, ind);
 	}
 }
 

@@ -508,7 +508,6 @@ int LocalSearch::getBestNeighborhoodInsert(int &bestI, int &bestJ, vector <unsig
 			if (i != j - 1 && i != j && i != j + 1) {
 
 				calculateInsert(i, j, balance, currentRoute);
-
 				ifTabu = false;
 
 				for (int k = 0; k < tabuList.size(); k++)
@@ -520,9 +519,9 @@ int LocalSearch::getBestNeighborhoodInsert(int &bestI, int &bestJ, vector <unsig
 					}
 				}
 
-				if (ifTabu == true && currentOptMin + balance >= optMin)
+				if (ifTabu == true && currentOptMin + balance >= optMin) 
 					continue;
-
+				
 				if (balance < bestBalance) {
 					bestBalance = balance;
 					bestI = i;
@@ -550,6 +549,7 @@ void LocalSearch::calculateInsert(int i, int j, int &balance, vector <unsigned> 
 	balance = balance + matrix[currentRoute.at(i - 1)][currentRoute.at(i + 1)];
 	balance = balance + matrix[currentRoute.at(j - 1)][currentRoute.at(i)];
 	balance = balance + matrix[currentRoute.at(i)][currentRoute.at(j)];
+
 }
 
 int LocalSearch::getBestNeighborhoodReverse(int &bestI, int &bestJ, vector <unsigned> currentRoute) {

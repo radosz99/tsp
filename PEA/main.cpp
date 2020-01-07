@@ -344,13 +344,13 @@ int main()
 		case 12: {
 
 			int populationSize[1] = { 100 }; //rozmiary populacji
-			int amountRandomNodes[1] = { 2 }; //ilosc losowych wierzcholkow
+			int amountRandomNodes[1] = { 3 }; //ilosc losowych wierzcholkow
 			double mutationProb[1] = { 0.15 };//prawd. mutacji
 			int crossoverType[1] = { 7 };//rodzaj krzyzowania
-			int selectionType[1] = { 2 };//rodzaj selekcji
-			int mutationType[1] = { 2 }; //rodzaj mutacji
-			int iterations[1] = { 100 }; //dlugosc trwania populacji
-			int elitismDivider[1] = { 4 }; //dlugosc trwania populacji
+			int selectionType[1] = { 1, };//rodzaj selekcji
+			int mutationType[1] = { 2 }; //rodzaj mutacji3
+			int iterations[1] = {200 }; //dlugosc trwania populacji
+			int elitismDivider[1] = { 10 }; //dlugosc trwania populacji
 
 
 			//populationSize, amountRandomNodes,mutationProb,crossoverType,selectionType,mutationType,iterations

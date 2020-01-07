@@ -21,6 +21,7 @@ public:
 	//Default constructor
 	Genetic();
 	int costXY(int a, int b);
+	void memeticImprovement(vector <unsigned>& ind);
 	void setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h);
 	void generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>&fitnesses);
 	void GeneticMechanism(int a, int **TSPMatrix);
