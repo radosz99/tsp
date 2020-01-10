@@ -16,8 +16,13 @@
 #include "Genetic.h"
 #include <ctime>
 #include <random>
+#include <thread>
+#include <queue>
+#include <future>
 using namespace std;
 
+std::mutex muA;
+std::mutex muB;
 
 Genetic::Genetic() {
 }
@@ -35,10 +40,43 @@ void Genetic::setSettingsGenetic(int a, int  b, double c, int d, int e, int f, i
 
 int Genetic::costXY(int a, int b) {
 	return LocalSearch::matrix[a][b];
-
 }
 
-void Genetic::GeneticMechanism(int a, int **TSPMatrix) {
+int Genetic::GeneticMechanism(int a, int **TSPMatrix) {
+
+	int result = INT_MAX;
+	vector < vector<unsigned>> best;
+	vector <unsigned> offspring1(a + 2, 0);
+	for (int i = 0; i < 3; i++) {
+		best.push_back(offspring1);
+	}
+	
+	launchIslands(a, TSPMatrix, best);
+
+	for (int i = 0; i < 3; i++) {
+		if (best.at(i).at(a + 1) < result)
+			result=best.at(i).at(a + 1);
+	}
+
+	return result;
+}
+
+void Genetic::launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best) {
+	Genetic island1;
+	island1.setSettingsGenetic(100, 3, 0.15, 6, 1, 2, 50, 20);
+	auto a1 = std::async(std::launch::async, &Genetic::GeneticEngine, island1, a, TSPMatrix, 1, std::ref(best));
+	// populationSize, amountRandomNodes, mutationProb, crossoverType, selectionType, mutationType, iterations, elitism
+
+	Genetic island2;
+	island2.setSettingsGenetic(50, 2, 0.9, 1, 2, 2, 50, 20);
+	auto a2 = std::async(std::launch::async, &Genetic::GeneticEngine, island2, a, TSPMatrix, 2, std::ref(best));
+
+	Genetic island3;
+	island3.setSettingsGenetic(200, 4, 0.5, 4, 3, 2, 50, 50);
+	auto a3 = std::async(std::launch::async, &Genetic::GeneticEngine, island3, a, TSPMatrix, 3, std::ref(best));
+}
+
+void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vector<unsigned>>& best) {
 
 	LocalSearch::matrixSize = a;
 	matrixSize = a;
@@ -59,10 +97,11 @@ void Genetic::GeneticMechanism(int a, int **TSPMatrix) {
 
 
 	for (int j = 0; j < iterations; j++) {
+		//cout << "Wyspa " << islandId << " iteracja " << j << endl;
 		vector < vector <unsigned>> newPopulation;
 
-		while(newPopulation.size()!=populationSize){
-			doSelection(parent1, parent2,population,fitnesses);
+		while (newPopulation.size() != populationSize) {
+			doSelection(parent1, parent2, population, fitnesses);
 			doCO(parent1, parent2, offspring1, offspring2);
 			mutation(offspring1);
 			memeticImprovement(offspring1);
@@ -76,24 +115,22 @@ void Genetic::GeneticMechanism(int a, int **TSPMatrix) {
 		}
 
 		sortVector(newPopulation);
+
+		if (j != 0 && j%5==0) {
+			islandExchange(population, best, islandId);
+		}
+
 		overwritePopulation(population, newPopulation);
 		sortVector(population);
-		evaluatePopulation(population, fitnesses);
+		evaluatePopulation(population, fitnesses);	
+		best.at(islandId-1)=population.at(0);
 
 	}
-
-	/*
-	for (int i = 0; i < population.size(); i++) {
-		for (int j = 0; j <= LocalSearch::matrixSize + 1; j++)
-			cout << population.at(i).at(j) << " ";
-		cout << endl;
-	}
-	*/
 
 	LocalSearch::optMin = population.at(0).at(matrixSize + 1);
 	population.at(0).pop_back();
 	population.at(0).pop_back();
-	bestRoute = population.at(0); 
+	bestRoute = population.at(0);
 }
 
 vector <unsigned> Genetic::tournamentSelection(vector <vector <unsigned>> pop) {
@@ -176,8 +213,8 @@ int Genetic::rankSelection(vector <double> fitnesses, vector <vector <unsigned>>
 }
 
 void Genetic::overwritePopulation(vector <vector<unsigned>>&population, vector <vector<unsigned>>popul) {
-	for (int i = populationSize / elitismDivider; i < population.size(); i++) 
-		population.at(i) = popul.at(i - populationSize / elitismDivider);
+	for (int i = populationSize / elitismDivider+1; i < population.size(); i++) 
+		population.at(i) = popul.at(i - populationSize / elitismDivider-1);
 }
 
 void Genetic::sortVector(vector <vector<unsigned>>&vect) {
@@ -263,9 +300,33 @@ void Genetic::mutation(vector <unsigned>& ind) {
 	}
 }
 
+void Genetic::islandExchange(vector <vector<unsigned>>&population, vector < vector<unsigned>> best, int islandId) {
+	bool cont = true;
+	for (int i = 0; i < best.size(); i++)
+		if (best.at(i).at(matrixSize + 1) == 0)
+			cont = false;
+	if (islandId == 1 && cont == true)
+		population.at(populationSize / elitismDivider) = best.at(1);
+
+	if (islandId == 2 && cont == true)
+		population.at(populationSize / elitismDivider) = best.at(0);
+
+	if (islandId == 3 && cont == true)
+		population.at(populationSize / elitismDivider) = best.at(0);
+
+	if (islandId == 1 && cont == true)
+		population.at(populationSize / elitismDivider - 1) = best.at(2);
+
+	if (islandId == 2 && cont == true)
+		population.at(populationSize / elitismDivider - 1) = best.at(2);
+
+	if (islandId == 3 && cont == true)
+		population.at(populationSize / elitismDivider - 1) = best.at(0);
+}
+
 void Genetic::memeticImprovement(vector <unsigned>& ind) {
 	int bestBalance, bestI = 0, bestJ = 0;
-
+	/*
 	if (mutationType == 0) {
 		bestBalance = getBestNeighborhoodSwap(bestI, bestJ, ind);
 		swapVector(bestI, bestJ, ind);
@@ -280,6 +341,39 @@ void Genetic::memeticImprovement(vector <unsigned>& ind) {
 		bestBalance = getBestNeighborhoodReverse(bestI, bestJ, ind);
 		reverseVector(bestI, bestJ, ind);
 	}
+	*/
+	int type = 0, i = 0, j = 0, balance = 0;
+
+		bestBalance = getBestNeighborhoodSwap(i, j, ind);
+		bestI = i;
+		bestJ = j;
+		type = 0;
+
+	
+		balance = getBestNeighborhoodInsert(i, j, ind);
+		if (bestBalance > balance) {
+			bestI = i;
+			bestJ = j;
+			type = 1;
+			bestBalance = balance;
+
+		}
+
+		balance = getBestNeighborhoodReverse(i, j, ind);
+		if (bestBalance > balance) {
+			bestI = i;
+			bestJ = j;
+			type = 2;
+			bestBalance = balance;
+		}
+
+		if (type == 0) 
+			swapVector(bestI, bestJ, ind);
+		else if(type==1)
+			insertVector(bestI, bestJ, ind);
+		else if(type==2)
+			reverseVector(bestI, bestJ, ind);
+
 }
 
 void Genetic::generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>& fitnesses) {

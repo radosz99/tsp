@@ -30,6 +30,12 @@ long Czas::czasWykonaniaNano() {
 
 }
 
+long Czas::czasWykonaniaSek() {
+
+	return duration_cast<seconds>(Czas::czasKoncowy - Czas::czasPoczatkowy).count();
+
+}
+
 Czas::Czas()
 {
 	

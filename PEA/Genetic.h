@@ -24,11 +24,14 @@ public:
 	void memeticImprovement(vector <unsigned>& ind);
 	void setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h);
 	void generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>&fitnesses);
-	void GeneticMechanism(int a, int **TSPMatrix);
+	int GeneticMechanism(int a, int **TSPMatrix);
+	void launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best);
 	void sortVector(vector <vector<unsigned>>&vect);
 	void evaluatePopulation(vector <vector <unsigned>> popul, vector <double> &fitnesses);
 	void overwritePopulation(vector <vector<unsigned>>&population, vector <vector<unsigned>>popul);
+	void GeneticEngine(int a, int **TSPMatrix,int islandId, vector < vector<unsigned>>& best);
 	void mutation(vector <unsigned>& ind);
+	void islandExchange(vector <vector<unsigned>>&population, vector < vector<unsigned>> best, int islandId);
 	void doCO(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>&offspring1, vector <unsigned>&offspring2);
 	void doSelection(vector <unsigned>& parent1, vector <unsigned>& parent2, vector <vector <unsigned>> population, vector <double>& fitnesses);
 	void displayBestRoute();

@@ -19,6 +19,7 @@ public:
 	long czasWykonania();
 	long czasWykonaniaMili();
 	long czasWykonaniaNano();
+	long czasWykonaniaSek();
 
 	Czas();
 	void start();

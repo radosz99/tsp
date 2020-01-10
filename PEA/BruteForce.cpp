@@ -239,6 +239,9 @@ double getTime(Czas czas, int odp) {
 	case 3:
 		czasSek = czas.czasWykonaniaNano();
 		break;
+	case 4:
+		czasSek = czas.czasWykonaniaSek();
+		break;
 	}
 	return czasSek;
 }
