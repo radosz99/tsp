@@ -261,3 +261,14 @@ void saveToFileTabu(int a, unsigned b, int c, int d, int e, bool i, int h, int j
 	plik << a << ";" << b << ";" <<c << ";" << d << ";" << e<< ";" << i << ";" << h << ";" << j << endl;
 	plik.close();
 }
+
+void saveToFileGenetic(string a, double b, int c, vector<unsigned>& islandsBest) {
+	ofstream plik;
+	plik.open("C:/Users/Radek/source/repos/PEA/Output/wynikiTestyGenetic.csv", std::ios_base::app);
+	plik << a << ";" << b << ";" << "ms" << ";" << c << ";";
+	for (int i = 0; i < islandsBest.size(); i++) {
+		plik << islandsBest.at(i) << ";";
+	}
+	plik << endl;
+	plik.close();
+}

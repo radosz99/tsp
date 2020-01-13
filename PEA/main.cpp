@@ -344,15 +344,10 @@ int main()
 
 		case 12: {
 
-			string matrixes[7] = { "data34.txt",  "data36.txt", "data39.txt", "data45.txt",  "data56.txt","data53.txt","ftv47.txt"}; //nazwy plikow txt z instancjami do testow
-			int populationSize[1] = { 100 }; //rozmiary populacji
-			int amountRandomNodes[1] = { 3 }; //ilosc losowych wierzcholkow
-			double mutationProb[1] = { 0.15 };//prawd. mutacji
-			int crossoverType[1] = { 7 };//rodzaj krzyzowania
-			int selectionType[1] = { 1 };//rodzaj selekcji
-			int mutationType[1] = { 2 }; //rodzaj mutacji3
-			int iterations[1] = {200 }; //dlugosc trwania populacji
-			int elitismDivider[1] = { 10 }; //dlugosc trwania populacji
+			
+			//string matrixes[5] = {"data45.txt","data56.txt","data53.txt","ftv47.txt","data65.txt"};
+			string matrixes[1] = {"data65.txt" };
+			int time[1] = { 15 }; //czasy
 			Czas czas1;
 
 			//populationSize, amountRandomNodes,mutationProb,crossoverType,selectionType,mutationType,iterations
@@ -367,30 +362,19 @@ int main()
 				for (int i = 0; i < matrixSize; i++)
 					TSPMatrix[i] = new int[matrixSize];
 				start.copyMatrix(TSPMatrix);
-				for (int a = 0; a < sizeof(populationSize) / sizeof(*populationSize); a++)
-					for (int b = 0; b < sizeof(amountRandomNodes) / sizeof(*amountRandomNodes); b++)
-						for (int c = 0; c < sizeof(mutationProb) / sizeof(*mutationProb); c++)
-							for (int d = 0; d < sizeof(crossoverType) / sizeof(*crossoverType); d++)
-								for (int e = 0; e < sizeof(selectionType) / sizeof(*selectionType); e++)
-									for (int f = 0; f < sizeof(mutationType) / sizeof(*mutationType); f++)
-										for (int g = 0; g < sizeof(iterations) / sizeof(*iterations); g++)
-											for (int h = 0; h < sizeof(elitismDivider) / sizeof(*elitismDivider); h++) {
-												for (int repeat = 0; repeat < 50; repeat++) {
-													Genetic gen;
-													int result;
-													//gen.setSettingsGenetic(populationSize[a], amountRandomNodes[b], mutationProb[c], crossoverType[d], selectionType[e], mutationType[f], iterations[g], elitismDivider[h]);
-													czas1.czasStart();
-													result = gen.GeneticMechanism(matrixSize, TSPMatrix);
-													czas1.czasStop();
-													ofstream plik;
-													plik.open("C:/Users/Radek/source/repos/PEA/Output/wynikiTestyGenetic.csv", std::ios_base::app);
-													plik << instanceName << ";" << getTime(czas1, 1) << ";" << "ms" << ";" << result  << endl;
-													plik.close();
-														cout << "Optimum = " << result << endl;
-													//cout << "Sciezka: ";
-													//gen.displayBestRoute();
-												}
-											}
+
+				for (int a = 0; a < sizeof(time) / sizeof(*time); a++)
+					for (int repeat = 0; repeat < 50; repeat++) {
+						Genetic gen;
+						int result;
+						//gen.setSettingsGenetic(populationSize[a], amountRandomNodes[b], mutationProb[c], crossoverType[d], selectionType[e], mutationType[f], iterations[g], elitismDivider[h]);
+						vector<unsigned> islandsBest;
+						czas1.czasStart();
+						result = gen.GeneticMechanism(matrixSize, TSPMatrix, time[a], islandsBest);
+						czas1.czasStop();
+						saveToFileGenetic(instanceName, getTime(czas1, 1), result, islandsBest);
+						cout << "Optimum = " << result << endl;
+					}
 			}
 			
 

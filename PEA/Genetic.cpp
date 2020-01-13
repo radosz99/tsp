@@ -27,7 +27,7 @@ std::mutex muB;
 Genetic::Genetic() {
 }
 
-void Genetic::setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h) {
+void Genetic::setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h, int i) {
 	populationSize = a;
 	LocalSearch::amountRandomNodes = b;
 	mutationProb = c;
@@ -36,24 +36,28 @@ void Genetic::setSettingsGenetic(int a, int  b, double c, int d, int e, int f, i
 	mutationType = f;
 	iterations = g;
 	elitismDivider = h;
+	timeGenetic = i;
 }
 
 int Genetic::costXY(int a, int b) {
 	return LocalSearch::matrix[a][b];
 }
 
-int Genetic::GeneticMechanism(int a, int **TSPMatrix) {
+int Genetic::GeneticMechanism(int a, int **TSPMatrix, int b, vector<unsigned>& islandsBest) {
 
+	timeGenetic = b;
+	int islandsAmount = 5;
 	int result = INT_MAX;
 	vector < vector<unsigned>> best;
 	vector <unsigned> offspring1(a + 2, 0);
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < islandsAmount; i++) {
 		best.push_back(offspring1);
+		islandsBest.push_back(0);
 	}
 	
-	launchIslands(a, TSPMatrix, best);
+	launchIslands(a, TSPMatrix, best, islandsBest);
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < islandsAmount; i++) {
 		if (best.at(i).at(a + 1) < result)
 			result=best.at(i).at(a + 1);
 	}
@@ -61,23 +65,32 @@ int Genetic::GeneticMechanism(int a, int **TSPMatrix) {
 	return result;
 }
 
-void Genetic::launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best) {
+void Genetic::launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best, vector<unsigned>& islandsBest) {
 	Genetic island1;
-	island1.setSettingsGenetic(100, 3, 0.15, 6, 1, 2, 50, 20);
-	auto a1 = std::async(std::launch::async, &Genetic::GeneticEngine, island1, a, TSPMatrix, 1, std::ref(best));
+	island1.setSettingsGenetic(300, 3, 0.15, 7, 1, 2, 50, 60,timeGenetic);
+	auto a1 = std::async(std::launch::async, &Genetic::GeneticEngine, island1, a, TSPMatrix, 0, std::ref(best), std::ref(islandsBest));
 	// populationSize, amountRandomNodes, mutationProb, crossoverType, selectionType, mutationType, iterations, elitism
 
 	Genetic island2;
-	island2.setSettingsGenetic(50, 2, 0.9, 1, 2, 2, 50, 20);
-	auto a2 = std::async(std::launch::async, &Genetic::GeneticEngine, island2, a, TSPMatrix, 2, std::ref(best));
+	island2.setSettingsGenetic(300, 3, 0.15, 7, 2, 1, 50, 50, timeGenetic);
+	auto a2 = std::async(std::launch::async, &Genetic::GeneticEngine, island2, a, TSPMatrix, 1, std::ref(best), std::ref(islandsBest));
 
 	Genetic island3;
-	island3.setSettingsGenetic(200, 4, 0.5, 4, 3, 2, 50, 50);
-	auto a3 = std::async(std::launch::async, &Genetic::GeneticEngine, island3, a, TSPMatrix, 3, std::ref(best));
+	island3.setSettingsGenetic(300, 4, 0.15, 4, 2, 1, 50, 50, timeGenetic);
+	auto a3 = std::async(std::launch::async, &Genetic::GeneticEngine, island3, a, TSPMatrix, 2, std::ref(best), std::ref(islandsBest));
+
+	Genetic island4;
+	island4.setSettingsGenetic(300, 4, 0.15, 1, 1, 2, 50, 50, timeGenetic);
+	auto a4 = std::async(std::launch::async, &Genetic::GeneticEngine, island4, a, TSPMatrix, 3, std::ref(best), std::ref(islandsBest));
+
+	Genetic island5;
+	island5.setSettingsGenetic(300, 2, 0.15, 7, 1, 1, 50, 50, timeGenetic);
+	auto a5 = std::async(std::launch::async, &Genetic::GeneticEngine, island5, a, TSPMatrix, 4, std::ref(best), std::ref(islandsBest));
 }
 
-void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vector<unsigned>>& best) {
+void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vector<unsigned>>& best, vector<unsigned>& islandBest) {
 
+	islandBest.at(islandId) = INT_MAX;
 	LocalSearch::matrixSize = a;
 	matrixSize = a;
 	LocalSearch::matrix = new int *[LocalSearch::matrixSize];
@@ -94,9 +107,12 @@ void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vecto
 	vector <double> fitnesses(populationSize, 0);
 
 	generateInitialPopulation(population, fitnesses);
+	Czas onboardClock;
+	bool continuing = true;
+	onboardClock.start();
 
-
-	for (int j = 0; j < iterations; j++) {
+	//for (int j = 0; j < iterations; j++) {
+	for (int j = 0; continuing==true; j++) {
 		//cout << "Wyspa " << islandId << " iteracja " << j << endl;
 		vector < vector <unsigned>> newPopulation;
 
@@ -106,11 +122,15 @@ void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vecto
 			mutation(offspring1);
 			memeticImprovement(offspring1);
 			newPopulation.push_back(offspring1);
+			if (offspring1.at(matrixSize + 1) < islandBest.at(islandId))
+				islandBest.at(islandId) = offspring1.at(matrixSize + 1);
 
 			if (crossoverType != 6 && crossoverType != 7) {
 				mutation(offspring2);
 				memeticImprovement(offspring2);
 				newPopulation.push_back(offspring2);
+				if (offspring2.at(matrixSize + 1) < islandBest.at(islandId))
+					islandBest.at(islandId) = offspring2.at(matrixSize + 1);
 			}
 		}
 
@@ -123,7 +143,12 @@ void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vecto
 		overwritePopulation(population, newPopulation);
 		sortVector(population);
 		evaluatePopulation(population, fitnesses);	
-		best.at(islandId-1)=population.at(0);
+		best.at(islandId)=population.at(0);
+
+		onboardClock.stop();
+		//-----sprawdzenie czy uplynal czas------
+		if (onboardClock.read() > timeGenetic)
+			continuing = false;
 
 	}
 
@@ -296,7 +321,7 @@ void Genetic::mutation(vector <unsigned>& ind) {
 			LocalSearch::insertVector(bestI, bestJ, ind);
 		}
 
-		ind.at(matrixSize+1) += balance;
+		ind.at(matrixSize+1) += bestBalance;
 	}
 }
 
@@ -305,43 +330,57 @@ void Genetic::islandExchange(vector <vector<unsigned>>&population, vector < vect
 	for (int i = 0; i < best.size(); i++)
 		if (best.at(i).at(matrixSize + 1) == 0)
 			cont = false;
-	if (islandId == 1 && cont == true)
+
+	for (int i = 0; i < best.size(); i++) {
+		for (int j = 0; j < best.size(); j++) {
+			if (i != j && cont == true) {
+				int helper = 0;
+				if (j > islandId) helper = 1;
+				population.at(populationSize / elitismDivider-best.size()+2+j-helper) = best.at(j);
+			}
+		}
+	}
+	/*
+	if (islandId == 0 && cont == true)
 		population.at(populationSize / elitismDivider) = best.at(1);
 
+	if (islandId == 1 && cont == true)
+		population.at(populationSize / elitismDivider) = best.at(0);
+
 	if (islandId == 2 && cont == true)
 		population.at(populationSize / elitismDivider) = best.at(0);
 
-	if (islandId == 3 && cont == true)
-		population.at(populationSize / elitismDivider) = best.at(0);
+	if (islandId == 0 && cont == true)
+		population.at(populationSize / elitismDivider - 1) = best.at(2);
 
 	if (islandId == 1 && cont == true)
 		population.at(populationSize / elitismDivider - 1) = best.at(2);
 
 	if (islandId == 2 && cont == true)
-		population.at(populationSize / elitismDivider - 1) = best.at(2);
-
-	if (islandId == 3 && cont == true)
-		population.at(populationSize / elitismDivider - 1) = best.at(0);
+		population.at(populationSize / elitismDivider - 1) = best.at(1);
+		*/
 }
 
 void Genetic::memeticImprovement(vector <unsigned>& ind) {
-	int bestBalance, bestI = 0, bestJ = 0;
-	/*
-	if (mutationType == 0) {
+	int bestBalance, bestI = 0, bestJ = 0, type = 1;
+	//z/*
+	if (type == 0) {
 		bestBalance = getBestNeighborhoodSwap(bestI, bestJ, ind);
 		swapVector(bestI, bestJ, ind);
 	}
 
-	if (mutationType == 1) {
+	if (type == 1) {
 		bestBalance = getBestNeighborhoodInsert(bestI, bestJ, ind);
 		insertVector(bestI, bestJ, ind);
 	}
 
-	if (mutationType == 2) {
+	if (type == 2) {
 		bestBalance = getBestNeighborhoodReverse(bestI, bestJ, ind);
 		reverseVector(bestI, bestJ, ind);
 	}
-	*/
+
+	//*/
+	/*
 	int type = 0, i = 0, j = 0, balance = 0;
 
 		bestBalance = getBestNeighborhoodSwap(i, j, ind);
@@ -373,10 +412,12 @@ void Genetic::memeticImprovement(vector <unsigned>& ind) {
 			insertVector(bestI, bestJ, ind);
 		else if(type==2)
 			reverseVector(bestI, bestJ, ind);
-
+//*/
+	ind.at(matrixSize + 1) += bestBalance;
 }
 
 void Genetic::generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>& fitnesses) {
+
 	vector < unsigned > route;
 	route.push_back(getInitialReduction(route)); // 1 osobnik redukcyjnym
 	pop.push_back(route);

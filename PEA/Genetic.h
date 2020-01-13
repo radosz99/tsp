@@ -22,14 +22,14 @@ public:
 	Genetic();
 	int costXY(int a, int b);
 	void memeticImprovement(vector <unsigned>& ind);
-	void setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h);
+	void setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h, int i);
 	void generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>&fitnesses);
-	int GeneticMechanism(int a, int **TSPMatrix);
-	void launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best);
+	int GeneticMechanism(int a, int **TSPMatrix, int b, vector<unsigned>& islandsBest);
+	void launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best, vector<unsigned>& islandsBest);
 	void sortVector(vector <vector<unsigned>>&vect);
 	void evaluatePopulation(vector <vector <unsigned>> popul, vector <double> &fitnesses);
 	void overwritePopulation(vector <vector<unsigned>>&population, vector <vector<unsigned>>popul);
-	void GeneticEngine(int a, int **TSPMatrix,int islandId, vector < vector<unsigned>>& best);
+	void GeneticEngine(int a, int **TSPMatrix,int islandId, vector < vector<unsigned>>& best, vector<unsigned>& islandBest);
 	void mutation(vector <unsigned>& ind);
 	void islandExchange(vector <vector<unsigned>>&population, vector < vector<unsigned>> best, int islandId);
 	void doCO(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>&offspring1, vector <unsigned>&offspring2);
@@ -68,6 +68,7 @@ private:
 	double initialTemperature;
 	double cooling;
 	double minTemperature;
+	int timeGenetic;
 	int iterations;
 	double time;
 	int populationSize;
