@@ -28,7 +28,7 @@ Genetic::Genetic() {
 }
 void Genetic::setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h, int i) {
 	populationSize = a;
-	LocalSearch::amountRandomNodes = b;
+	LocalSearch::amountRandomNodes = b; // amountRandomNodes wykorzystane w metodzie z LocalSearch.cpp
 	mutationProb = c;
 	crossoverType = d;
 	selectionType = e;
@@ -36,11 +36,6 @@ void Genetic::setSettingsGenetic(int a, int  b, double c, int d, int e, int f, i
 	elitismNumber = g;
 	memeticType = h;
 	timeGenetic = i;
-}
-
-void Genetic::setSettingsGenetic2(int a, int  b) {
-	memeticType = a;
-	timeGenetic = b;
 }
 
 int Genetic::costXY(int a, int b) {
@@ -139,7 +134,7 @@ void Genetic::GeneticEngine(int size, int **TSPMatrix, int islandId, vector < ve
 
 		sortVector(newPopulation);
 
-		 if (j != 0 && j%5==0) 
+		 if (j != 0 && j%3==0) 
 			islandExchange(population, best, islandId);
 
 		overwritePopulation(population, newPopulation);
@@ -370,7 +365,7 @@ void Genetic::memeticImprovement(vector <unsigned>& ind) {
 
 void Genetic::generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>& fitnesses, Czas onboardClock) {
 	//dla instancji wiekszych od 100 lepiej 1 greedy, (n-1) greedyRandom, bez czasochlonnego reduction!
-
+	/*
 	for (int i = 2; i < populationSize / 2 + 1; i++) {
 		vector < unsigned > route;
 		route.push_back(getInitialReductionAndRandom(route)); // (n-2)/2 osobnikow losowo redukcyjnym
@@ -381,8 +376,9 @@ void Genetic::generateInitialPopulation(vector <vector <unsigned>>& pop, vector 
 			return;
 		}
 	}
-	for (int i = populationSize / 2 + 1; i < populationSize; i++) {
-	//for (int i = 1; i < populationSize; i++) {
+	*/
+	//for (int i = populationSize / 2 + 1; i < populationSize; i++) {
+	for (int i = 1; i < populationSize; i++) {
 		vector < unsigned > route;
 		route.push_back(getInitialGreedyAndRandom(route)); // (n-2)/2 osobnikow losowo zachlannym
 		pop.push_back(route);
@@ -394,8 +390,8 @@ void Genetic::generateInitialPopulation(vector <vector <unsigned>>& pop, vector 
 	}
 
 	vector < unsigned > route;
-	route.push_back(getInitialReduction(route)); // 1 osobnik redukcyjnym
-	pop.push_back(route);
+	//route.push_back(getInitialReduction(route)); // 1 osobnik redukcyjnym
+	//pop.push_back(route);
 
 	onboardClock.stop();
 	if (onboardClock.read() > timeGenetic) {

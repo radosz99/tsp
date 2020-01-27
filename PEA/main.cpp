@@ -395,9 +395,9 @@ int main()
 
 		case 12: {
 
-			
+			// W FORMIE TESTOW DLA WIELU PARAMETROW
 			//string matrixes[5] = {"data45.txt","data53.txt","data56.txt","data65.txt","ftv47.txt"};
-			string matrixes[1] = { "data45.txt"};
+			string matrixes[1] = { "data171.txt"};
 			int populationSize[1] = { 150};
 			int amountRandomNodes[1] = { 3 };
 			double mutationProb[1] = { 0.10};
@@ -437,8 +437,8 @@ int main()
 														czas1.czasStart();
 														result = gen.GeneticMechanism(matrixSize, TSPMatrix, iterations);
 														czas1.czasStop();
-														saveToFileGenetic2(instanceName, getTime(czas1, 1), result, iterations, populationSize[a], amountRandomNodes[b], mutationProb[d], crossoverType[h], selectionType[e], mutationType[f], elitismNumber[c], memeticType[g], timeGenetic[i]);
-														cout << "Optimum = " << result << endl;
+														saveToFileGenetic(instanceName, getTime(czas1, 1), result, iterations, populationSize[a], amountRandomNodes[b], mutationProb[d], crossoverType[h], selectionType[e], mutationType[f], elitismNumber[c], memeticType[g], timeGenetic[i]);
+														cout << "Best = " << result << endl;
 													}
 			}
 			
