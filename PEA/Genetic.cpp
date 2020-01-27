@@ -47,53 +47,53 @@ int Genetic::costXY(int a, int b) {
 	return LocalSearch::matrix[a][b];
 }
 
-int Genetic::GeneticMechanism(int a, int **TSPMatrix, vector<unsigned>& islandsBest) {
+int Genetic::GeneticMechanism(int matrixSize, int **TSPMatrix, vector<unsigned>& islandIterations) {
 
 	int islandsAmount = 4;
 	int result = INT_MAX;
 	vector < vector<unsigned>> best;
-	vector <unsigned> offspring1(a + 2, 0);
+	vector <unsigned> offspring1(matrixSize + 2, 0);
 	for (int i = 0; i < islandsAmount; i++) {
 		best.push_back(offspring1);
-		islandsBest.push_back(INT_MAX);
+		islandIterations.push_back(0);
 	}
 	
-	launchIslands(a, TSPMatrix, best, islandsBest);
-	//GeneticEngine(a, TSPMatrix, 0, best, islandsBest);
+	launchIslands(matrixSize, TSPMatrix, best, islandIterations); // w przypadku wyspowego setSettingsGenetic w mainie zbedne
+	//GeneticEngine(a, TSPMatrix, 0, best, islandIterations); 
 
 	for (int i = 0; i < islandsAmount; i++) {
-		if (best.at(i).at(a + 1) < result)
-			result=best.at(i).at(a + 1);
+		if (best.at(i).at(matrixSize + 1) < result)
+			result=best.at(i).at(matrixSize  + 1);
 	}
 
 	return result;
 }
 
-void Genetic::launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best, vector<unsigned>& islandsBest) {
+void Genetic::launchIslands(int matrixSize, int **TSPMatrix, vector < vector<unsigned>>& best, vector<unsigned>& islandIterations) {
 	Genetic island1;
 	island1.setSettingsGenetic(150, 2, 0.15, 7, 1, 1, 5, 1, timeGenetic);
-	auto a1 = std::async(std::launch::async, &Genetic::GeneticEngine, island1, a, TSPMatrix, 0, std::ref(best), std::ref(islandsBest));
+	auto a1 = std::async(std::launch::async, &Genetic::GeneticEngine, island1, matrixSize, TSPMatrix, 0, std::ref(best), std::ref(islandIterations));
 	//populationSize[a], amountRandomNodes[b], mutationProb[d], crossoverType[h], selectionType[e], mutationType[f], elitismNumber[c], memeticType[g], timeGenetic[i])
 
 	Genetic island2;
 	island2.setSettingsGenetic(200, 2, 0.10, 2, 1, 1, 5, 1, timeGenetic);
-	auto a2 = std::async(std::launch::async, &Genetic::GeneticEngine, island2, a, TSPMatrix, 1, std::ref(best), std::ref(islandsBest));
+	auto a2 = std::async(std::launch::async, &Genetic::GeneticEngine, island2, matrixSize, TSPMatrix, 1, std::ref(best), std::ref(islandIterations));
 
 	Genetic island3;
 	island3.setSettingsGenetic(150, 3, 0.10, 6, 1, 1, 10, 1, timeGenetic);
-	auto a3 = std::async(std::launch::async, &Genetic::GeneticEngine, island3, a, TSPMatrix, 2, std::ref(best), std::ref(islandsBest));
+	auto a3 = std::async(std::launch::async, &Genetic::GeneticEngine, island3, matrixSize, TSPMatrix, 2, std::ref(best), std::ref(islandIterations));
 
 	Genetic island4;
 	island4.setSettingsGenetic(200, 4, 0.05, 6, 2, 1, 10, 1, timeGenetic);
-	auto a4 = std::async(std::launch::async, &Genetic::GeneticEngine, island4, a, TSPMatrix, 3, std::ref(best), std::ref(islandsBest));
+	auto a4 = std::async(std::launch::async, &Genetic::GeneticEngine, island4, matrixSize, TSPMatrix, 3, std::ref(best), std::ref(islandIterations));
 
 }
 
-void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vector<unsigned>>& best, vector<unsigned>& islandBest) {
+void Genetic::GeneticEngine(int size, int **TSPMatrix, int islandId, vector < vector<unsigned>>& best, vector<unsigned>& islandIterations) {
 
-	islandBest.at(islandId) = INT_MAX;
-	LocalSearch::matrixSize = a;
-	matrixSize = a;
+	//----wczytanie instancji
+	LocalSearch::matrixSize = size;
+	matrixSize = size;
 	LocalSearch::matrix = new int *[LocalSearch::matrixSize];
 	for (int i = 0; i < LocalSearch::matrixSize; i++) {
 		LocalSearch::matrix[i] = new int[LocalSearch::matrixSize];
@@ -102,58 +102,45 @@ void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vecto
 	}
 
 	vector < vector <unsigned>> population;
-	vector <unsigned> parent1, parent2;
-	vector <unsigned> offspring1(matrixSize + 2, 0);
-	vector <unsigned> offspring2(matrixSize + 2, 0);
+	vector <unsigned> parent1, parent2, offspring1(matrixSize + 2, 0), offspring2(matrixSize + 2, 0);
 	vector <double> fitnesses(populationSize, 0);
-
-
+	bool stop = false;
 	Czas onboardClock;
-	bool continuing = true;
+	
 	onboardClock.start();
 	generateInitialPopulation(population, fitnesses, onboardClock);
 	best.at(islandId) = population.at(0);
-	islandBest.at(islandId) = 0;
 	onboardClock.stop();
 	//-----sprawdzenie czy uplynal czas------
 	if (onboardClock.read() > timeGenetic) {
-		continuing = false;
-		//cout << "Przekroczylo   " << onboardClock.read() << " nad " << timeGenetic << endl;
+		stop = true;
 	}
 
 	
-	//for (int j = 0; j < iterations; j++) {
-	for (int j = 0; continuing==true; j++) {
-		//cout << "Wyspa " << islandId << " iteracja " << j << endl;
+	for (int j = 0; stop==false; j++) {
 		vector < vector <unsigned>> newPopulation;
 
 		while (newPopulation.size() != populationSize) {
 			doSelection(parent1, parent2, population, fitnesses);
-			doCO(parent1, parent2, offspring1, offspring2);
+			doCrossover(parent1, parent2, offspring1, offspring2);
 			mutation(offspring1);
 			memeticImprovement(offspring1);
 			newPopulation.push_back(offspring1);
-			//if (offspring1.at(matrixSize + 1) < islandBest.at(islandId))
-			//	islandBest.at(islandId) = offspring1.at(matrixSize + 1);
-			islandBest.at(islandId) = j;
+			islandIterations.at(islandId) = j;
 
+			//----crossovery o id 6 i 7 generuja tylko 1 potomka
 			if (crossoverType != 6 && crossoverType != 7) {
 				mutation(offspring2);
 				memeticImprovement(offspring2);
 				newPopulation.push_back(offspring2);
-				//if (offspring2.at(matrixSize + 1) < islandBest.at(islandId))
-				//	islandBest.at(islandId) = offspring2.at(matrixSize + 1);
-				islandBest.at(islandId) = j;
+				islandIterations.at(islandId) = j;
 			}
 		}
 
 		sortVector(newPopulation);
 
-		
-		 if (j != 0 && j%50==0) 
+		 if (j != 0 && j%5==0) 
 			islandExchange(population, best, islandId);
-
-		
 
 		overwritePopulation(population, newPopulation);
 		sortVector(population);
@@ -163,15 +150,10 @@ void Genetic::GeneticEngine(int a, int **TSPMatrix, int islandId, vector < vecto
 		onboardClock.stop();
 		//-----sprawdzenie czy uplynal czas------
 		if (onboardClock.read() > timeGenetic) {
-			continuing = false;
-			//cout << "Przekroczylo   " << onboardClock.read() << " nad " << timeGenetic << endl;
+			stop = true;
 		}
-
 	}
-	LocalSearch::optMin = population.at(0).at(matrixSize + 1);
-	population.at(0).pop_back();
-	population.at(0).pop_back();
-	bestRoute = population.at(0);
+
 }
 
 vector <unsigned> Genetic::tournamentSelection(vector <vector <unsigned>> pop) {
@@ -387,41 +369,36 @@ void Genetic::memeticImprovement(vector <unsigned>& ind) {
 }
 
 void Genetic::generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>& fitnesses, Czas onboardClock) {
+	//dla instancji wiekszych od 100 lepiej 1 greedy, (n-1) greedyRandom, bez czasochlonnego reduction!
 
-	/*
 	for (int i = 2; i < populationSize / 2 + 1; i++) {
 		vector < unsigned > route;
 		route.push_back(getInitialReductionAndRandom(route)); // (n-2)/2 osobnikow losowo redukcyjnym
 		pop.push_back(route);
+
 		onboardClock.stop();
-		//-----sprawdzenie czy uplynal czas------
 		if (onboardClock.read() > timeGenetic) {
-			//cout << "Przekroczylo   " << onboardClock.read() << " nad " << timeGenetic << endl;
 			return;
 		}
 	}
-	*/
-	//for (int i = populationSize / 2 + 1; i < populationSize; i++) {
-	for (int i = 1; i < populationSize; i++) {
+	for (int i = populationSize / 2 + 1; i < populationSize; i++) {
+	//for (int i = 1; i < populationSize; i++) {
 		vector < unsigned > route;
 		route.push_back(getInitialGreedyAndRandom(route)); // (n-2)/2 osobnikow losowo zachlannym
 		pop.push_back(route);
+
 		onboardClock.stop();
-		//-----sprawdzenie czy uplynal czas------
 		if (onboardClock.read() > timeGenetic) {
-			//cout << "Przekroczylo  " << onboardClock.read() << " nad " << timeGenetic << endl;
 			return;
 		}
 	}
 
 	vector < unsigned > route;
-	//route.push_back(getInitialReduction(route)); // 1 osobnik redukcyjnym
-	//pop.push_back(route);
+	route.push_back(getInitialReduction(route)); // 1 osobnik redukcyjnym
+	pop.push_back(route);
 
 	onboardClock.stop();
-	//-----sprawdzenie czy uplynal czas------
 	if (onboardClock.read() > timeGenetic) {
-		//cout << "Przekroczylo   " << onboardClock.read() << " nad " << timeGenetic << endl;
 		return;
 	}
 
@@ -430,28 +407,17 @@ void Genetic::generateInitialPopulation(vector <vector <unsigned>>& pop, vector 
 	pop.push_back(route);
 
 	onboardClock.stop();
-	//-----sprawdzenie czy uplynal czas------
 	if (onboardClock.read() > timeGenetic) {
-		//cout << "Przekroczylo   " << onboardClock.read() << " nad " << timeGenetic << endl;
 		return;
 	}
 	
-
-	/*
-	for (int i = 0; i < populationSize; i++) {
-		vector < unsigned > route;
-		route.push_back(getInitialRandom(route)); // (n-2)/2 osobnikow losowo zachlannym
-		pop.push_back(route);
-	}
-	*/
-
 	sortVector(pop);
 
 	//--------------Wygenerowanie wartosci funkcji zdatnoœci (fitness function)-----------------
 	evaluatePopulation(pop, fitnesses);
 }
 
-void Genetic::doCO(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>&offspring1, vector <unsigned>&offspring2){
+void Genetic::doCrossover(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>&offspring1, vector <unsigned>&offspring2){
 	switch (crossoverType) {
 		case 1: 
 			PartiallyMappedCO(parent1, parent2, offspring1, offspring2); // jest gituwa

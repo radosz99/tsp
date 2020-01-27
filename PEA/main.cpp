@@ -397,20 +397,19 @@ int main()
 
 			
 			//string matrixes[5] = {"data45.txt","data53.txt","data56.txt","data65.txt","ftv47.txt"};
-			string matrixes[1] = { "data171.txt"};
+			string matrixes[1] = { "data45.txt"};
 			int populationSize[1] = { 150};
 			int amountRandomNodes[1] = { 3 };
 			double mutationProb[1] = { 0.10};
-			int selectionType[1] = { 1};
-			int mutationType[1] = { 1 };// 2 reverse, 1 insert, 0 swap
-			int memeticType[1] = { 1 };
-			int crossoverType[1] = {6}; // 5
+			int selectionType[1] = { 1};// 1-TS, 2-RS, 3-RWS
+			int mutationType[1] = { 1 };// 2-reverse, 1-insert, 0-swap
+			int memeticType[1] = { 1 };// 2-reverse, 1-insert, 0-swap
+			int crossoverType[1] = {6}; // 1-PMX, 2-OX, 3-CX, 4-CX2, 5-TPX, 6-SCX, 7-ESCX
 			int elitismNumber[1] = { 10 };
-			//int timeGenetic[6] = {5,10,15,20,25,30}; //czasy
-			int timeGenetic[1] = { 30 }; //czasy
+			int timeGenetic[6] = {5,10,15,20,25,30}; //czasy
 			Czas czas1;
+			int result;
 
-			//populationSize, amountRandomNodes,mutationProb,crossoverType,selectionType,mutationType,iterations
 
 			for (int x = 0; x < sizeof(matrixes) / sizeof(*matrixes); x++) {
 				Node start;
@@ -433,9 +432,7 @@ int main()
 												for (int i = 0; i < sizeof(timeGenetic) / sizeof(*timeGenetic); i++)
 													for (int repeat = 0; repeat < 50; repeat++) {
 														Genetic gen;
-														int result;
 														gen.setSettingsGenetic(populationSize[a], amountRandomNodes[b], mutationProb[d], crossoverType[h], selectionType[e], mutationType[f], elitismNumber[c],memeticType[g],timeGenetic[i]);
-														//gen.setSettingsGenetic2(memeticType[b], time[a]);
 														vector<unsigned> iterations;
 														czas1.czasStart();
 														result = gen.GeneticMechanism(matrixSize, TSPMatrix, iterations);

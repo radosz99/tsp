@@ -33,7 +33,7 @@ public:
 	void GeneticEngine(int a, int **TSPMatrix,int islandId, vector < vector<unsigned>>& best, vector<unsigned>& islandBest);
 	void mutation(vector <unsigned>& ind);
 	void islandExchange(vector <vector<unsigned>>&population, vector < vector<unsigned>> best, int islandId);
-	void doCO(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>&offspring1, vector <unsigned>&offspring2);
+	void doCrossover(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>&offspring1, vector <unsigned>&offspring2);
 	void doSelection(vector <unsigned>& parent1, vector <unsigned>& parent2, vector <vector <unsigned>> population, vector <double>& fitnesses);
 	void displayBestRoute();
 	void PartiallyMappedCO(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>& offspring1, vector <unsigned>& offspring2);
