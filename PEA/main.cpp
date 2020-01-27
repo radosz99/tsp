@@ -253,11 +253,11 @@ int main()
 		}
 
 		case 10: {
-
+			/*
 			//-----tabele z roznymi wartosciami parametrow do testow---
-
+			string matrixes[5] = { "data45.txt","data53.txt","data56.txt","data65.txt","ftv47.txt" };
 			int cadenceTab[1] = { 45 }; //kadencja
-			int timeTab[1] = {2 };//czas wykonania algorytmu
+			int timeTab[7] = {1,5,10,15,25,30 };//czas wykonania algorytmu
 			int iterTab[1] = { 5000 };//limit iteracji bez poprawy, po osiagnieciu ktorego jest generowana nowa sciezka
 			int divCadTab[1] = { 4}; //dzielnik kadencji (intensyfikacja) w przypadku znalezienia globalnie najlepszego rozwiazania
 			int randNodesTab[1] = {2 };//liczba poczatkowych losowych wierzcholkow przy generowaniu nowej sciezki
@@ -265,6 +265,20 @@ int main()
 			int typesTab[1] = { 2 };//rodzaj sasiedztwa
 
 			LocalSearch tabu;
+
+
+			
+			for (int x = 0; x < sizeof(matrixes) / sizeof(*matrixes); x++) {
+
+				Node start;
+				start.loadInfoGiven(matrixes[x]);
+				matrixSize = start.getStartSize();
+				instanceName = start.getInstanceName();
+				TSPMatrix = new int *[matrixSize];
+				for (int i = 0; i < matrixSize; i++)
+					TSPMatrix[i] = new int[matrixSize];
+				start.copyMatrix(TSPMatrix);
+
 
 				for (int a = 0; a < sizeof(cadenceTab) / sizeof(*cadenceTab); a++)
 					for (int b = 0; b < sizeof(timeTab) / sizeof(*timeTab); b++)
@@ -278,15 +292,52 @@ int main()
 												tabu.TabuMechanism(matrixSize, TSPMatrix);
 
 												cout << "Optimum = " << tabu.getOptMin() << endl;
-												/*
+												
 												cout << "Sciezka: ";
 												tabu.displayRoute();
-												//*/
+											
 												tabu.saveToFileTabu(instanceName);
 											}
 										}
-	
+			}
+			*/
 
+
+			//-----tabele z roznymi wartosciami parametrow do testow---
+			string matrixes[1] = { "data171.txt" };
+			int cadenceTab[1] = { 120 }; //kadencja
+			int timeTab[7] = { 5,10,15,20,25,30 };//czas wykonania algorytmu
+			int iterTab[1] = { 5000 };//limit iteracji bez poprawy, po osiagnieciu ktorego jest generowana nowa sciezka
+			int divCadTab[1] = {9}; //dzielnik kadencji (intensyfikacja) w przypadku znalezienia globalnie najlepszego rozwiazania
+			int randNodesTab[1] = { 5 };//liczba poczatkowych losowych wierzcholkow przy generowaniu nowej sciezki
+			bool algTab[1] = { false };//rodzaj algorytmu generujacego nowa sciezke
+			int typesTab[1] = { 2};//rodzaj sasiedztwa
+
+			LocalSearch tabu;
+
+
+			int matrixId = -1;
+			for (int x = 0; x < sizeof(matrixes) / sizeof(*matrixes); x++) {
+				matrixId++;
+				Node start;
+				start.loadInfoGiven(matrixes[x]);
+				matrixSize = start.getStartSize();
+				instanceName = start.getInstanceName();
+				TSPMatrix = new int *[matrixSize];
+				for (int i = 0; i < matrixSize; i++)
+					TSPMatrix[i] = new int[matrixSize];
+				start.copyMatrix(TSPMatrix);
+				//*/
+
+				for (int a = 0; a < sizeof(timeTab) / sizeof(*timeTab); a++){
+					tabu.setSettingsTabu(cadenceTab[matrixId], timeTab[a], iterTab[matrixId], divCadTab[matrixId], randNodesTab[matrixId], algTab[matrixId], typesTab[matrixId]);
+					for (int repeat = 0; repeat < 20; repeat++) {
+						tabu.TabuMechanism(matrixSize, TSPMatrix);
+						cout << "Optimum = " << tabu.getOptMin() << endl;
+						tabu.saveToFileTabu(instanceName);
+					}
+				}
+			}
 
 			cout << endl;
 			cout << "Testy wykonane, wyniki zapisane do Output/wynikiTestyTabu.csv" << endl;
@@ -345,15 +396,23 @@ int main()
 		case 12: {
 
 			
-			//string matrixes[5] = {"data45.txt","data56.txt","data53.txt","ftv47.txt","data65.txt"};
-			string matrixes[1] = {"data65.txt" };
-			int time[1] = { 15 }; //czasy
+			//string matrixes[5] = {"data45.txt","data53.txt","data56.txt","data65.txt","ftv47.txt"};
+			string matrixes[1] = { "data171.txt"};
+			int populationSize[1] = { 150};
+			int amountRandomNodes[1] = { 3 };
+			double mutationProb[1] = { 0.10};
+			int selectionType[1] = { 1};
+			int mutationType[1] = { 1 };// 2 reverse, 1 insert, 0 swap
+			int memeticType[1] = { 1 };
+			int crossoverType[1] = {6}; // 5
+			int elitismNumber[1] = { 10 };
+			//int timeGenetic[6] = {5,10,15,20,25,30}; //czasy
+			int timeGenetic[1] = { 30 }; //czasy
 			Czas czas1;
 
 			//populationSize, amountRandomNodes,mutationProb,crossoverType,selectionType,mutationType,iterations
 
 			for (int x = 0; x < sizeof(matrixes) / sizeof(*matrixes); x++) {
-
 				Node start;
 				start.loadInfoGiven(matrixes[x]);
 				matrixSize = start.getStartSize();
@@ -363,18 +422,27 @@ int main()
 					TSPMatrix[i] = new int[matrixSize];
 				start.copyMatrix(TSPMatrix);
 
-				for (int a = 0; a < sizeof(time) / sizeof(*time); a++)
-					for (int repeat = 0; repeat < 50; repeat++) {
-						Genetic gen;
-						int result;
-						//gen.setSettingsGenetic(populationSize[a], amountRandomNodes[b], mutationProb[c], crossoverType[d], selectionType[e], mutationType[f], iterations[g], elitismDivider[h]);
-						vector<unsigned> islandsBest;
-						czas1.czasStart();
-						result = gen.GeneticMechanism(matrixSize, TSPMatrix, time[a], islandsBest);
-						czas1.czasStop();
-						saveToFileGenetic(instanceName, getTime(czas1, 1), result, islandsBest);
-						cout << "Optimum = " << result << endl;
-					}
+				for (int a = 0; a < sizeof(populationSize) / sizeof(*populationSize); a++)
+					for (int b = 0; b < sizeof(amountRandomNodes) / sizeof(*amountRandomNodes); b++)
+						for (int c = 0; c < sizeof(elitismNumber) / sizeof(*elitismNumber); c++)
+							for (int d = 0; d < sizeof(mutationProb) / sizeof(*mutationProb); d++)
+								for (int e = 0; e < sizeof(selectionType) / sizeof(*selectionType); e++)
+									for (int f = 0; f < sizeof(mutationType) / sizeof(*mutationType); f++)
+										for (int g = 0; g < sizeof(memeticType) / sizeof(*memeticType); g++)
+											for (int h = 0; h < sizeof(crossoverType) / sizeof(*crossoverType); h++)
+												for (int i = 0; i < sizeof(timeGenetic) / sizeof(*timeGenetic); i++)
+													for (int repeat = 0; repeat < 50; repeat++) {
+														Genetic gen;
+														int result;
+														gen.setSettingsGenetic(populationSize[a], amountRandomNodes[b], mutationProb[d], crossoverType[h], selectionType[e], mutationType[f], elitismNumber[c],memeticType[g],timeGenetic[i]);
+														//gen.setSettingsGenetic2(memeticType[b], time[a]);
+														vector<unsigned> iterations;
+														czas1.czasStart();
+														result = gen.GeneticMechanism(matrixSize, TSPMatrix, iterations);
+														czas1.czasStop();
+														saveToFileGenetic2(instanceName, getTime(czas1, 1), result, iterations, populationSize[a], amountRandomNodes[b], mutationProb[d], crossoverType[h], selectionType[e], mutationType[f], elitismNumber[c], memeticType[g], timeGenetic[i]);
+														cout << "Optimum = " << result << endl;
+													}
 			}
 			
 

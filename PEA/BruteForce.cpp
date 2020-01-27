@@ -262,13 +262,26 @@ void saveToFileTabu(int a, unsigned b, int c, int d, int e, bool i, int h, int j
 	plik.close();
 }
 
-void saveToFileGenetic(string a, double b, int c, vector<unsigned>& islandsBest) {
+void saveToFileGenetic(string a, double b, int c, int d, vector<unsigned>& islandsBest) {
 	ofstream plik;
 	plik.open("C:/Users/Radek/source/repos/PEA/Output/wynikiTestyGenetic.csv", std::ios_base::app);
-	plik << a << ";" << b << ";" << "ms" << ";" << c << ";";
+	plik << a << ";" << b << ";" << "ms" << ";" << c << ";" << d << ";";
 	for (int i = 0; i < islandsBest.size(); i++) {
 		plik << islandsBest.at(i) << ";";
 	}
 	plik << endl;
 	plik.close();
 }
+
+void saveToFileGenetic2(string a, double b, int c, vector<unsigned>& islandsBest, int e, int f, double g, int h, int i, int j, int k, int l, int m) {
+	ofstream plik;
+	plik.open("C:/Users/Radek/source/repos/PEA/Output/wynikiTestyGenetic.csv", std::ios_base::app);
+	plik << a << ";" << b << ";" << "ms" << ";" << c << ";";
+	for (int i = 0; i < islandsBest.size(); i++) {
+		plik << islandsBest.at(i) << ";";
+	}
+	plik << e << ";" << f << ";" << g << ";" << h << ";" << i << ";" << j << ";" << k << ";" << l << ";" << m << ";";
+	plik << endl;
+	plik.close();
+}
+

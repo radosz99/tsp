@@ -23,8 +23,9 @@ public:
 	int costXY(int a, int b);
 	void memeticImprovement(vector <unsigned>& ind);
 	void setSettingsGenetic(int a, int  b, double c, int d, int e, int f, int g, int h, int i);
-	void generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>&fitnesses);
-	int GeneticMechanism(int a, int **TSPMatrix, int b, vector<unsigned>& islandsBest);
+	void setSettingsGenetic2(int a, int  b);
+	void generateInitialPopulation(vector <vector <unsigned>>& pop, vector <double>&fitnesses, Czas onboardClock);
+	int GeneticMechanism(int a, int **TSPMatrix, vector<unsigned>& islandsBest);
 	void launchIslands(int a, int **TSPMatrix, vector < vector<unsigned>>& best, vector<unsigned>& islandsBest);
 	void sortVector(vector <vector<unsigned>>&vect);
 	void evaluatePopulation(vector <vector <unsigned>> popul, vector <double> &fitnesses);
@@ -44,7 +45,7 @@ public:
 	void EnhancedSequentialCO(vector <unsigned> parent1, vector <unsigned> parent2, vector <unsigned>& offspring);
 	vector <unsigned> tournamentSelection(vector <vector <unsigned>> pop);
 	int rouletteWheelSelection(vector <double> fit);
-	int rankSelection(vector <double> fitnesses, vector <vector <unsigned>> pop);
+	int rankSelection(vector <double> fitnesses);
 
 #pragma once
 
@@ -76,7 +77,7 @@ private:
 	int crossoverType;
 	int selectionType;
 	int mutationType;
-	int elitismDivider;
-
+	int elitismNumber;
+	int memeticType;
 };
 #endif

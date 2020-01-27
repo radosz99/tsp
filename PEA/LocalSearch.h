@@ -47,6 +47,8 @@ public:
 	void calculateInsert(int i, int j, int &balance, vector <unsigned> currentRoute);
 	void calculateReverse(int i, int j, int &balance, vector <unsigned> currentRoute);
 	void calculateSwap(int i, int j, int &balance, vector <unsigned> currentRoute);
+	int getInitialRandom(vector < unsigned >&bestTab);
+
 
 	void setOptMin(int a) {
 		optMin = a;

@@ -25,7 +25,8 @@ double getTime(Czas czas, int odp);
 void saveToFileRand(string a, int k, int i, string b, double c, string g, int d, int e, int f);
 int askTime();
 void saveToFileTabu(int a, unsigned b, int c, int d, int e, bool i,int h, int j);
-void saveToFileGenetic(string a, double b, int c, vector<unsigned>& islandsBest);
+void saveToFileGenetic(string a, double b, int c, int d,vector<unsigned>& islandsBest);
+void saveToFileGenetic2(string a, double b, int c,  vector<unsigned>& islandsBest, int e, int f, double g, int h, int i, int j, int k, int l, int m);
 void showVector(vector <unsigned> vect);
 #endif#pragma once
 #pragma once

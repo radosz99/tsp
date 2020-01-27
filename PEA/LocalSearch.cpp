@@ -185,7 +185,6 @@ int LocalSearch::getInitialReductionAndRandom(vector < unsigned >&bestTab) {
 				ifVisited = false;
 			}
 		}
-		//cout << i << " node: " << randomNode << endl;
 		visitedTab[randomNode] = -1;
 		bestTab.push_back(randomNode);
 		localMin = localMin + macierz[bestTab.at(i)][randomNode];
@@ -316,11 +315,12 @@ int LocalSearch::getInitialGreedyAndRandom(vector < unsigned >&bestTab) {
 	copyMatrix(macierz);
 	bool ifVisited;
 	int randomNode;
+	int remainingNodes = amountRandomNodes;
 
 	for (int i = 0; i < matrixSize; i++) {
 		bestMin = INT_MAX;
 		oldTempBest = tempBest;
-		if (amountRandomNodes != 0) {
+		if (remainingNodes != 0) {
 			ifVisited = false;
 			while (ifVisited == false) {
 				randomNode = nodeRand(randomGen);
@@ -333,7 +333,7 @@ int LocalSearch::getInitialGreedyAndRandom(vector < unsigned >&bestTab) {
 			}
 			tempBest = randomNode;
 			bestMin = macierz[oldTempBest][randomNode];
-			amountRandomNodes--;
+			remainingNodes--;
 
 		}
 		else {
@@ -379,10 +379,12 @@ void LocalSearch::TabuMechanism(int a, int **TSPMatrix) {
 			matrix[i][j] = TSPMatrix[i][j];
 	}
 
+
 	int greedyStart = 1;
 	///*
 	vector < unsigned > route;
-	optMin = getInitialReduction(route);
+	//optMin = getInitialReduction(route);
+	optMin = getInitialGreedy(route);
 	bestRoute = route;
 	vector < unsigned > currentRoute = bestRoute;
 	//*/
@@ -392,6 +394,11 @@ void LocalSearch::TabuMechanism(int a, int **TSPMatrix) {
 	bestRoute = route;
 	currentRoute = route;
 	//*/
+	Czas onboardClock;
+
+	onboardClock.start();
+
+
 	bool continuing = true;
 	currentTabuCadence = tabuCadence;
 	currentOptMin = optMin;
@@ -399,9 +406,7 @@ void LocalSearch::TabuMechanism(int a, int **TSPMatrix) {
 	int bestI = 0, bestJ = 0;
 	int counter = 0, iterWithoutImprovement = 0;
 	bool intensification, diversification = true, ifTabu;
-	Czas onboardClock;
 
-	onboardClock.start();
 
 	while (continuing == true) {
 		intensification = false;
@@ -839,4 +844,60 @@ int LocalSearch::calculateProbability(int newCost, int oldCost, double temperatu
 void LocalSearch::clearParameters(vector <unsigned> currentRoute) {
 	bestRoute.clear();
 	currentRoute.clear();
+}
+
+int LocalSearch::getInitialRandom(vector < unsigned >&bestTab) {
+
+	random_device randomSrc;
+	default_random_engine randomGen(randomSrc());
+	uniform_int_distribution<> nodeRand(0, matrixSize - 1);
+
+	int bestMin, tempBest = 0, oldTempBest = 0;
+	int localMin = 0;
+	int *visitedTab = new int[matrixSize];
+	for (int i = 0; i < matrixSize; i++) {
+		visitedTab[i] = 0;
+	}
+	int **macierz = new int *[matrixSize];
+	for (int i = 0; i < matrixSize; i++) {
+		macierz[i] = new int[matrixSize];
+	}
+
+	copyMatrix(macierz);
+	bool ifVisited;
+	int randomNode;
+
+	for (int i = 0; i < matrixSize; i++) {
+		bestMin = INT_MAX;
+		oldTempBest = tempBest;
+			for (int j = 0; j < matrixSize; j++) {
+				ifVisited = true;
+				if (j != oldTempBest) {
+					for (int k = 0; k <= i; k++) {
+						if (j == visitedTab[k]) {
+							ifVisited = false;
+						}
+					}
+					if (macierz[oldTempBest][j] < bestMin && ifVisited == true) {
+						bestMin = macierz[oldTempBest][j];
+						tempBest = j;
+					}
+				}
+			}
+		if (i < matrixSize - 1)
+			localMin = localMin + bestMin;
+		else
+			localMin = localMin + macierz[oldTempBest][0];
+
+		bestTab.push_back(oldTempBest);
+		visitedTab[i] = tempBest;
+	}
+	bestTab.push_back(0);
+	//cout << "Greedy min: " << helpMin << endl;
+	for (int i = 0; i < matrixSize; i++) {
+		delete[]macierz[i];
+	}
+	delete[]macierz;
+
+	return localMin;
 }

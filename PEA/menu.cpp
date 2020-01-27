@@ -17,7 +17,7 @@ int showMenu() {
 	cout << "10. Oblicz (nie)optymalna sciezke (tabu search)" << endl;
 	cout << "11. Oblicz (nie)optymalna sciezke (symulowane wyzarzanie)" << endl;
 	cout << "12. Oblicz (nie)optymalna sciezke (algorytm genetyczny)" << endl;
-	cout << "13. TESTY AUTOMATYCZNE" << endl;
+	cout << "13. TESTY AUTOMATYCZNE (BF,BB,DP)" << endl;
 	cout << "14. EXIT" << endl;
 	cin >> ans;
 
