@@ -28,11 +28,10 @@ int main()
 	int answer = 0;
 	int matrixSize;
 	int **TSPMatrix = 0;
-	cout << "-----------------------------" << endl;
-	cout << "-----PEA_zimowy2019/2020-----" << endl;
-	cout << "---------RadoslawLis---------" << endl;
-	cout << "-----------241385------------" << endl;
-	cout << "-----------------------------" << endl << endl;
+	cout << "-----------------------------------------------------------" << endl;
+	cout << "--------------Designing Effective Algorithms---------------" << endl;
+	cout << "-----------------------Radoslaw Lis------------------------" << endl;
+	cout << "-----------------------------------------------------------\n" << endl;
 
 	Node start;
 

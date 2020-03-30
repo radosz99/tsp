@@ -1,1 +1,6 @@
 Instancja;Algorytm;Czas;Jednostka;Wynik
+data10;BruteForce-nextpermu;63846;us;212
+data10;BruteForce-drzewo;268074;us;212
+data10;Dynamiczne;2.0126e+06;ns;212
+gr17.tsp;Branch&Bound BF;350;ms;2085
+gr17.tsp;Branch&Bound DF;11794;ms;2085
