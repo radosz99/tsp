@@ -24,6 +24,8 @@ _________________________________
 
 <a name="desc"></a>
 # General info
+Implementations of well-known algorithms to solve Travelling Salesman Problem.
+Innovative method in IMGA algorithm.
 
 <a name="bf"></a>
 # Brute Force
