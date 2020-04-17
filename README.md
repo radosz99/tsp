@@ -27,6 +27,7 @@ _________________________________
 Implementations of well-known algorithms to solve Travelling Salesman Problem.
 Innovative method in IMGA algorithm.
 
+![Alt Text](https://media.giphy.com/media/W4bsvmfWhAkj6ph7iE/giphy.gif)
 <a name="bf"></a>
 # Brute Force
 
